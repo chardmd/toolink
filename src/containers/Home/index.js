@@ -7,6 +7,7 @@ import Avatar from "@material-ui/core/Avatar";
 import ListItem from "@material-ui/core/ListItem";
 import ImageIcon from "@material-ui/icons/Image";
 import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -68,7 +69,7 @@ class Home extends Component {
         </Toolbar>
         <div className="layout">
           <div className="side">
-            <h3>Categories</h3>
+            <Typography variant="title">Categories</Typography>
             <div className="categories">{this.renderCategories()}</div>
             <br />
             <div>
