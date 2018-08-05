@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Icon, Toolbar } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import Avatar from "@material-ui/core/Avatar";
+import ListItem from "@material-ui/core/ListItem";
+import ImageIcon from "@material-ui/icons/Image";
+import ListItemText from "@material-ui/core/ListItemText";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -37,9 +42,15 @@ class Home extends Component {
   };
 
   renderCategories = () => {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(t => (
-      <Button key={`category-${t}`}>Web Development</Button>
+    const content = [1, 2, 3, 4, 5, 6].map(t => (
+      <ListItem button>
+        <Avatar>
+          <ImageIcon />
+        </Avatar>
+        <ListItemText primary="Web Development" />
+      </ListItem>
     ));
+    return <List component="nav">{content}</List>;
   };
 
   render() {

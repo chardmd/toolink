@@ -10,7 +10,8 @@ const styles = theme => ({
   card: {
     display: "flex",
     width: 500,
-    height: 180
+    height: 180,
+    cursor: "pointer"
   },
   details: {
     display: "flex",
