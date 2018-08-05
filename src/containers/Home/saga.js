@@ -4,11 +4,11 @@ import axios from "axios";
 import { GET_LINK_DATA } from "./constants";
 import { getLinkDataSuccess, getLinkDataFailed } from "./actions";
 
-function* handleGetLinkData({ targetUrl }) {
+function* handleGetLinkData({ index, targetUrl }) {
   try {
     let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${targetUrl}`;
     const response = yield call([axios, axios.get], url);
-    yield put(getLinkDataSuccess(response.data));
+    yield put(getLinkDataSuccess(index, response.data));
   } catch (e) {
     yield put(getLinkDataFailed(e));
   }

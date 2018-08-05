@@ -18,7 +18,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.getLinkData("http://newco.app");
+    this.props.getLinkData(1, "http://newco.app");
   }
 
   renderLinks = () => {
@@ -69,7 +69,7 @@ class Home extends Component {
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  getLinkData: targetUrl => dispatch(getLinkData(targetUrl))
+  getLinkData: (index, targetUrl) => dispatch(getLinkData(index, targetUrl))
 });
 
 export default connect(
