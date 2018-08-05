@@ -6,12 +6,19 @@ import { Button, Icon, Toolbar } from "@material-ui/core";
 //components
 import PreviewLink from "../../components/PreviewLink";
 
+//actions
+import { getLinkData } from "./actions";
+
 //css
 import "./Home.css";
 
 class Home extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.getLinkData("http://newco.app");
   }
 
   renderLinks = () => {
@@ -61,7 +68,9 @@ class Home extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  getLinkData: targetUrl => dispatch(getLinkData(targetUrl))
+});
 
 export default connect(
   mapStateToProps,

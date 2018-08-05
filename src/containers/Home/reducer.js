@@ -1,15 +1,18 @@
-import { SAVE_USER } from "./constants";
+import {
+  GET_LINK_DATA,
+  GET_LINK_DATA_SUCCESS,
+  GET_LINK_DATA_FAILED
+} from "./constants";
 
-const INITIAL_STATE = {
-  birthDate: null,
-  lifeSpan: 0,
-  isLoading: true,
-  isPastActive: false
-};
+const INITIAL_STATE = {};
 
 const homeReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SAVE_USER:
+    case GET_LINK_DATA:
+      return state;
+    case GET_LINK_DATA_SUCCESS:
+      return state;
+    case GET_LINK_DATA_FAILED:
       return state;
     default:
       return state;
