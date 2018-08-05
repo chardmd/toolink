@@ -1,14 +1,16 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import axios from "axios";
+import data from "./data.json";
 
 import { GET_LINK_DATA } from "./constants";
 import { getLinkDataSuccess, getLinkDataFailed } from "./actions";
 
-function* handleGetLinkData({ index, targetUrl }) {
+function* handleGetLinkData({ category }) {
   try {
-    let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${targetUrl}`;
-    const response = yield call([axios, axios.get], url);
-    yield put(getLinkDataSuccess(index, response.data));
+    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
+    // const response = yield call([axios, axios.get], url);
+    // console.log("response", response.data);
+    yield put(getLinkDataSuccess(data));
   } catch (e) {
     yield put(getLinkDataFailed(e));
   }

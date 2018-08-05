@@ -5,7 +5,7 @@ import {
 } from "./constants";
 
 const INITIAL_STATE = {
-  data: {}
+  previewList: []
 };
 
 const homeReducer = (state = INITIAL_STATE, action) => {
@@ -15,9 +15,7 @@ const homeReducer = (state = INITIAL_STATE, action) => {
     case GET_LINK_DATA_SUCCESS:
       return {
         ...state,
-        data: {
-          [action.index]: action.data
-        }
+        previewList: action.data
       };
     case GET_LINK_DATA_FAILED:
       return state;

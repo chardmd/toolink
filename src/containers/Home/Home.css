@@ -2,11 +2,6 @@
     height: 100%;
 }
 
-.Home .wrapper {
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
 .Home .toolbox {
     display: flex;
     -ms-flex-pack: end;
@@ -38,7 +33,8 @@
 .Home .main .inner {
     display: flex;
     flex-wrap: wrap;
-    overflow: scroll;
+    overflow-y: scroll;
+    padding-bottom: 12em;
 }
 
 .Home .card {

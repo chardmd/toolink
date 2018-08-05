@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button, Icon, Toolbar } from "@material-ui/core";
 
 //components
-import PreviewLink from "../../components/PreviewLink";
+import MediaCard from "../../components/MediaCard";
 
 //actions
 import { getLinkData } from "./actions";
@@ -18,20 +18,27 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.getLinkData(1, "http://newco.app");
+    this.props.getLinkData("seo");
   }
 
   renderLinks = () => {
-    return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(t => (
-      <div className="card" key={`preview-${t}`}>
-        <PreviewLink url="http://newco.app" />
+    return this.props.previewList.map((data, index) => (
+      <div className="card" key={`preview-${index}`}>
+        <MediaCard
+          title={data.title}
+          description={data.description}
+          image={data.image}
+          url={data.url}
+          author={data.author}
+          publisher={data.publisher}
+        />
       </div>
     ));
   };
 
   renderCategories = () => {
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(t => (
-      <Button key={`category-${t}`}>SEO</Button>
+      <Button key={`category-${t}`}>Web Development</Button>
     ));
   };
 
@@ -66,10 +73,12 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  previewList: state.home.previewList
+});
 
 const mapDispatchToProps = dispatch => ({
-  getLinkData: (index, targetUrl) => dispatch(getLinkData(index, targetUrl))
+  getLinkData: category => dispatch(getLinkData(category))
 });
 
 export default connect(

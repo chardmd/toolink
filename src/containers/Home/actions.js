@@ -4,18 +4,16 @@ import {
   GET_LINK_DATA_FAILED
 } from "./constants";
 
-export function getLinkData(index, targetUrl) {
+export function getLinkData(category) {
   return {
     type: GET_LINK_DATA,
-    index,
-    targetUrl
+    category
   };
 }
 
-export function getLinkDataSuccess(index, data) {
+export function getLinkDataSuccess(data) {
   return {
     type: GET_LINK_DATA_SUCCESS,
-    index,
     data
   };
 }

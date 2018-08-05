@@ -34,32 +34,3 @@ export function fbAPI(path) {
     }
   });
 }
-
-export const getUrlPath = data =>
-  data && typeof data === "object" ? data.url : data;
-
-export const someProp = (data, props) =>
-  data[props.find(prop => data[prop] !== null && data[prop] !== undefined)];
-
-export const media = {
-  mobile: (...args) => css`
-    @media (max-width: 48em) {
-      ${css(...args)};
-    }
-  `,
-  desktop: (...args) => css`
-    @media (min-width: 48em) {
-      ${css(...args)};
-    }
-  `
-};
-
-export const createApiUrl = props => {
-  const { apiKey, url: targetUrl } = props;
-  const alias = apiKey ? "pro" : "api";
-
-  let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${targetUrl}`;
-  return url;
-};
-
-export const isLarge = cardSize => cardSize === "large";
