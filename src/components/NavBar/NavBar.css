@@ -1,0 +1,13 @@
+.NavBar .appBar {
+    position: absolute;
+    /* margin-left: 280px;
+    width: calc(100% - 280px); */
+}
+
+@media all and (max-width: 959px) {
+    .NavBar .appBar {
+        width: 100%;
+    }
+}
+
+

@@ -1,0 +1,19 @@
+export const SET_ALERT_OPEN = "app/Login/SET_ALERT_OPEN";
+
+export const GOOGLE_SIGN_IN = "app/Login/GOOGLE_SIGN_IN";
+export const GOOGLE_SIGN_IN_SUCCESS = "app/Login/GOOGLE_SIGN_IN_SUCCESS";
+export const GOOGLE_SIGN_IN_FAILED = "app/Login/GOOGLE_SIGN_IN_FAILED";
+
+export const FACEBOOK_SIGN_IN = "app/Login/FACEBOOK_SIGN_IN";
+export const FACEBOOK_SIGN_IN_SUCCESS = "app/Login/FACEBOOK_SIGN_IN_SUCCESS";
+export const FACEBOOK_SIGN_IN_FAILED = "app/Login/FACEBOOK_SIGN_IN_FAILED";
+
+export const SIGN_IN = "app/Login/SIGN_IN";
+export const SIGN_IN_SUCCESS = "app/Login/SIGN_IN_SUCCESS";
+export const SIGN_IN_FAILED = "app/Login/SIGN_IN_FAILED";
+
+export const GET_AUTHENTICATED_USER = "app/App/GET_AUTHENTICATED_USER";
+export const GET_AUTHENTICATED_USER_SUCCESS =
+  "app/App/GET_AUTHENTICATED_USER_SUCCESS";
+export const GET_AUTHENTICATED_USER_FAILED =
+  "app/App/GET_AUTHENTICATED_USER_FAILED";

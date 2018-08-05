@@ -1,0 +1,77 @@
+.Login {
+  padding: 10vh 0;
+  flex-grow: 1;
+}
+
+.Login .content > div {
+  width: 22vw;
+}
+
+.Login .content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.Login .imageContainer {
+  text-align: right;
+}
+
+.Login .imageContainer img {
+  margin-right: 4em;
+}
+
+.Login .paper {
+  min-width: 320px;
+  max-width: 400px;
+  padding: 3em 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 400px;
+}
+
+.Login form {
+  width: 85%;
+}
+
+.Login .socialLogin {
+  display: flex;
+  align-items: center;
+}
+
+.Login .googleLogin {
+  margin: 0 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.Login .facebookLogin {
+  margin: 0 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.Login .buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Login .buttonContainer a {
+  text-decoration: underline;
+}
+
+.Login .signUpText {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+.Login .secondary {
+  color: #ff1744;
+}

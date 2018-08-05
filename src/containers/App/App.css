@@ -1,0 +1,58 @@
+.App {
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.App .navbar-brand {
+    font-weight: bold;
+}
+
+.App .root {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+}
+
+.App .content {
+    flex: 1;
+}
+
+.App .flex {
+    flex: 1;
+}
+
+.App .menuButton {
+    margin-left: -12px;
+    margin-right: 20px;
+}
+
+.App footer {
+    border-top: 1px solid #c7c6cc;
+    display: flex;
+    justify-content: space-between;
+}
+
+.App footer p {
+    margin: 1em;
+}
+
+.App .toolbar {
+  min-height: 64px;
+}
+
+
+.App .secondary {
+    color: #ff1744;
+}
+
+.App .loader {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+}

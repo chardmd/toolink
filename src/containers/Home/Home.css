@@ -1,0 +1,52 @@
+.Home {
+    height: 100%;
+}
+
+.Home .wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.Home .toolbox {
+    display: flex;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+    min-height: 64px;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+.Home .layout {
+    display: flex;
+    height: 100%;
+}
+
+.Home .side {
+    width: 20%;
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 1em;
+}
+
+.Home .main {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.Home .main .inner {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+}
+
+.Home .card {
+    margin: 1em;
+}
+
+.Home .categories {
+    display: flex;
+    flex-direction: column;
+}
+

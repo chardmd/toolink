@@ -1,0 +1,44 @@
+/**
+ *
+ * {{properCase name }}
+ *
+ */
+
+import React from 'react';
+import { connect } from 'react-redux';
+{{#if wantHeaders}}
+import { Helmet } from 'react-helmet';
+{{/if}}
+
+{{#if wantActionsAndReducer}}
+import { defaultAction } from "./actions";
+{{/if}}
+
+import './{{ properCase name }}.css';
+
+function {{ properCase name }}() {
+  return (
+    <div>
+    {{#if wantHeaders}}
+      <Helmet>
+        <title>{{properCase name}}</title>
+        <meta name="description" content="Description of {{properCase name}}" />
+      </Helmet>
+    {{/if}}
+    </div>
+  );
+}
+
+{{ properCase name }}.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  defaultAction: () => dispatch(defaultAction()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)({{ properCase name }});
+{{/if}}

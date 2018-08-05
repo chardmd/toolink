@@ -1,0 +1,22 @@
+/*
+ *
+ * {{ properCase name }} saga
+ * 
+ * configure in store/rootSaga
+ */
+
+import { all, takeLatest } from 'redux-saga/effects';
+
+import { DEFAULT_ACTION } from './constants';
+
+function* handleMySaga() {
+  // implementation
+}
+
+function* {{ properCase name }}Saga() {
+  yield all([
+    takeLatest(DEFAULT_ACTION, handleMySaga),
+  ]);
+}
+
+export default {{ properCase name }}Saga;

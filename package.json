@@ -1,0 +1,38 @@
+{
+  "name": "tool-gear",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.0",
+    "aws-amplify": "^1.0.2",
+    "connected-react-router": "^4.3.0",
+    "history": "^4.7.2",
+    "nanoclamp": "^1.2.7",
+    "password-validator": "^4.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-facebook-login": "^4.0.1",
+    "react-google-login": "^3.2.1",
+    "react-loadable": "^5.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-spinners": "^0.3.3",
+    "recompose": "^0.27.1",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "styled-components": "^3.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "generate": "plop --plopfile generators/index.js",
+    "build:netlify": "npm run build && cp _redirects build/_redirects",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "plop": "^2.0.0"
+  }
+}
