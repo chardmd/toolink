@@ -8,6 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ImageIcon from "@material-ui/icons/Image";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -67,6 +68,7 @@ class Home extends Component {
             </Link>
           </div>
         </Toolbar>
+        <Divider />
         <div className="layout">
           <div className="side">
             <Typography variant="title">Categories</Typography>

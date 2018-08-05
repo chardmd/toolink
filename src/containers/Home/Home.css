@@ -6,7 +6,6 @@
     display: flex;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.23);
     min-height: 64px;
     align-items: center;
     padding: 1em 2em;
@@ -20,7 +19,7 @@
 .Home .side {
     width: 20%;
     text-align: center;
-    border-right: 1px solid rgba(0, 0, 0, 0.23);
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
     padding: 1em;
 }
 
