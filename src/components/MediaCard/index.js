@@ -10,7 +10,7 @@ const styles = theme => ({
   card: {
     display: "flex",
     width: 400,
-    height: 180,
+    height: 200,
     cursor: "pointer"
   },
   details: {
@@ -22,7 +22,7 @@ const styles = theme => ({
   },
   cover: {
     width: 200,
-    height: 180
+    height: 200
   }
 });
 
