@@ -5,10 +5,11 @@ import { Button, Icon, Toolbar } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import Avatar from "@material-ui/core/Avatar";
 import ListItem from "@material-ui/core/ListItem";
-import ImageIcon from "@material-ui/icons/Image";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -45,43 +46,70 @@ class Home extends Component {
 
   renderCategories = () => {
     const content = [1, 2, 3, 4, 5, 6].map(t => (
-      <ListItem button>
-        <Avatar>
-          <ImageIcon />
-        </Avatar>
+      <ListItem button className="listItem">
+        <ListItemAvatar>
+          <Avatar>
+            <Avatar>WE</Avatar>
+          </Avatar>
+        </ListItemAvatar>
         <ListItemText primary="Web Development" />
       </ListItem>
     ));
-    return <List component="nav">{content}</List>;
+    return (
+      <List component="nav" className="list">
+        {content}
+      </List>
+    );
   };
 
   render() {
     return (
       <div className="Home">
-        <Toolbar className="toolbox">
-          <div>
-            <Link to={`/notes/new`}>
-              <Button variant="outlined" size="large">
-                <Icon>add</Icon>&nbsp;
-                <span>Add Link</span>
-              </Button>
-            </Link>
-          </div>
-        </Toolbar>
-        <Divider />
-        <div className="layout">
-          <div className="side">
-            <Typography variant="title">Categories</Typography>
+        <Grid container spacing={8}>
+          <Grid item xs={12}>
+            <Toolbar className="toolbox">
+              <div>
+                <Link to={`/notes/new`}>
+                  <Button variant="outlined" size="large">
+                    <Icon>add</Icon>&nbsp;
+                    <span>Add Link</span>
+                  </Button>
+                </Link>
+              </div>
+            </Toolbar>
+            <Divider />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={3}
+            md={3}
+            container
+            direction="column"
+            justify="flex-start"
+            alignItems="center"
+          >
+            <br />
+            <Typography variant="title" align="center">
+              Categories
+            </Typography>
             <div className="categories">{this.renderCategories()}</div>
             <br />
-            <div>
-              <Button variant="outlined">Add New Category</Button>
-            </div>
-          </div>
-          <div className="main">
-            <div className="inner">{this.renderLinks()}</div>
-          </div>
-        </div>
+            <Button variant="outlined">Add New Category</Button>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={9}
+            md={9}
+            container
+            direction="row"
+            justify="flex-start"
+            alignItems="center"
+          >
+            {this.renderLinks()}
+          </Grid>
+        </Grid>
       </div>
     );
   }
