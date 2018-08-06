@@ -71,7 +71,7 @@ class Home extends Component {
               <div>
                 <Link to={`/notes/new`}>
                   <Button variant="outlined" size="large">
-                    <Icon>add</Icon>&nbsp;
+                    <Icon>link</Icon>&nbsp;
                     <span>Add Link</span>
                   </Button>
                 </Link>
@@ -96,7 +96,10 @@ class Home extends Component {
             </Typography>
             <div className="categories">{this.renderCategories()}</div>
             <br />
-            <Button variant="outlined">Add New Category</Button>
+            <Button variant="outlined">
+              <Icon>category</Icon>&nbsp;
+              <span>New Category</span>
+            </Button>
           </Grid>
           <Grid
             item
