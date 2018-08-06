@@ -88,6 +88,7 @@ class Home extends Component {
             direction="column"
             justify="flex-start"
             alignItems="center"
+            className="leftCol"
           >
             <br />
             <Typography variant="title" align="center">
@@ -106,6 +107,7 @@ class Home extends Component {
             direction="row"
             justify="flex-start"
             alignItems="center"
+            className="rightCol"
           >
             {this.renderLinks()}
           </Grid>

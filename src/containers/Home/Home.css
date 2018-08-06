@@ -1,6 +1,8 @@
 .Home {
     height: 100%;
-    flex-grow: 1;
+    overflow: scroll;
+    max-height: 100vh;
+    padding-bottom: 12em;
 }
 
 .Home .toolbox {
@@ -26,5 +28,10 @@
     flex-direction: column;
 }
 
-.Home .side {
+.Home .leftCol {
+    margin-bottom: 2em;
+}
+
+.Home .rightCol {
+    height: 100%;
 }
