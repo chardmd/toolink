@@ -7,6 +7,20 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap"
+  },
+  chip: {
+    margin: theme.spacing.unit
+  }
+});
 
 class FormDialog extends React.Component {
   constructor(props) {
@@ -18,6 +32,7 @@ class FormDialog extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <Dialog
@@ -40,6 +55,39 @@ class FormDialog extends React.Component {
               fullWidth
             />
           </DialogContent>
+          <DialogContent>
+            <Chip
+              avatar={<Avatar>WE</Avatar>}
+              label="Web Development"
+              color="primary"
+              className={classes.chip}
+            />
+            <Chip
+              avatar={<Avatar>WE</Avatar>}
+              label="Web Development"
+              className={classes.chip}
+            />
+            <Chip
+              avatar={<Avatar>WE</Avatar>}
+              label="Web Development"
+              className={classes.chip}
+            />
+            <Chip
+              avatar={<Avatar>WE</Avatar>}
+              label="Web Development"
+              className={classes.chip}
+            />
+            <Chip
+              avatar={<Avatar>WE</Avatar>}
+              label="Web Development"
+              className={classes.chip}
+            />
+            <Chip
+              avatar={<Avatar>WE</Avatar>}
+              label="Web Development"
+              className={classes.chip}
+            />
+          </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
@@ -58,4 +106,4 @@ FormDialog.propTypes = {
   toggleStatus: PropTypes.func
 };
 
-export default FormDialog;
+export default withStyles(styles)(FormDialog);
