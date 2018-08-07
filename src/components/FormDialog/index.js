@@ -26,10 +26,6 @@ const styles = theme => ({
 });
 
 class FormDialog extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleClose = () => {
     this.props.toggleStatus(false);
   };

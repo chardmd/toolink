@@ -1,5 +1,4 @@
 import passwordValidator from "password-validator";
-import { css } from "styled-components";
 
 export const validatePassword = password => {
   // Create a schema
