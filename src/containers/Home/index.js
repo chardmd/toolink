@@ -13,6 +13,7 @@ import Grid from "@material-ui/core/Grid";
 
 //components
 import MediaCard from "../../components/MediaCard";
+import FormDialog from "../../components/FormDialog";
 
 //actions
 import { getLinkData } from "./actions";
@@ -23,6 +24,12 @@ import "./Home.css";
 class Home extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isActive: false
+    };
+
+    this.onToggleStatus = this.onToggleStatus.bind(this);
   }
 
   componentDidMount() {
@@ -62,19 +69,33 @@ class Home extends Component {
     );
   };
 
+  onToggleStatus(status) {
+    this.setState({
+      isActive: status
+    });
+  }
+
   render() {
     return (
       <div className="Home">
+        <FormDialog
+          isActive={this.state.isActive}
+          toggleStatus={this.onToggleStatus}
+        />
         <Grid container spacing={8}>
           <Grid item xs={12}>
             <Toolbar className="toolbox">
               <div>
-                <Link to={`/notes/new`}>
-                  <Button variant="outlined" size="large">
-                    <Icon>link</Icon>&nbsp;
-                    <span>Add Link</span>
-                  </Button>
-                </Link>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => {
+                    this.onToggleStatus(true);
+                  }}
+                >
+                  <Icon>link</Icon>&nbsp;
+                  <span>Add Link</span>
+                </Button>
               </div>
             </Toolbar>
             <Divider />
