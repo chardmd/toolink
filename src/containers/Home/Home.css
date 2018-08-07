@@ -30,6 +30,7 @@
 
 .Home .leftCol {
     margin-bottom: 2em;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .Home .rightCol {

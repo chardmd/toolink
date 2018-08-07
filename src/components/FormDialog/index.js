@@ -49,8 +49,7 @@ class FormDialog extends React.Component {
             <div className="dialogDisplay">
               <img src={blockImage} className="blockImage" />
               <DialogContentText>
-                To subscribe to this website, please enter your email address
-                here. We will send updates occasionally.
+                Just paste the link and you are ready to go!
               </DialogContentText>
             </div>
             <TextField
