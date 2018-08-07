@@ -26,7 +26,7 @@ export default function asyncComponent(importComponent) {
         <C {...this.props} />
       ) : (
         <div className="loader">
-          <SyncLoader color={"#25d366"} loading size={25} margin="5px" />
+          <SyncLoader color={"#2196f3"} loading size={25} margin="5px" />
         </div>
       );
     }
