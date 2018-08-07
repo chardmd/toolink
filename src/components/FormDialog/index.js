@@ -96,10 +96,10 @@ class FormDialog extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} size="medium" color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} size="medium" color="primary">
               Add
             </Button>
           </DialogActions>
