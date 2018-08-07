@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { Button, Icon, Toolbar } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import Avatar from "@material-ui/core/Avatar";

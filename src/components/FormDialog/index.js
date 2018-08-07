@@ -10,6 +10,9 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
+import blockImage from "../../assets/blocks.svg";
+
+import "./FormDialog.css";
 
 const styles = theme => ({
   root: {
@@ -34,18 +37,22 @@ class FormDialog extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <Dialog
+          maxWidth="md"
           open={this.props.isActive}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Paste Link</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
+            <div className="dialogDisplay">
+              <img src={blockImage} className="blockImage" />
+              <DialogContentText>
+                To subscribe to this website, please enter your email address
+                here. We will send updates occasionally.
+              </DialogContentText>
+            </div>
             <TextField
               autoFocus
               margin="dense"
@@ -53,6 +60,7 @@ class FormDialog extends React.Component {
               label="Link"
               type="text"
               fullWidth
+              autoComplete="off"
             />
           </DialogContent>
           <DialogContent>

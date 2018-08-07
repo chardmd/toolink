@@ -1,3 +1,18 @@
 .FormDialog {
     
 }
+
+.blockImage {
+    width: 40%;
+    height: 50%;
+}
+
+.dialogDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialogDisplay p {
+    margin-left: 2em;
+}
