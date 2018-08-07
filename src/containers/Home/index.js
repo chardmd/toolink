@@ -86,7 +86,8 @@ class Home extends Component {
             <Toolbar className="toolbox">
               <div>
                 <Button
-                  variant="outlined"
+                  variant="contained"
+                  color="secondary"
                   size="large"
                   onClick={() => {
                     this.onToggleStatus(true);
@@ -116,7 +117,7 @@ class Home extends Component {
             </Typography>
             <div className="categories">{this.renderCategories()}</div>
             <br />
-            <Button variant="outlined">
+            <Button variant="contained" color="secondary" size="large">
               <Icon>category</Icon>&nbsp;
               <span>New Category</span>
             </Button>
@@ -128,7 +129,7 @@ class Home extends Component {
             md={9}
             container
             direction="row"
-            justify="flex-start"
+            justify="center"
             alignItems="center"
             className="rightCol"
           >
