@@ -26,8 +26,30 @@ const styles = theme => ({
 });
 
 class FormDialog extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.renderCategories = this.renderCategories.bind(this);
+  }
+
   handleClose = () => {
     this.props.toggleStatus(false);
+  };
+
+  renderCategories = () => {
+    const { categories } = this.props;
+    return (
+      categories &&
+      categories.map(category => (
+        <Chip
+          avatar={
+            <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
+          }
+          label={category.name}
+          className={this.props.classes.chip}
+        />
+      ))
+    );
   };
 
   render() {
@@ -58,39 +80,7 @@ class FormDialog extends React.Component {
               autoComplete="off"
             />
           </DialogContent>
-          <DialogContent>
-            <Chip
-              avatar={<Avatar>WE</Avatar>}
-              label="Web Development"
-              color="primary"
-              className={classes.chip}
-            />
-            <Chip
-              avatar={<Avatar>WE</Avatar>}
-              label="Web Development"
-              className={classes.chip}
-            />
-            <Chip
-              avatar={<Avatar>WE</Avatar>}
-              label="Web Development"
-              className={classes.chip}
-            />
-            <Chip
-              avatar={<Avatar>WE</Avatar>}
-              label="Web Development"
-              className={classes.chip}
-            />
-            <Chip
-              avatar={<Avatar>WE</Avatar>}
-              label="Web Development"
-              className={classes.chip}
-            />
-            <Chip
-              avatar={<Avatar>WE</Avatar>}
-              label="Web Development"
-              className={classes.chip}
-            />
-          </DialogContent>
+          <DialogContent>{this.renderCategories()}</DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} size="medium" color="primary">
               Cancel
@@ -106,7 +96,8 @@ class FormDialog extends React.Component {
 }
 FormDialog.propTypes = {
   isActive: PropTypes.bool,
-  toggleStatus: PropTypes.func
+  toggleStatus: PropTypes.func,
+  categories: PropTypes.array
 };
 
 export default withStyles(styles)(FormDialog);

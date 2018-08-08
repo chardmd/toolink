@@ -89,6 +89,7 @@ class Home extends Component {
         <FormDialog
           isActive={this.state.isActive}
           toggleStatus={this.onToggleStatus}
+          categories={this.props.categories}
         />
         <Grid container spacing={8}>
           <Grid item xs={12}>
