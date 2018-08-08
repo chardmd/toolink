@@ -116,10 +116,9 @@ class Home extends Component {
               Categories
             </Typography>
             <div className="categories">{this.renderCategories()}</div>
-            <br />
-            <Button variant="contained" color="secondary" size="large">
-              <Icon>category</Icon>&nbsp;
-              <span>New Category</span>
+            <Button color="secondary" size="large">
+              <Icon>add</Icon>&nbsp;
+              <span>Add Category</span>
             </Button>
           </Grid>
           <Grid
