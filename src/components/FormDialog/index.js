@@ -72,6 +72,9 @@ class FormDialog extends React.Component {
             </div>
             <TextField
               autoFocus
+              InputLabelProps={{
+                shrink: true
+              }}
               margin="dense"
               id="name"
               label="Link"
