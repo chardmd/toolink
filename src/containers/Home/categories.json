@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Software Development"
+  },
+  {
+    "id": 2,
+    "name": "Startups"
+  },
+  {
+    "id": 3,
+    "name": "Design"
+  },
+  {
+    "id": 4,
+    "name": "Games"
+  },
+  {
+    "id": 5,
+    "name": "Entertainment"
+  },
+  {
+    "id": 6,
+    "name": "Social Media"
+  }
+]

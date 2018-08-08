@@ -1,11 +1,15 @@
 import {
   GET_LINK_DATA,
   GET_LINK_DATA_SUCCESS,
-  GET_LINK_DATA_FAILED
+  GET_LINK_DATA_FAILED,
+  GET_CATEGORIES,
+  GET_CATEGORIES_SUCCESS,
+  GET_CATEGORIES_FAILED
 } from "./constants";
 
 const INITIAL_STATE = {
-  previewList: []
+  previewList: [],
+  categories: []
 };
 
 const homeReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +22,15 @@ const homeReducer = (state = INITIAL_STATE, action) => {
         previewList: action.data
       };
     case GET_LINK_DATA_FAILED:
+      return state;
+    case GET_CATEGORIES:
+      return state;
+    case GET_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        categories: action.data
+      };
+    case GET_CATEGORIES_FAILED:
       return state;
     default:
       return state;

@@ -16,7 +16,7 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getLinkData } from "./actions";
+import { getLinkData, getCategories } from "./actions";
 
 //css
 import "./Home.css";
@@ -35,11 +35,12 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.getLinkData("seo");
+    this.props.getCategories();
   }
 
   renderLinks = () => {
-    return this.props.previewList.map((data, index) => (
-      <div className="card" key={`preview-${index}`}>
+    return this.props.previewList.map(data => (
+      <div className="card" key={`preview-${data.id}`}>
         <MediaCard
           title={data.title}
           description={data.description}
@@ -53,14 +54,14 @@ class Home extends Component {
   };
 
   renderCategories = () => {
-    const content = [1, 2, 3, 4, 5, 6].map(t => (
-      <ListItem button className="listItem">
+    const content = this.props.categories.map(category => (
+      <ListItem button className="listItem" key={`category-${category.id}`}>
         <ListItemAvatar>
           <Avatar>
-            <Avatar>WE</Avatar>
+            <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Web Development" />
+        <ListItemText primary={category.name} />
       </ListItem>
     ));
     return (
@@ -169,11 +170,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  previewList: state.home.previewList
+  previewList: state.home.previewList,
+  categories: state.home.categories
 });
 
 const mapDispatchToProps = dispatch => ({
-  getLinkData: category => dispatch(getLinkData(category))
+  getLinkData: category => dispatch(getLinkData(category)),
+  getCategories: () => dispatch(getCategories())
 });
 
 export default connect(
