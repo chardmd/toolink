@@ -9,6 +9,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -25,7 +26,8 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      isActive: false
+      isActive: false,
+      isInputActive: false
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
@@ -66,6 +68,12 @@ class Home extends Component {
         {content}
       </List>
     );
+  };
+
+  renderCategoryInput = () => {
+    this.setState({
+      isInputActive: true
+    });
   };
 
   onToggleStatus(status) {
@@ -116,7 +124,27 @@ class Home extends Component {
               Categories
             </Typography>
             <div className="categories">{this.renderCategories()}</div>
-            <Button color="secondary" size="large">
+            <div>
+              {this.state.isInputActive && (
+                <TextField
+                  id="search"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  label="New Category"
+                  type="search"
+                  className="textField"
+                  margin="normal"
+                  fullWidth
+                  autoFocus
+                />
+              )}
+            </div>
+            <Button
+              color="secondary"
+              size="large"
+              onClick={this.renderCategoryInput}
+            >
               <Icon>add</Icon>&nbsp;
               <span>Add Category</span>
             </Button>

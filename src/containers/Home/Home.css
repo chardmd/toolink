@@ -36,3 +36,7 @@
     max-height: 100vh;
     padding-bottom: 12em;
 }
+
+.Home .textField {
+    width: 200px;
+}
