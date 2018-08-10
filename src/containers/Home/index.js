@@ -16,7 +16,7 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getLinkData, getCategories } from "./actions";
+import { getLinkData, getCategories, saveLink } from "./actions";
 
 //css
 import "./Home.css";
@@ -90,6 +90,7 @@ class Home extends Component {
           isActive={this.state.isActive}
           toggleStatus={this.onToggleStatus}
           categories={this.props.categories}
+          saveLink={this.props.saveLink}
         />
         <Grid container spacing={8}>
           <Grid item xs={12}>
@@ -177,7 +178,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getLinkData: category => dispatch(getLinkData(category)),
-  getCategories: () => dispatch(getCategories())
+  getCategories: () => dispatch(getCategories()),
+  saveLink: link => dispatch(saveLink(link))
 });
 
 export default connect(

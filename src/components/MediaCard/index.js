@@ -38,14 +38,14 @@ function MediaCard(props) {
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Typography variant="title">
-              {title.length > 40 ? title.substring(0, 40) + "..." : title}
+              {title.length > 25 ? title.substring(0, 25) + "..." : title}
             </Typography>
             <Typography variant="subheading" color="textSecondary" gutterBottom>
               By {author === null ? publisher : author}
             </Typography>
             <Typography component="p" gutterBottom>
-              {description.length > 80
-                ? description.substring(0, 80) + "..."
+              {description.length > 60
+                ? description.substring(0, 60) + "..."
                 : description}
             </Typography>
             <Typography component="p" variant="body2">

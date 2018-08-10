@@ -30,7 +30,13 @@ class FormDialog extends React.Component {
     super(props);
 
     this.renderCategories = this.renderCategories.bind(this);
+    this.onAdd = this.onAdd.bind(this);
   }
+
+  onAdd = () => {
+    this.props.saveLink("link");
+    this.props.toggleStatus(false);
+  };
 
   handleClose = () => {
     this.props.toggleStatus(false);
@@ -89,7 +95,7 @@ class FormDialog extends React.Component {
             <Button onClick={this.handleClose} size="medium" color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} size="medium" color="primary">
+            <Button onClick={this.onAdd} size="medium" color="primary">
               Add
             </Button>
           </DialogActions>
@@ -101,7 +107,8 @@ class FormDialog extends React.Component {
 FormDialog.propTypes = {
   isActive: PropTypes.bool,
   toggleStatus: PropTypes.func,
-  categories: PropTypes.array
+  categories: PropTypes.array,
+  saveLink: PropTypes.func
 };
 
 export default withStyles(styles)(FormDialog);

@@ -1,14 +1,17 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import axios from "axios";
-import { GET_LINK_DATA, GET_CATEGORIES } from "./constants";
+import { GET_LINK_DATA, GET_CATEGORIES, SAVE_LINK } from "./constants";
 import {
   getLinkDataSuccess,
   getLinkDataFailed,
   getCategoriesSuccess,
-  getCategoriesFailed
+  getCategoriesFailed,
+  saveLinkSuccess,
+  saveLinkFailed
 } from "./actions";
 
 import data from "./data.json";
+import newData from "./new.json";
 import categories from "./categories.json";
 
 function* handleGetLinkData({ category }) {
@@ -33,10 +36,19 @@ function* handleGetCategories() {
   }
 }
 
+function* handleSaveLink() {
+  try {
+    yield put(saveLinkSuccess(newData));
+  } catch (e) {
+    yield put(saveLinkFailed(e));
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(GET_LINK_DATA, handleGetLinkData),
-    takeLatest(GET_CATEGORIES, handleGetCategories)
+    takeLatest(GET_CATEGORIES, handleGetCategories),
+    takeLatest(SAVE_LINK, handleSaveLink)
   ]);
 }
 
