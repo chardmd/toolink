@@ -42,6 +42,7 @@ class FormDialog extends React.Component {
       categories &&
       categories.map(category => (
         <Chip
+          key={`cat-chip-${category.id}`}
           avatar={
             <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
           }
@@ -65,7 +66,7 @@ class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Paste Link</DialogTitle>
           <DialogContent>
             <div className="dialogDisplay">
-              <img src={blockImage} className="blockImage" />
+              <img src={blockImage} className="blockImage" alt="block" />
               <DialogContentText>
                 Just paste the link and you are ready to go!
               </DialogContentText>
