@@ -64,10 +64,10 @@ export function saveLink(link) {
   };
 }
 
-export function saveLinkSuccess(id) {
+export function saveLinkSuccess(data) {
   return {
     type: SAVE_LINK_SUCCESS,
-    id
+    data
   };
 }
 
