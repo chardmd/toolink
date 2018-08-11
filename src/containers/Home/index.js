@@ -55,6 +55,7 @@ class Home extends Component {
           url={data.url}
           author={data.author}
           publisher={data.publisher}
+          id={data.id}
           removeLink={this.props.removeLink}
         />
       </div>
@@ -195,7 +196,7 @@ const mapDispatchToProps = dispatch => ({
   getLinkData: category => dispatch(getLinkData(category)),
   getCategories: () => dispatch(getCategories()),
   saveLink: link => dispatch(saveLink(link)),
-  removeLink: link => dispatch(removeLink(link)),
+  removeLink: id => dispatch(removeLink(id)),
   addCategory: category => dispatch(addCategory(category))
 });
 

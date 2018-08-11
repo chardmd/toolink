@@ -68,7 +68,7 @@ function MediaCard(props) {
 MediaCard.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  id: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,

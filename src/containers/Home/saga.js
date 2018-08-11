@@ -54,9 +54,8 @@ function* handleSaveLink() {
   }
 }
 
-function* handleRemoveLink() {
+function* handleRemoveLink({ id }) {
   try {
-    const id = 1;
     yield put(removeLinkSuccess(id));
   } catch (e) {
     yield put(removeLinkFailed(e));
