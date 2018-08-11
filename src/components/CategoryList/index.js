@@ -167,7 +167,7 @@ class CategoryList extends React.Component {
               }}
             />
           )}
-          <Button color="secondary" onClick={this.onAddCategory}>
+          <Button color="secondary" onClick={this.onAddCategory} size="large">
             <Icon>add</Icon>
             &nbsp;
             <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
