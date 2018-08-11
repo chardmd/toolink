@@ -60,7 +60,8 @@ function MediaCard(props) {
         </div>
         <IconButton>
           <CloseIcon
-            onClick={() => {
+            onClick={e => {
+              e.stopPropagation();
               props.removeLink(id);
             }}
           />
