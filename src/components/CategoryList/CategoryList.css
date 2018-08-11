@@ -1,0 +1,11 @@
+.CategoryList .categories {
+    display: flex;
+    flex-direction: column;
+}
+
+.CategoryList .addContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}

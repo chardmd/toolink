@@ -1,19 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Icon, Toolbar } from "@material-ui/core";
-import List from "@material-ui/core/List";
-import Avatar from "@material-ui/core/Avatar";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 
 //components
 import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
+import CategoryList from "../../components/CategoryList";
 
 //actions
 import {
@@ -32,12 +26,10 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      isActive: false,
-      isInputActive: false
+      isActive: false
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
-    this.onAddCategory = this.onAddCategory.bind(this);
   }
 
   componentDidMount() {
@@ -62,43 +54,10 @@ class Home extends Component {
     ));
   };
 
-  renderCategories = () => {
-    const content = this.props.categories.map(category => (
-      <ListItem button className="listItem" key={`category-${category.id}`}>
-        <ListItemAvatar>
-          <Avatar>
-            <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary={category.name} />
-      </ListItem>
-    ));
-    return (
-      <List component="nav" className="list">
-        {content}
-      </List>
-    );
-  };
-
-  toggleIsInputActive = status => {
-    this.setState({
-      isInputActive: status
-    });
-  };
-
   onToggleStatus(status) {
     this.setState({
       isActive: status
     });
-  }
-
-  onAddCategory() {
-    if (this.state.isInputActive) {
-      this.props.addCategory("Hello");
-      this.toggleIsInputActive(false);
-    } else {
-      this.toggleIsInputActive(true);
-    }
   }
 
   render() {
@@ -142,31 +101,10 @@ class Home extends Component {
             className="leftCol"
           >
             <br />
-            <Typography variant="title" align="center">
-              Categories
-            </Typography>
-            <div className="categories">{this.renderCategories()}</div>
-            <div>
-              {this.state.isInputActive && (
-                <TextField
-                  id="search"
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  label="New Category"
-                  type="search"
-                  className="textField"
-                  margin="normal"
-                  fullWidth
-                  autoFocus
-                />
-              )}
-            </div>
-            <Button color="secondary" size="large" onClick={this.onAddCategory}>
-              <Icon>add</Icon>
-              &nbsp;
-              <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
-            </Button>
+            <CategoryList
+              categories={this.props.categories}
+              addCategory={this.props.addCategory}
+            />
           </Grid>
           <Grid
             item
