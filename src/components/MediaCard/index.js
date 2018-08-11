@@ -24,11 +24,21 @@ const styles = theme => ({
   }
 });
 
+function openInNewTab(url) {
+  var win = window.open(url, "_blank");
+  win.focus();
+}
+
 function MediaCard(props) {
   const { classes, title, description, url, author, publisher, id } = props;
   return (
     <div className="MediaCard">
-      <Card className="card">
+      <Card
+        className="card"
+        onClick={() => {
+          openInNewTab(url);
+        }}
+      >
         <CardMedia className={classes.cover} image={props.image} />
         <div className={classes.details}>
           <CardContent className={classes.content}>
