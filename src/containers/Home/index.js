@@ -93,7 +93,7 @@ class Home extends Component {
           <Grid
             item
             xs={12}
-            sm={3}
+            sm={12}
             md={3}
             container
             direction="column"
@@ -111,7 +111,7 @@ class Home extends Component {
           <Grid
             item
             xs={12}
-            sm={9}
+            sm={12}
             md={9}
             container
             direction="row"
