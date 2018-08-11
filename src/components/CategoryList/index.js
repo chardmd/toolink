@@ -18,6 +18,8 @@ import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
 
 import "./CategoryList.css";
@@ -37,13 +39,22 @@ class CategoryList extends React.Component {
 
     this.state = {
       isInputActive: false,
-      category: ""
+      category: "",
+      anchorEl: null
     };
 
     this.renderCategories = this.renderCategories.bind(this);
     this.toggleIsInputActive = this.toggleIsInputActive.bind(this);
     this.onAddCategory = this.onAddCategory.bind(this);
   }
+
+  handleClick = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
 
   handleChange = event => {
     this.setState({ category: event.target.value });
@@ -69,6 +80,7 @@ class CategoryList extends React.Component {
 
   renderCategories = () => {
     const { classes } = this.props;
+    const { anchorEl } = this.state;
     const content = this.props.categories.map(category => (
       <ListItem button className="listItem" key={`category-${category.id}`}>
         <ListItemAvatar>
@@ -78,9 +90,32 @@ class CategoryList extends React.Component {
         </ListItemAvatar>
         <ListItemText primary={category.name} />
         <ListItemSecondaryAction>
-          <IconButton>
+          <IconButton
+            aria-label="More"
+            aria-owns={anchorEl ? "long-menu" : null}
+            aria-haspopup="true"
+            onClick={this.handleClick}
+          >
             <MoreVertIcon />
           </IconButton>
+          <Menu
+            id="long-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}
+            PaperProps={{
+              style: {
+                width: 100
+              }
+            }}
+          >
+            <MenuItem key={`menu-item-1`} onClick={this.handleClose}>
+              Rename
+            </MenuItem>
+            <MenuItem key={`menu-item-2`} onClick={this.handleClose}>
+              Remove
+            </MenuItem>
+          </Menu>
         </ListItemSecondaryAction>
       </ListItem>
     ));
