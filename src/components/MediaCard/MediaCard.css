@@ -12,3 +12,7 @@
 .MediaCard .card:hover {
     background: #d6edff;
 }
+
+.MediaCard .active {
+    background: #d6edff;
+}
