@@ -29,7 +29,7 @@ const styles = theme => ({
 });
 
 function MediaCard(props) {
-  const { classes, title, description, url, author, publisher } = props;
+  const { classes, title, description, url, author, publisher, id } = props;
 
   return (
     <div>
@@ -54,7 +54,11 @@ function MediaCard(props) {
           </CardContent>
         </div>
         <IconButton>
-          <CloseIcon />
+          <CloseIcon
+            onClick={() => {
+              props.removeLink(id);
+            }}
+          />
         </IconButton>
       </Card>
     </div>
@@ -64,10 +68,12 @@ function MediaCard(props) {
 MediaCard.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
+  id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  removeLink: PropTypes.func
 };
 
 export default withStyles(styles, { withTheme: true })(MediaCard);

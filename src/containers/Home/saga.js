@@ -1,13 +1,20 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import axios from "axios";
-import { GET_LINK_DATA, GET_CATEGORIES, SAVE_LINK } from "./constants";
+import {
+  GET_LINK_DATA,
+  GET_CATEGORIES,
+  SAVE_LINK,
+  REMOVE_LINK
+} from "./constants";
 import {
   getLinkDataSuccess,
   getLinkDataFailed,
   getCategoriesSuccess,
   getCategoriesFailed,
   saveLinkSuccess,
-  saveLinkFailed
+  saveLinkFailed,
+  removeLinkSuccess,
+  removeLinkFailed
 } from "./actions";
 
 import data from "./data.json";
@@ -44,11 +51,21 @@ function* handleSaveLink() {
   }
 }
 
+function* handleRemoveLink() {
+  try {
+    const id = 1;
+    yield put(removeLinkSuccess(id));
+  } catch (e) {
+    yield put(removeLinkFailed(e));
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(GET_LINK_DATA, handleGetLinkData),
     takeLatest(GET_CATEGORIES, handleGetCategories),
-    takeLatest(SAVE_LINK, handleSaveLink)
+    takeLatest(SAVE_LINK, handleSaveLink),
+    takeLatest(REMOVE_LINK, handleRemoveLink)
   ]);
 }
 

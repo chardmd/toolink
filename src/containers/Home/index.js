@@ -16,7 +16,7 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getLinkData, getCategories, saveLink } from "./actions";
+import { getLinkData, getCategories, saveLink, removeLink } from "./actions";
 
 //css
 import "./Home.css";
@@ -48,6 +48,7 @@ class Home extends Component {
           url={data.url}
           author={data.author}
           publisher={data.publisher}
+          removeLink={this.props.removeLink}
         />
       </div>
     ));
@@ -104,7 +105,8 @@ class Home extends Component {
                     this.onToggleStatus(true);
                   }}
                 >
-                  <Icon>link</Icon>&nbsp;
+                  <Icon>link</Icon>
+                  &nbsp;
                   <span>Add Link</span>
                 </Button>
               </div>
@@ -148,7 +150,8 @@ class Home extends Component {
               size="large"
               onClick={this.renderCategoryInput}
             >
-              <Icon>add</Icon>&nbsp;
+              <Icon>add</Icon>
+              &nbsp;
               <span>Add Category</span>
             </Button>
           </Grid>
@@ -179,7 +182,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getLinkData: category => dispatch(getLinkData(category)),
   getCategories: () => dispatch(getCategories()),
-  saveLink: link => dispatch(saveLink(link))
+  saveLink: link => dispatch(saveLink(link)),
+  removeLink: link => dispatch(removeLink(link))
 });
 
 export default connect(
