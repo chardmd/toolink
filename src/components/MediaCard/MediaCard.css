@@ -14,9 +14,5 @@
 }
 
 .MediaCard .card:hover {
-    background: #d6edff;
-}
-
-.MediaCard .active {
-    background: #d6edff;
+    background: rgba(33, 150, 243, 0.08);
 }
