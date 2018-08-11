@@ -176,6 +176,11 @@ class CategoryList extends React.Component {
               fullWidth
               autoFocus
               onChange={this.handleChange}
+              onBlur={e => {
+                if (e.target.value.length === 0) {
+                  this.toggleIsInputActive(false);
+                }
+              }}
             />
           )}
           <Button color="secondary" onClick={this.onAddCategory}>
