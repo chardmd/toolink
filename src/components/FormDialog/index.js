@@ -39,7 +39,9 @@ class FormDialog extends React.Component {
 
   onAdd = () => {
     const link = this.state.link;
-    this.props.saveLink(link);
+    if (link.length !== 0) {
+      this.props.saveLink(link);
+    }
     this.props.toggleStatus(false);
   };
 
