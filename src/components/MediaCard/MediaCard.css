@@ -1,3 +1,14 @@
 .MediaCard {
     
 }
+
+.MediaCard .card {
+    display: flex;
+    width: 400px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.MediaCard .card:hover {
+    background: #d6edff;
+}

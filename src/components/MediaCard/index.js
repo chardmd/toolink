@@ -8,13 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
+import "./MediaCard.css";
+
 const styles = theme => ({
-  card: {
-    display: "flex",
-    width: 400,
-    height: 200,
-    cursor: "pointer"
-  },
   details: {
     display: "flex",
     flexDirection: "column"
@@ -30,10 +26,9 @@ const styles = theme => ({
 
 function MediaCard(props) {
   const { classes, title, description, url, author, publisher, id } = props;
-
   return (
-    <div>
-      <Card className={classes.card}>
+    <div className="MediaCard">
+      <Card className="card">
         <CardMedia className={classes.cover} image={props.image} />
         <div className={classes.details}>
           <CardContent className={classes.content}>
