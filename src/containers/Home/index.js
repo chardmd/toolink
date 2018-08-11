@@ -16,7 +16,13 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getLinkData, getCategories, saveLink, removeLink } from "./actions";
+import {
+  getLinkData,
+  getCategories,
+  saveLink,
+  removeLink,
+  addCategory
+} from "./actions";
 
 //css
 import "./Home.css";
@@ -31,6 +37,7 @@ class Home extends Component {
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
+    this.onAddCategory = this.onAddCategory.bind(this);
   }
 
   componentDidMount() {
@@ -72,9 +79,9 @@ class Home extends Component {
     );
   };
 
-  renderCategoryInput = () => {
+  toggleIsInputActive = status => {
     this.setState({
-      isInputActive: true
+      isInputActive: status
     });
   };
 
@@ -82,6 +89,15 @@ class Home extends Component {
     this.setState({
       isActive: status
     });
+  }
+
+  onAddCategory() {
+    if (this.state.isInputActive) {
+      this.props.addCategory("Hello");
+      this.toggleIsInputActive(false);
+    } else {
+      this.toggleIsInputActive(true);
+    }
   }
 
   render() {
@@ -145,14 +161,10 @@ class Home extends Component {
                 />
               )}
             </div>
-            <Button
-              color="secondary"
-              size="large"
-              onClick={this.renderCategoryInput}
-            >
+            <Button color="secondary" size="large" onClick={this.onAddCategory}>
               <Icon>add</Icon>
               &nbsp;
-              <span>Add Category</span>
+              <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
             </Button>
           </Grid>
           <Grid
@@ -183,7 +195,8 @@ const mapDispatchToProps = dispatch => ({
   getLinkData: category => dispatch(getLinkData(category)),
   getCategories: () => dispatch(getCategories()),
   saveLink: link => dispatch(saveLink(link)),
-  removeLink: link => dispatch(removeLink(link))
+  removeLink: link => dispatch(removeLink(link)),
+  addCategory: category => dispatch(addCategory(category))
 });
 
 export default connect(

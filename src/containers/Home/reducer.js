@@ -10,7 +10,10 @@ import {
   SAVE_LINK_FAILED,
   REMOVE_LINK,
   REMOVE_LINK_SUCCESS,
-  REMOVE_LINK_FAILED
+  REMOVE_LINK_FAILED,
+  ADD_CATEGORY,
+  ADD_CATEGORY_SUCCESS,
+  ADD_CATEGORY_FAILED
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -28,7 +31,10 @@ const homeReducer = (state = INITIAL_STATE, action) => {
         previewList: action.data
       };
     case GET_LINK_DATA_FAILED:
-      return state;
+      return {
+        ...state,
+        err: action.err
+      };
     case GET_CATEGORIES:
       return state;
     case GET_CATEGORIES_SUCCESS:
@@ -60,6 +66,18 @@ const homeReducer = (state = INITIAL_STATE, action) => {
         previewList: state.previewList.filter(i => i.id !== id)
       };
     case REMOVE_LINK_FAILED:
+      return {
+        ...state,
+        err: action.err
+      };
+    case ADD_CATEGORY:
+      return state;
+    case ADD_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        categories: [...state.categories, action.data]
+      };
+    case ADD_CATEGORY_FAILED:
       return {
         ...state,
         err: action.err

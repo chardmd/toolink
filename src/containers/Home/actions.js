@@ -10,7 +10,10 @@ import {
   SAVE_LINK_FAILED,
   REMOVE_LINK,
   REMOVE_LINK_SUCCESS,
-  REMOVE_LINK_FAILED
+  REMOVE_LINK_FAILED,
+  ADD_CATEGORY,
+  ADD_CATEGORY_SUCCESS,
+  ADD_CATEGORY_FAILED
 } from "./constants";
 
 export function getLinkData(category) {
@@ -92,6 +95,27 @@ export function removeLinkSuccess(id) {
 export function removeLinkFailed(err) {
   return {
     type: REMOVE_LINK_FAILED,
+    err
+  };
+}
+
+export function addCategory(category) {
+  return {
+    type: ADD_CATEGORY,
+    category
+  };
+}
+
+export function addCategorySuccess(data) {
+  return {
+    type: ADD_CATEGORY_SUCCESS,
+    data
+  };
+}
+
+export function addCategoryFailed(err) {
+  return {
+    type: ADD_CATEGORY_FAILED,
     err
   };
 }
