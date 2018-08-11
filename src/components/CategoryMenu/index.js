@@ -62,7 +62,7 @@ class CategoryMenu extends React.Component {
           }}
         >
           <MenuItem key={`menu-item-1`} onClick={this.handleClose}>
-            Rename {categoryId}
+            Rename
           </MenuItem>
           <MenuItem
             key={`menu-item-2`}
