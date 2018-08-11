@@ -16,11 +16,10 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import IconButton from "@material-ui/core/IconButton";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import { withStyles } from "@material-ui/core/styles";
+
+//components
+import CategoryMenu from "../CategoryMenu";
 
 import "./CategoryList.css";
 
@@ -48,14 +47,6 @@ class CategoryList extends React.Component {
     this.onAddCategory = this.onAddCategory.bind(this);
   }
 
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
   handleChange = event => {
     this.setState({ category: event.target.value });
   };
@@ -78,47 +69,27 @@ class CategoryList extends React.Component {
     }
   }
 
-  renderCategories = () => {
+  renderCategories() {
     const { classes } = this.props;
-    const { anchorEl } = this.state;
-    const content = this.props.categories.map(category => (
-      <ListItem button className="listItem" key={`category-${category.id}`}>
-        <ListItemAvatar>
-          <Avatar>
-            <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary={category.name} />
-        <ListItemSecondaryAction>
-          <IconButton
-            aria-label="More"
-            aria-owns={anchorEl ? "long-menu" : null}
-            aria-haspopup="true"
-            onClick={this.handleClick}
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            id="long-menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={this.handleClose}
-            PaperProps={{
-              style: {
-                width: 100
-              }
-            }}
-          >
-            <MenuItem key={`menu-item-1`} onClick={this.handleClose}>
-              Rename
-            </MenuItem>
-            <MenuItem key={`menu-item-2`} onClick={this.handleClose}>
-              Remove
-            </MenuItem>
-          </Menu>
-        </ListItemSecondaryAction>
-      </ListItem>
-    ));
+    const content = this.props.categories.map(data => {
+      const category = data;
+      return (
+        <ListItem button className="listItem" key={`category-${category.id}`}>
+          <ListItemAvatar>
+            <Avatar>
+              <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary={category.name} />
+          <ListItemSecondaryAction>
+            <CategoryMenu
+              categoryId={category.id}
+              removeCategory={this.props.removeCategory}
+            />
+          </ListItemSecondaryAction>
+        </ListItem>
+      );
+    });
     return (
       <List
         component="nav"
@@ -132,7 +103,7 @@ class CategoryList extends React.Component {
         {content}
       </List>
     );
-  };
+  }
 
   renderMaintenance = () => {
     const { classes } = this.props;
@@ -197,7 +168,8 @@ class CategoryList extends React.Component {
 
 CategoryList.propTypes = {
   categories: PropTypes.array,
-  onAddCategory: PropTypes.func
+  addCategory: PropTypes.func,
+  removeCategory: PropTypes.func
 };
 
 export default withStyles(styles)(CategoryList);

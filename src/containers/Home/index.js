@@ -15,7 +15,8 @@ import {
   getCategories,
   saveLink,
   removeLink,
-  addCategory
+  addCategory,
+  removeCategory
 } from "./actions";
 
 //css
@@ -104,6 +105,7 @@ class Home extends Component {
             <CategoryList
               categories={this.props.categories}
               addCategory={this.props.addCategory}
+              removeCategory={this.props.removeCategory}
             />
           </Grid>
           <Grid
@@ -135,7 +137,8 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(getCategories()),
   saveLink: link => dispatch(saveLink(link)),
   removeLink: id => dispatch(removeLink(id)),
-  addCategory: category => dispatch(addCategory(category))
+  addCategory: category => dispatch(addCategory(category)),
+  removeCategory: id => dispatch(removeCategory(id))
 });
 
 export default connect(

@@ -5,7 +5,8 @@ import {
   GET_CATEGORIES,
   SAVE_LINK,
   REMOVE_LINK,
-  ADD_CATEGORY
+  ADD_CATEGORY,
+  REMOVE_CATEGORY
 } from "./constants";
 import {
   getLinkDataSuccess,
@@ -17,7 +18,9 @@ import {
   removeLinkSuccess,
   removeLinkFailed,
   addCategorySuccess,
-  addCategoryFailed
+  addCategoryFailed,
+  removeCategorySuccess,
+  removeCategoryFailed
 } from "./actions";
 
 import data from "./data.json";
@@ -71,13 +74,22 @@ function* handleAddCategory({ category }) {
   }
 }
 
+function* handleRemoveCategory({ id }) {
+  try {
+    yield put(removeCategorySuccess(id));
+  } catch (e) {
+    yield put(removeCategoryFailed(e));
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(GET_LINK_DATA, handleGetLinkData),
     takeLatest(GET_CATEGORIES, handleGetCategories),
     takeLatest(SAVE_LINK, handleSaveLink),
     takeLatest(REMOVE_LINK, handleRemoveLink),
-    takeLatest(ADD_CATEGORY, handleAddCategory)
+    takeLatest(ADD_CATEGORY, handleAddCategory),
+    takeLatest(REMOVE_CATEGORY, handleRemoveCategory)
   ]);
 }
 

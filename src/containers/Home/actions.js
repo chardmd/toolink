@@ -13,7 +13,10 @@ import {
   REMOVE_LINK_FAILED,
   ADD_CATEGORY,
   ADD_CATEGORY_SUCCESS,
-  ADD_CATEGORY_FAILED
+  ADD_CATEGORY_FAILED,
+  REMOVE_CATEGORY,
+  REMOVE_CATEGORY_SUCCESS,
+  REMOVE_CATEGORY_FAILED
 } from "./constants";
 
 export function getLinkData(category) {
@@ -116,6 +119,27 @@ export function addCategorySuccess(data) {
 export function addCategoryFailed(err) {
   return {
     type: ADD_CATEGORY_FAILED,
+    err
+  };
+}
+
+export function removeCategory(id) {
+  return {
+    type: REMOVE_CATEGORY,
+    id
+  };
+}
+
+export function removeCategorySuccess(id) {
+  return {
+    type: REMOVE_CATEGORY_SUCCESS,
+    id
+  };
+}
+
+export function removeCategoryFailed(err) {
+  return {
+    type: REMOVE_CATEGORY_FAILED,
     err
   };
 }
