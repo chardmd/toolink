@@ -11,11 +11,6 @@
     padding: 1em 2em;
 }
 
-.Home .main {
-    overflow-y: scroll;
-    padding-bottom: 12em;
-}
-
 .Home .card {
     margin: 1em;
 }

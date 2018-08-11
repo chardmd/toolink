@@ -6,7 +6,6 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -15,8 +14,19 @@ import Avatar from "@material-ui/core/Avatar";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import { withStyles } from "@material-ui/core/styles";
 
 import "./CategoryList.css";
+
+const styles = theme => ({
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    position: "relative",
+    overflow: "auto",
+    maxHeight: 400
+  }
+});
 
 class CategoryList extends React.Component {
   constructor(props) {
@@ -55,6 +65,7 @@ class CategoryList extends React.Component {
   }
 
   renderCategories = () => {
+    const { classes } = this.props;
     const content = this.props.categories.map(category => (
       <ListItem button className="listItem" key={`category-${category.id}`}>
         <ListItemAvatar>
@@ -66,8 +77,40 @@ class CategoryList extends React.Component {
       </ListItem>
     ));
     return (
-      <List component="nav" className="list">
+      <List
+        component="nav"
+        className={classes.root}
+        subheader={
+          <ListSubheader className="subHeader" component="div">
+            Categories
+          </ListSubheader>
+        }
+      >
         {content}
+      </List>
+    );
+  };
+
+  renderMaintenance = () => {
+    const { classes } = this.props;
+    return (
+      <List
+        component="nav"
+        className={classes.root}
+        subheader={
+          <ListSubheader className="subHeader" component="div">
+            Maintenance
+          </ListSubheader>
+        }
+      >
+        <ListItem button className="listItem">
+          <ListItemAvatar>
+            <Avatar>
+              <Avatar>TR</Avatar>
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Trash" />
+        </ListItem>
       </List>
     );
   };
@@ -75,9 +118,6 @@ class CategoryList extends React.Component {
   render() {
     return (
       <div className="CategoryList">
-        <Typography variant="title" align="center">
-          Categories
-        </Typography>
         <div className="categories">{this.renderCategories()}</div>
         <div className="addContainer">
           {this.state.isInputActive && (
@@ -95,12 +135,13 @@ class CategoryList extends React.Component {
               onChange={this.handleChange}
             />
           )}
-          <Button color="secondary" size="large" onClick={this.onAddCategory}>
+          <Button color="secondary" onClick={this.onAddCategory}>
             <Icon>add</Icon>
             &nbsp;
             <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
           </Button>
         </div>
+        <div>{this.renderMaintenance()}</div>
       </div>
     );
   }
@@ -111,4 +152,4 @@ CategoryList.propTypes = {
   onAddCategory: PropTypes.func
 };
 
-export default CategoryList;
+export default withStyles(styles)(CategoryList);
