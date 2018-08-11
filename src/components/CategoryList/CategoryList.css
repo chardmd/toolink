@@ -2,6 +2,10 @@
     width: 90%;
 }
 
+.CategoryList .active {
+    background: rgba(33, 150, 243, 0.08);
+}
+
 .CategoryList .addContainer {
     display: flex;
     flex-direction: column;

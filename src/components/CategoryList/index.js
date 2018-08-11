@@ -36,12 +36,14 @@ class CategoryList extends React.Component {
     this.state = {
       isInputActive: false,
       category: "",
-      anchorEl: null
+      anchorEl: null,
+      activeCategory: 0
     };
 
     this.renderCategories = this.renderCategories.bind(this);
     this.toggleIsInputActive = this.toggleIsInputActive.bind(this);
     this.onAddCategory = this.onAddCategory.bind(this);
+    this.selectCategory = this.selectCategory.bind(this);
   }
 
   handleChange = event => {
@@ -66,12 +68,26 @@ class CategoryList extends React.Component {
     }
   }
 
+  selectCategory(index) {
+    this.setState({
+      activeCategory: index
+    });
+  }
+
   renderCategories() {
     const { classes } = this.props;
-    const content = this.props.categories.map(data => {
+    const { activeCategory } = this.state;
+    const content = this.props.categories.map((data, index) => {
       const category = data;
       return (
-        <ListItem button className="listItem" key={`category-${category.id}`}>
+        <ListItem
+          button
+          className={`listItem ${index === activeCategory && "active"}`}
+          key={`category-${category.id}`}
+          onClick={() => {
+            this.selectCategory(index);
+          }}
+        >
           <ListItemAvatar>
             <Avatar>
               <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
