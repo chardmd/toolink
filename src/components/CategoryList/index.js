@@ -15,6 +15,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListSubheader from "@material-ui/core/ListSubheader";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { withStyles } from "@material-ui/core/styles";
 
 import "./CategoryList.css";
@@ -74,6 +77,11 @@ class CategoryList extends React.Component {
           </Avatar>
         </ListItemAvatar>
         <ListItemText primary={category.name} />
+        <ListItemSecondaryAction>
+          <IconButton>
+            <MoreVertIcon />
+          </IconButton>
+        </ListItemSecondaryAction>
       </ListItem>
     ));
     return (
