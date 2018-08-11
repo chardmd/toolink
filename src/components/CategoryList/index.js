@@ -23,13 +23,18 @@ class CategoryList extends React.Component {
     super(props);
 
     this.state = {
-      isInputActive: false
+      isInputActive: false,
+      category: ""
     };
 
     this.renderCategories = this.renderCategories.bind(this);
     this.toggleIsInputActive = this.toggleIsInputActive.bind(this);
     this.onAddCategory = this.onAddCategory.bind(this);
   }
+
+  handleChange = event => {
+    this.setState({ category: event.target.value });
+  };
 
   toggleIsInputActive = status => {
     this.setState({
@@ -39,8 +44,11 @@ class CategoryList extends React.Component {
 
   onAddCategory() {
     if (this.state.isInputActive) {
-      this.props.addCategory("Hello");
-      this.toggleIsInputActive(false);
+      const category = this.state.category;
+      if (category.length !== 0) {
+        this.props.addCategory(category);
+        this.toggleIsInputActive(false);
+      }
     } else {
       this.toggleIsInputActive(true);
     }
@@ -84,6 +92,7 @@ class CategoryList extends React.Component {
               margin="normal"
               fullWidth
               autoFocus
+              onChange={this.handleChange}
             />
           )}
           <Button color="secondary" size="large" onClick={this.onAddCategory}>

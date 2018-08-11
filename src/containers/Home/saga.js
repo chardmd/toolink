@@ -63,10 +63,9 @@ function* handleRemoveLink({ id }) {
   }
 }
 
-function* handleAddCategory() {
+function* handleAddCategory({ category }) {
   try {
-    const data = categories[0];
-    yield put(addCategorySuccess(data));
+    yield put(addCategorySuccess({ id: 10, name: category }));
   } catch (e) {
     yield put(addCategoryFailed(e));
   }
