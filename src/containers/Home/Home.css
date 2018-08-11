@@ -16,8 +16,11 @@
 }
 
 .Home .leftCol {
-    margin-bottom: 2em;
     border-right: 1px solid rgba(0, 0, 0, 0.12);
+    height: 100%;
+    overflow: auto;
+    max-height: 100vh;
+    padding-bottom: 10em;
 }
 
 .Home .rightCol {

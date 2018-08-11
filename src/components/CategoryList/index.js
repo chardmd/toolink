@@ -25,10 +25,7 @@ import "./CategoryList.css";
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    position: "relative",
-    overflow: "auto",
-    maxHeight: 400
+    backgroundColor: theme.palette.background.paper
   }
 });
 
@@ -95,7 +92,7 @@ class CategoryList extends React.Component {
         component="nav"
         className={classes.root}
         subheader={
-          <ListSubheader className="subHeader" component="div">
+          <ListSubheader className="subHeader" component="div" disableSticky>
             Categories
           </ListSubheader>
         }
