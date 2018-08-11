@@ -46,8 +46,9 @@ function* handleGetCategories() {
   }
 }
 
-function* handleSaveLink() {
+function* handleSaveLink({ link }) {
   try {
+    console.table({ link });
     yield put(saveLinkSuccess(newData));
   } catch (e) {
     yield put(saveLinkFailed(e));

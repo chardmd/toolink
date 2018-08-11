@@ -29,17 +29,26 @@ class FormDialog extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      link: ""
+    };
+
     this.renderCategories = this.renderCategories.bind(this);
     this.onAdd = this.onAdd.bind(this);
   }
 
   onAdd = () => {
-    this.props.saveLink("link");
+    const link = this.state.link;
+    this.props.saveLink(link);
     this.props.toggleStatus(false);
   };
 
   handleClose = () => {
     this.props.toggleStatus(false);
+  };
+
+  handleChange = event => {
+    this.setState({ link: event.target.value });
   };
 
   renderCategories = () => {
@@ -88,6 +97,7 @@ class FormDialog extends React.Component {
               type="text"
               fullWidth
               autoComplete="off"
+              onChange={this.handleChange}
             />
           </DialogContent>
           <DialogContent>{this.renderCategories()}</DialogContent>
