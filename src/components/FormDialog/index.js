@@ -30,11 +30,13 @@ class FormDialog extends React.Component {
     super(props);
 
     this.state = {
-      link: ""
+      link: "",
+      activeCategory: 0
     };
 
     this.renderCategories = this.renderCategories.bind(this);
     this.onAdd = this.onAdd.bind(this);
+    this.selectCategory = this.selectCategory.bind(this);
   }
 
   onAdd = () => {
@@ -44,6 +46,12 @@ class FormDialog extends React.Component {
     }
     this.props.toggleStatus(false);
   };
+
+  selectCategory(index) {
+    this.setState({
+      activeCategory: index
+    });
+  }
 
   handleClose = () => {
     this.props.toggleStatus(false);
@@ -57,14 +65,18 @@ class FormDialog extends React.Component {
     const { categories } = this.props;
     return (
       categories &&
-      categories.map(category => (
+      categories.map((category, index) => (
         <Chip
           key={`cat-chip-${category.id}`}
           avatar={
             <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
           }
+          color={index === this.state.activeCategory ? "primary" : "default"}
           label={category.name}
           className={this.props.classes.chip}
+          onClick={() => {
+            this.selectCategory(index);
+          }}
         />
       ))
     );
