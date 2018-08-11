@@ -114,7 +114,7 @@ class CategoryList extends React.Component {
         <ListItem button className="listItem">
           <ListItemAvatar>
             <Avatar>
-              <Avatar>TR</Avatar>
+              <Icon>delete</Icon>
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Trash" />
