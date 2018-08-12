@@ -16,7 +16,10 @@ import {
   ADD_CATEGORY_FAILED,
   REMOVE_CATEGORY,
   REMOVE_CATEGORY_SUCCESS,
-  REMOVE_CATEGORY_FAILED
+  REMOVE_CATEGORY_FAILED,
+  RENAME_CATEGORY,
+  RENAME_CATEGORY_SUCCESS,
+  RENAME_CATEGORY_FAILED
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -98,9 +101,35 @@ const homeReducer = (state = INITIAL_STATE, action) => {
         ...state,
         err: action.err
       };
+    case RENAME_CATEGORY:
+      return state;
+    case RENAME_CATEGORY_SUCCESS:
+      return renameCategory(state, action.id, action.text);
+    case RENAME_CATEGORY_FAILED:
+      return {
+        ...state,
+        err: action.err
+      };
     default:
       return state;
   }
+};
+
+const renameCategory = (state, id, text) => {
+  let category = state.categories.find(c => c.id === id);
+  category = { ...category, name: text };
+  const categories = state.categories.reduce((obj, item) => {
+    if (category.id === item.id) {
+      obj = obj.concat(category);
+    } else {
+      obj = obj.concat(item);
+    }
+    return obj;
+  }, []);
+  return {
+    ...state,
+    categories
+  };
 };
 
 export default homeReducer;

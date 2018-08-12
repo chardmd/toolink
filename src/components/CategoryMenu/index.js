@@ -38,6 +38,11 @@ class CategoryMenu extends React.Component {
     this.handleClose();
   }
 
+  onRenameCategory(id, text) {
+    this.props.renameCategory(id, text);
+    this.handleClose();
+  }
+
   render() {
     const { anchorEl } = this.state;
     const { categoryId } = this.props;
@@ -61,7 +66,12 @@ class CategoryMenu extends React.Component {
             }
           }}
         >
-          <MenuItem key={`menu-item-1`} onClick={this.handleClose}>
+          <MenuItem
+            key={`menu-item-1`}
+            onClick={() => {
+              this.onRenameCategory(categoryId, "hello");
+            }}
+          >
             Rename
           </MenuItem>
           <MenuItem
@@ -80,6 +90,7 @@ class CategoryMenu extends React.Component {
 
 CategoryMenu.propTypes = {
   removeCategory: PropTypes.func,
+  renameCategory: PropTypes.func,
   categoryId: PropTypes.number
 };
 

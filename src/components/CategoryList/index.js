@@ -98,6 +98,7 @@ class CategoryList extends React.Component {
             <CategoryMenu
               categoryId={category.id}
               removeCategory={this.props.removeCategory}
+              renameCategory={this.props.renameCategory}
             />
           </ListItemSecondaryAction>
         </ListItem>
@@ -182,7 +183,8 @@ class CategoryList extends React.Component {
 CategoryList.propTypes = {
   categories: PropTypes.array,
   addCategory: PropTypes.func,
-  removeCategory: PropTypes.func
+  removeCategory: PropTypes.func,
+  renameCategory: PropTypes.func
 };
 
 export default withStyles(styles)(CategoryList);

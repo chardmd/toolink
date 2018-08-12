@@ -6,7 +6,8 @@ import {
   SAVE_LINK,
   REMOVE_LINK,
   ADD_CATEGORY,
-  REMOVE_CATEGORY
+  REMOVE_CATEGORY,
+  RENAME_CATEGORY
 } from "./constants";
 import {
   getLinkDataSuccess,
@@ -20,7 +21,9 @@ import {
   addCategorySuccess,
   addCategoryFailed,
   removeCategorySuccess,
-  removeCategoryFailed
+  removeCategoryFailed,
+  renameCategorySuccess,
+  renameCategoryFailed
 } from "./actions";
 
 import data from "./data.json";
@@ -82,6 +85,14 @@ function* handleRemoveCategory({ id }) {
   }
 }
 
+function* handleRenameCategory({ id, text }) {
+  try {
+    yield put(renameCategorySuccess(id, text));
+  } catch (e) {
+    yield put(renameCategoryFailed(e));
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(GET_LINK_DATA, handleGetLinkData),
@@ -89,7 +100,8 @@ function* rootSaga() {
     takeLatest(SAVE_LINK, handleSaveLink),
     takeLatest(REMOVE_LINK, handleRemoveLink),
     takeLatest(ADD_CATEGORY, handleAddCategory),
-    takeLatest(REMOVE_CATEGORY, handleRemoveCategory)
+    takeLatest(REMOVE_CATEGORY, handleRemoveCategory),
+    takeLatest(RENAME_CATEGORY, handleRenameCategory)
   ]);
 }
 

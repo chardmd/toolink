@@ -16,7 +16,10 @@ import {
   ADD_CATEGORY_FAILED,
   REMOVE_CATEGORY,
   REMOVE_CATEGORY_SUCCESS,
-  REMOVE_CATEGORY_FAILED
+  REMOVE_CATEGORY_FAILED,
+  RENAME_CATEGORY,
+  RENAME_CATEGORY_SUCCESS,
+  RENAME_CATEGORY_FAILED
 } from "./constants";
 
 export function getLinkData(category) {
@@ -140,6 +143,29 @@ export function removeCategorySuccess(id) {
 export function removeCategoryFailed(err) {
   return {
     type: REMOVE_CATEGORY_FAILED,
+    err
+  };
+}
+
+export function renameCategory(id, text) {
+  return {
+    type: RENAME_CATEGORY,
+    id,
+    text
+  };
+}
+
+export function renameCategorySuccess(id, text) {
+  return {
+    type: RENAME_CATEGORY_SUCCESS,
+    id,
+    text
+  };
+}
+
+export function renameCategoryFailed(err) {
+  return {
+    type: RENAME_CATEGORY_FAILED,
     err
   };
 }
