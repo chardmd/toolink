@@ -13,6 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 //components
 import RenameDialog from "../RenameDialog";
+import AlertDialog from "../AlertDialog";
 
 import "./CategoryMenu.css";
 
@@ -22,11 +23,13 @@ class CategoryMenu extends React.Component {
 
     this.state = {
       anchorEl: null,
-      isDialogActive: false
+      renameDialogOpen: false,
+      alertDialogOpen: false
     };
 
     this.handleClick = this.handleClick.bind(this);
-    this.toggleDialog = this.toggleDialog.bind(this);
+    this.toggleRenameDialog = this.toggleRenameDialog.bind(this);
+    this.toggleAlertDialog = this.toggleAlertDialog.bind(this);
     this.onRemoveCategory = this.onRemoveCategory.bind(this);
   }
 
@@ -34,9 +37,15 @@ class CategoryMenu extends React.Component {
     this.setState({ anchorEl: event.currentTarget });
   }
 
-  toggleDialog(status) {
+  toggleRenameDialog(status) {
     this.setState({
-      isDialogActive: status
+      renameDialogOpen: status
+    });
+  }
+
+  toggleAlertDialog(status) {
+    this.setState({
+      alertDialogOpen: status
     });
   }
 
@@ -57,11 +66,19 @@ class CategoryMenu extends React.Component {
         <RenameDialog
           categoryId={categoryId}
           categoryName={categoryName}
-          isActive={this.state.isDialogActive}
+          isActive={this.state.renameDialogOpen}
           onClose={() => {
-            this.toggleDialog(false);
+            this.toggleRenameDialog(false);
           }}
           renameCategory={this.props.renameCategory}
+        />
+        <AlertDialog
+          categoryId={categoryId}
+          isActive={this.state.alertDialogOpen}
+          removeCategory={this.props.removeCategory}
+          onClose={() => {
+            this.toggleAlertDialog(false);
+          }}
         />
         <IconButton
           aria-label="More"
@@ -84,7 +101,7 @@ class CategoryMenu extends React.Component {
           <MenuItem
             key={`menu-item-1`}
             onClick={() => {
-              this.toggleDialog(true);
+              this.toggleRenameDialog(true);
               this.handleClose();
             }}
           >
@@ -93,7 +110,8 @@ class CategoryMenu extends React.Component {
           <MenuItem
             key={`menu-item-2`}
             onClick={() => {
-              this.onRemoveCategory(categoryId);
+              this.toggleAlertDialog(true);
+              this.handleClose();
             }}
           >
             Remove
