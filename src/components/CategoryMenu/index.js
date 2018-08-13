@@ -28,13 +28,17 @@ class CategoryMenu extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.toggleRenameDialog = this.toggleRenameDialog.bind(this);
     this.toggleRemoveDialog = this.toggleRemoveDialog.bind(this);
-    this.onRemoveCategory = this.onRemoveCategory.bind(this);
   }
 
   handleClick(event) {
     this.setState({ anchorEl: event.currentTarget });
+  }
+
+  handleClose() {
+    this.setState({ anchorEl: null });
   }
 
   toggleRenameDialog(status) {
@@ -47,15 +51,6 @@ class CategoryMenu extends React.Component {
     this.setState({
       removeDialogOpen: status
     });
-  }
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  onRemoveCategory(id) {
-    this.props.removeCategory(id);
-    this.handleClose();
   }
 
   render() {

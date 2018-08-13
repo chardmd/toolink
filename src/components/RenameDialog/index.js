@@ -23,15 +23,17 @@ class RenameDialog extends React.Component {
     };
 
     this.handleSave = this.handleSave.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = event => {
+  handleChange(event) {
     this.setState({ categoryName: event.target.value });
-  };
+  }
 
-  handleFocus = event => {
+  handleFocus(event) {
     event.target.select();
-  };
+  }
 
   handleSave() {
     const { categoryId } = this.props;
