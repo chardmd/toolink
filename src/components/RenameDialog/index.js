@@ -64,7 +64,7 @@ class RenameDialog extends React.Component {
               }}
               margin="dense"
               id="rename_category"
-              label="Category"
+              label="Category Name"
               type="search"
               fullWidth
               value={this.state.categoryName}

@@ -155,7 +155,7 @@ class CategoryList extends React.Component {
               InputLabelProps={{
                 shrink: true
               }}
-              label="New Category"
+              label="Category Name"
               type="search"
               className="textField"
               margin="normal"
