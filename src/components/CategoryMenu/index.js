@@ -13,7 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 //components
 import RenameDialog from "../RenameDialog";
-import AlertDialog from "../AlertDialog";
+import RemoveDialog from "../RemoveDialog";
 
 import "./CategoryMenu.css";
 
@@ -24,12 +24,12 @@ class CategoryMenu extends React.Component {
     this.state = {
       anchorEl: null,
       renameDialogOpen: false,
-      alertDialogOpen: false
+      removeDialogOpen: false
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.toggleRenameDialog = this.toggleRenameDialog.bind(this);
-    this.toggleAlertDialog = this.toggleAlertDialog.bind(this);
+    this.toggleRemoveDialog = this.toggleRemoveDialog.bind(this);
     this.onRemoveCategory = this.onRemoveCategory.bind(this);
   }
 
@@ -43,9 +43,9 @@ class CategoryMenu extends React.Component {
     });
   }
 
-  toggleAlertDialog(status) {
+  toggleRemoveDialog(status) {
     this.setState({
-      alertDialogOpen: status
+      removeDialogOpen: status
     });
   }
 
@@ -72,12 +72,12 @@ class CategoryMenu extends React.Component {
           }}
           renameCategory={this.props.renameCategory}
         />
-        <AlertDialog
+        <RemoveDialog
           categoryId={categoryId}
-          isActive={this.state.alertDialogOpen}
+          isActive={this.state.removeDialogOpen}
           removeCategory={this.props.removeCategory}
           onClose={() => {
-            this.toggleAlertDialog(false);
+            this.toggleRemoveDialog(false);
           }}
         />
         <IconButton
@@ -99,7 +99,7 @@ class CategoryMenu extends React.Component {
           }}
         >
           <MenuItem
-            key={`menu-item-1`}
+            key={`menu-rename`}
             onClick={() => {
               this.toggleRenameDialog(true);
               this.handleClose();
@@ -108,9 +108,9 @@ class CategoryMenu extends React.Component {
             Rename
           </MenuItem>
           <MenuItem
-            key={`menu-item-2`}
+            key={`menu-remove`}
             onClick={() => {
-              this.toggleAlertDialog(true);
+              this.toggleRemoveDialog(true);
               this.handleClose();
             }}
           >

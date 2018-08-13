@@ -1,6 +1,6 @@
 /**
  *
- * AlertDialog
+ * RemoveDialog
  *
  */
 
@@ -13,9 +13,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-import "./AlertDialog.css";
+import "./RemoveDialog.css";
 
-class AlertDialog extends React.Component {
+class RemoveDialog extends React.Component {
   constructor(props) {
     super(props);
 
@@ -62,11 +62,11 @@ class AlertDialog extends React.Component {
   }
 }
 
-AlertDialog.propTypes = {
+RemoveDialog.propTypes = {
   categoryId: PropTypes.number,
   isActive: PropTypes.bool,
   removeCategory: PropTypes.func,
   onClose: PropTypes.func
 };
 
-export default AlertDialog;
+export default RemoveDialog;
