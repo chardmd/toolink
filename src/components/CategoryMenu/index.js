@@ -11,6 +11,9 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
+//components
+import RenameDialog from "../RenameDialog";
+
 import "./CategoryMenu.css";
 
 class CategoryMenu extends React.Component {
@@ -18,15 +21,23 @@ class CategoryMenu extends React.Component {
     super(props);
 
     this.state = {
-      anchorEl: null
+      anchorEl: null,
+      isDialogActive: false
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.toggleDialog = this.toggleDialog.bind(this);
     this.onRemoveCategory = this.onRemoveCategory.bind(this);
   }
 
   handleClick(event) {
     this.setState({ anchorEl: event.currentTarget });
+  }
+
+  toggleDialog(status) {
+    this.setState({
+      isDialogActive: status
+    });
   }
 
   handleClose = () => {
@@ -38,16 +49,20 @@ class CategoryMenu extends React.Component {
     this.handleClose();
   }
 
-  onRenameCategory(id, text) {
-    this.props.renameCategory(id, text);
-    this.handleClose();
-  }
-
   render() {
     const { anchorEl } = this.state;
-    const { categoryId } = this.props;
+    const { categoryId, categoryName } = this.props;
     return (
       <Fragment>
+        <RenameDialog
+          categoryId={categoryId}
+          categoryName={categoryName}
+          isActive={this.state.isDialogActive}
+          onClose={() => {
+            this.toggleDialog(false);
+          }}
+          renameCategory={this.props.renameCategory}
+        />
         <IconButton
           aria-label="More"
           aria-owns={anchorEl ? "long-menu" : null}
@@ -69,7 +84,8 @@ class CategoryMenu extends React.Component {
           <MenuItem
             key={`menu-item-1`}
             onClick={() => {
-              this.onRenameCategory(categoryId, "hello");
+              this.toggleDialog(true);
+              this.handleClose();
             }}
           >
             Rename
@@ -91,7 +107,8 @@ class CategoryMenu extends React.Component {
 CategoryMenu.propTypes = {
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
-  categoryId: PropTypes.number
+  categoryId: PropTypes.number,
+  categoryName: PropTypes.string
 };
 
 export default CategoryMenu;

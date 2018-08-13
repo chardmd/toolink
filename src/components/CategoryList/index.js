@@ -97,6 +97,7 @@ class CategoryList extends React.Component {
           <ListItemSecondaryAction>
             <CategoryMenu
               categoryId={category.id}
+              categoryName={category.name}
               removeCategory={this.props.removeCategory}
               renameCategory={this.props.renameCategory}
             />
