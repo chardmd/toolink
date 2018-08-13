@@ -45,6 +45,11 @@ class RenameDialog extends React.Component {
           onClose={this.props.onClose}
           aria-labelledby="form-dialog-title"
           fullWidth
+          onKeyPress={e => {
+            if (e.key === "Enter") {
+              this.handleSave();
+            }
+          }}
         >
           <DialogTitle id="form-dialog-title">Rename Category</DialogTitle>
           <DialogContent>
