@@ -44,8 +44,8 @@ class AlertDialog extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              This will delete all related links under this category. Press the
-              DELETE button to continue.
+              This will delete all related tools and links under this category.
+              Press the DELETE button to continue.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
