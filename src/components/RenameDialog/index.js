@@ -29,6 +29,10 @@ class RenameDialog extends React.Component {
     this.setState({ categoryName: event.target.value });
   };
 
+  handleFocus = event => {
+    event.target.select();
+  };
+
   handleSave() {
     const { categoryId } = this.props;
     const { categoryName } = this.state;
@@ -65,6 +69,7 @@ class RenameDialog extends React.Component {
               fullWidth
               value={this.state.categoryName}
               onChange={this.handleChange}
+              onFocus={this.handleFocus}
             />
           </DialogContent>
           <DialogActions>
