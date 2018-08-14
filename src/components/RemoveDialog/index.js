@@ -45,7 +45,7 @@ class RemoveDialog extends React.Component {
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               This will delete all related tools and links under this category.
-              Press the DELETE button to continue.
+              Press the 'delete' button to continue.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
