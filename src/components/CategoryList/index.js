@@ -37,13 +37,15 @@ class CategoryList extends React.Component {
       isInputActive: false,
       category: "",
       anchorEl: null,
-      activeCategory: 0
+      activeCategory: 0,
+      activeTrash: -1
     };
 
     this.renderCategories = this.renderCategories.bind(this);
     this.toggleIsInputActive = this.toggleIsInputActive.bind(this);
     this.onAddCategory = this.onAddCategory.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
+    this.selectTrash = this.selectTrash.bind(this);
   }
 
   handleChange = event => {
@@ -70,7 +72,15 @@ class CategoryList extends React.Component {
 
   selectCategory(index) {
     this.setState({
-      activeCategory: index
+      activeCategory: index,
+      activeTrash: -1
+    });
+  }
+
+  selectTrash(index) {
+    this.setState({
+      activeTrash: index,
+      activeCategory: -1
     });
   }
 
@@ -122,6 +132,7 @@ class CategoryList extends React.Component {
 
   renderMaintenance = () => {
     const { classes } = this.props;
+    const { activeTrash } = this.state;
     return (
       <List
         component="nav"
@@ -132,7 +143,13 @@ class CategoryList extends React.Component {
           </ListSubheader>
         }
       >
-        <ListItem button className="listItem">
+        <ListItem
+          button
+          className={`listItem ${0 === activeTrash && "active"}`}
+          onClick={() => {
+            this.selectTrash(0);
+          }}
+        >
           <ListItemAvatar>
             <Avatar>
               <Icon>delete</Icon>
