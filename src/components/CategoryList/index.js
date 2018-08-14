@@ -96,6 +96,7 @@ class CategoryList extends React.Component {
           key={`category-${category.id}`}
           onClick={() => {
             this.selectCategory(index);
+            this.props.getLinkData(category.id);
           }}
         >
           <ListItemAvatar>
@@ -202,7 +203,8 @@ CategoryList.propTypes = {
   categories: PropTypes.array,
   addCategory: PropTypes.func,
   removeCategory: PropTypes.func,
-  renameCategory: PropTypes.func
+  renameCategory: PropTypes.func,
+  getLinkData: PropTypes.func
 };
 
 export default withStyles(styles)(CategoryList);

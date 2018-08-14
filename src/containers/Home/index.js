@@ -108,6 +108,7 @@ class Home extends Component {
               addCategory={this.props.addCategory}
               removeCategory={this.props.removeCategory}
               renameCategory={this.props.renameCategory}
+              getLinkData={this.props.getLinkData}
             />
           </Grid>
           <Grid
@@ -136,7 +137,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getLinkData: category => dispatch(getLinkData(category)),
-  //getCategories: () => dispatch(getCategories()),
   saveLink: link => dispatch(saveLink(link)),
   removeLink: id => dispatch(removeLink(id)),
   addCategory: category => dispatch(addCategory(category)),
