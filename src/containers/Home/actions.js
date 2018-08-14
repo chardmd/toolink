@@ -19,7 +19,8 @@ import {
   REMOVE_CATEGORY_FAILED,
   RENAME_CATEGORY,
   RENAME_CATEGORY_SUCCESS,
-  RENAME_CATEGORY_FAILED
+  RENAME_CATEGORY_FAILED,
+  LOAD_HOME
 } from "./constants";
 
 export function getLinkData(category) {
@@ -167,5 +168,11 @@ export function renameCategoryFailed(err) {
   return {
     type: RENAME_CATEGORY_FAILED,
     err
+  };
+}
+
+export function loadHome() {
+  return {
+    type: LOAD_HOME
   };
 }

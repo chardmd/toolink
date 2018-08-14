@@ -7,7 +7,8 @@ import {
   REMOVE_LINK,
   ADD_CATEGORY,
   REMOVE_CATEGORY,
-  RENAME_CATEGORY
+  RENAME_CATEGORY,
+  LOAD_HOME
 } from "./constants";
 import {
   getLinkDataSuccess,
@@ -30,15 +31,9 @@ import data from "./data.json";
 import newData from "./new.json";
 import categories from "./categories.json";
 
-function* handleGetLinkData({ category }) {
-  try {
-    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
-    yield put(getLinkDataSuccess(data));
-  } catch (e) {
-    yield put(getLinkDataFailed(e));
-  }
+function* handleLoadHome() {
+  yield handleGetCategories();
+  yield handleGetLinkData(categories[0]);
 }
 
 function* handleGetCategories() {
@@ -49,6 +44,17 @@ function* handleGetCategories() {
     yield put(getCategoriesSuccess(categories));
   } catch (e) {
     yield put(getCategoriesFailed(e));
+  }
+}
+
+function* handleGetLinkData({ category }) {
+  try {
+    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
+    // const response = yield call([axios, axios.get], url);
+    // console.log("response", response.data);
+    yield put(getLinkDataSuccess(data));
+  } catch (e) {
+    yield put(getLinkDataFailed(e));
   }
 }
 
@@ -95,6 +101,7 @@ function* handleRenameCategory({ id, text }) {
 
 function* rootSaga() {
   yield all([
+    takeLatest(LOAD_HOME, handleLoadHome),
     takeLatest(GET_LINK_DATA, handleGetLinkData),
     takeLatest(GET_CATEGORIES, handleGetCategories),
     takeLatest(SAVE_LINK, handleSaveLink),

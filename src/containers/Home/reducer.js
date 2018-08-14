@@ -19,7 +19,8 @@ import {
   REMOVE_CATEGORY_FAILED,
   RENAME_CATEGORY,
   RENAME_CATEGORY_SUCCESS,
-  RENAME_CATEGORY_FAILED
+  RENAME_CATEGORY_FAILED,
+  LOAD_HOME
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -110,6 +111,8 @@ const homeReducer = (state = INITIAL_STATE, action) => {
         ...state,
         err: action.err
       };
+    case LOAD_HOME:
+      return state;
     default:
       return state;
   }

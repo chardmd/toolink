@@ -17,7 +17,8 @@ import {
   removeLink,
   addCategory,
   removeCategory,
-  renameCategory
+  renameCategory,
+  loadHome
 } from "./actions";
 
 //css
@@ -35,8 +36,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.getLinkData("seo");
-    this.props.getCategories();
+    this.props.loadHome();
   }
 
   renderLinks = () => {
@@ -136,12 +136,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getLinkData: category => dispatch(getLinkData(category)),
-  getCategories: () => dispatch(getCategories()),
+  //getCategories: () => dispatch(getCategories()),
   saveLink: link => dispatch(saveLink(link)),
   removeLink: id => dispatch(removeLink(id)),
   addCategory: category => dispatch(addCategory(category)),
   removeCategory: id => dispatch(removeCategory(id)),
-  renameCategory: (id, text) => dispatch(renameCategory(id, text))
+  renameCategory: (id, text) => dispatch(renameCategory(id, text)),
+  loadHome: () => dispatch(loadHome())
 });
 
 export default connect(
