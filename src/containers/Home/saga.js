@@ -51,7 +51,6 @@ function* handleGetCategories() {
 
 function* handleGetLinkData({ category }) {
   try {
-    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
     // const response = yield call([axios, axios.get], url);
     // console.log("response", response.data);
     yield put(getLinkDataSuccess(data));
