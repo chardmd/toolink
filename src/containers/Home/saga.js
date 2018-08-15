@@ -40,9 +40,9 @@ import categories from "./categories.json";
 
   function* handleGetCategories() {
   try {
-    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
+      // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
+      // const response = yield call([axios, axios.get], url);
+      // console.log("response", response.data);
     yield put(getCategoriesSuccess(categories));
   } catch (e) {
     yield put(getCategoriesFailed(e));
