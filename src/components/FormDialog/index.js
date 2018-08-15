@@ -18,11 +18,11 @@ const styles = theme => ({
   root: {
     display: "flex",
     justifyContent: "center",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   chip: {
-    margin: theme.spacing.unit
-  }
+    margin: theme.spacing.unit,
+  },
 });
 
 class FormDialog extends React.Component {
@@ -31,7 +31,7 @@ class FormDialog extends React.Component {
 
     this.state = {
       link: "",
-      activeCategory: 0
+      activeCategory: 0,
     };
 
     this.renderCategories = this.renderCategories.bind(this);
@@ -49,7 +49,7 @@ class FormDialog extends React.Component {
 
   selectCategory(index) {
     this.setState({
-      activeCategory: index
+      activeCategory: index,
     });
   }
 
@@ -108,7 +108,7 @@ class FormDialog extends React.Component {
             <TextField
               autoFocus
               InputLabelProps={{
-                shrink: true
+                shrink: true,
               }}
               margin="dense"
               id="name"
@@ -137,7 +137,7 @@ FormDialog.propTypes = {
   isActive: PropTypes.bool,
   toggleStatus: PropTypes.func,
   categories: PropTypes.array,
-  saveLink: PropTypes.func
+  saveLink: PropTypes.func,
 };
 
 export default withStyles(styles)(FormDialog);

@@ -12,20 +12,20 @@ import {
   SIGN_UP_FAILED,
   CONFIRM_SIGN_UP,
   CONFIRM_SIGN_UP_SUCCESS,
-  CONFIRM_SIGN_UP_FAILED
+  CONFIRM_SIGN_UP_FAILED,
 } from "./constants";
 
 export function setLoading(isLoading) {
   return {
     type: SET_LOADING,
-    isLoading
+    isLoading,
   };
 }
 
 export function setAlertOpen(alertOpen) {
   return {
     type: SET_ALERT_OPEN,
-    alertOpen
+    alertOpen,
   };
 }
 
@@ -33,21 +33,21 @@ export function signUp(email, password) {
   return {
     type: SIGN_UP,
     email,
-    password
+    password,
   };
 }
 
 export function signUpSuccess(isSuccess) {
   return {
     type: SIGN_UP_SUCCESS,
-    isSuccess
+    isSuccess,
   };
 }
 
 export function signUpFailed(error) {
   return {
     type: SIGN_UP_FAILED,
-    error
+    error,
   };
 }
 
@@ -56,20 +56,20 @@ export function confirmSignUp(email, confirmationCode, password) {
     type: CONFIRM_SIGN_UP,
     email,
     confirmationCode,
-    password
+    password,
   };
 }
 
 export function confirmSignUpSuccess(isSuccess) {
   return {
     type: CONFIRM_SIGN_UP_SUCCESS,
-    isSuccess
+    isSuccess,
   };
 }
 
 export function confirmSignUpFailed(error) {
   return {
     type: CONFIRM_SIGN_UP_FAILED,
-    error
+    error,
   };
 }

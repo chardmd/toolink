@@ -11,95 +11,95 @@ import {
   SIGN_IN_FAILED,
   GET_AUTHENTICATED_USER,
   GET_AUTHENTICATED_USER_SUCCESS,
-  GET_AUTHENTICATED_USER_FAILED
+  GET_AUTHENTICATED_USER_FAILED,
 } from "./constants";
 
 export function setAlertOpen(alertOpen) {
   return {
     type: SET_ALERT_OPEN,
-    alertOpen
+    alertOpen,
   };
 }
 
 export function googleSignIn(data) {
   return {
     type: GOOGLE_SIGN_IN,
-    data
+    data,
   };
 }
 
 export function googleSignInSuccess(data) {
   return {
     type: GOOGLE_SIGN_IN_SUCCESS,
-    data
+    data,
   };
 }
 
 export function googleSignInFailed(error) {
   return {
     type: GOOGLE_SIGN_IN_FAILED,
-    error
+    error,
   };
 }
 
 export function facebookSignIn(data) {
   return {
     type: FACEBOOK_SIGN_IN,
-    data
+    data,
   };
 }
 
 export function facebookSignInSuccess(data) {
   return {
     type: FACEBOOK_SIGN_IN_SUCCESS,
-    data
+    data,
   };
 }
 
 export function facebookSignInFailed(error) {
   return {
     type: FACEBOOK_SIGN_IN_FAILED,
-    error
+    error,
   };
 }
 
 export function signIn(data) {
   return {
     type: SIGN_IN,
-    data
+    data,
   };
 }
 
 export function signInSuccess(data) {
   return {
     type: SIGN_IN_SUCCESS,
-    data
+    data,
   };
 }
 
 export function signInFailed(error) {
   return {
     type: SIGN_IN_FAILED,
-    error
+    error,
   };
 }
 
 export function getAuthenticatedUser() {
   return {
-    type: GET_AUTHENTICATED_USER
+    type: GET_AUTHENTICATED_USER,
   };
 }
 
 export function getAuthenticatedUserSuccess(data) {
   return {
     type: GET_AUTHENTICATED_USER_SUCCESS,
-    data
+    data,
   };
 }
 
 export function getAuthenticatedUserFailed(error) {
   return {
     type: GET_AUTHENTICATED_USER_FAILED,
-    error
+    error,
   };
 }

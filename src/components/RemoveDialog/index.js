@@ -66,7 +66,7 @@ RemoveDialog.propTypes = {
   categoryId: PropTypes.number,
   isActive: PropTypes.bool,
   removeCategory: PropTypes.func,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
 };
 
 export default RemoveDialog;

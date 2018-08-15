@@ -32,8 +32,8 @@ export class Signup extends React.Component {
         email: "",
         password: "",
         confirmPassword: "",
-        confirmationCode: ""
-      }
+        confirmationCode: "",
+      },
     };
   }
 
@@ -58,15 +58,15 @@ export class Signup extends React.Component {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: message
-        }
+          [property]: message,
+        },
       });
     } else {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: ""
-        }
+          [property]: "",
+        },
       });
     }
   };
@@ -77,15 +77,15 @@ export class Signup extends React.Component {
       this.setState({
         error: {
           ...this.state.error,
-          email: "Invalid email address"
-        }
+          email: "Invalid email address",
+        },
       });
     } else {
       this.setState({
         error: {
           ...this.state.error,
-          email: ""
-        }
+          email: "",
+        },
       });
     }
   };
@@ -95,22 +95,22 @@ export class Signup extends React.Component {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: "Invalid password"
-        }
+          [property]: "Invalid password",
+        },
       });
     } else {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: ""
-        }
+          [property]: "",
+        },
       });
     }
   };
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -278,7 +278,7 @@ const mapStateToProps = state => ({
   isLoading: state.signUp.isLoading,
   isSuccess: state.signUp.isSuccess,
   alertOpen: state.signUp.alertOpen,
-  error: state.signUp.error
+  error: state.signUp.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -286,7 +286,7 @@ const mapDispatchToProps = dispatch => ({
   confirmSignUp: (email, confirmationCode, password) =>
     dispatch(confirmSignUp(email, confirmationCode, password)),
   setLoading: isLoading => dispatch(setLoading(isLoading)),
-  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen))
+  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen)),
 });
 
 export default connect(

@@ -6,7 +6,7 @@ import {
   SIGN_IN,
   GOOGLE_SIGN_IN,
   FACEBOOK_SIGN_IN,
-  GET_AUTHENTICATED_USER
+  GET_AUTHENTICATED_USER,
 } from "./constants";
 import {
   setAlertOpen,
@@ -17,13 +17,13 @@ import {
   facebookSignInSuccess,
   facebookSignInFailed,
   getAuthenticatedUserSuccess,
-  getAuthenticatedUserFailed
+  getAuthenticatedUserFailed,
 } from "./actions";
 
 import {
   setAuthenticating,
   setAuthenticated,
-  setLoading
+  setLoading,
 } from "../App/actions";
 
 function* handleSignIn({ data }) {
@@ -49,7 +49,7 @@ function* handleGoogleSignIn({ data }) {
     const profile = data.getBasicProfile();
     const user = {
       email: profile.getEmail(),
-      name: profile.getName()
+      name: profile.getName(),
     };
 
     const response = yield call(
@@ -57,13 +57,13 @@ function* handleGoogleSignIn({ data }) {
       "google",
       {
         token: id_token,
-        expires_at: expires_at
+        expires_at: expires_at,
       },
       user
     );
     const result = {
       id: response.data.IdentityId,
-      ...user
+      ...user,
     };
     yield put(googleSignInSuccess(result));
     yield put(setAuthenticated(true));
@@ -87,7 +87,7 @@ function* handleFacebookSignIn({ data }) {
     }
     const fbResponse = yield call(fbAPI, "/me");
     const user = {
-      name: fbResponse.name
+      name: fbResponse.name,
     };
 
     const response = yield call(
@@ -98,7 +98,7 @@ function* handleFacebookSignIn({ data }) {
     );
     const result = {
       id: response.data.IdentityId,
-      ...user
+      ...user,
     };
     yield put(facebookSignInSuccess(result));
     yield put(setAuthenticated(true));
@@ -131,7 +131,7 @@ function* rootSaga() {
     takeLatest(SIGN_IN, handleSignIn),
     takeLatest(GOOGLE_SIGN_IN, handleGoogleSignIn),
     takeLatest(FACEBOOK_SIGN_IN, handleFacebookSignIn),
-    takeLatest(GET_AUTHENTICATED_USER, handleGetAuthenticatedUser)
+    takeLatest(GET_AUTHENTICATED_USER, handleGetAuthenticatedUser),
   ]);
 }
 

@@ -8,7 +8,7 @@ import {
   ADD_CATEGORY,
   REMOVE_CATEGORY,
   RENAME_CATEGORY,
-  LOAD_HOME
+  LOAD_HOME,
 } from "./constants";
 import {
   getLinkDataSuccess,
@@ -24,7 +24,7 @@ import {
   removeCategorySuccess,
   removeCategoryFailed,
   renameCategorySuccess,
-  renameCategoryFailed
+  renameCategoryFailed,
 } from "./actions";
 
 import data from "./data.json";
@@ -108,7 +108,7 @@ function* rootSaga() {
     takeLatest(REMOVE_LINK, handleRemoveLink),
     takeLatest(ADD_CATEGORY, handleAddCategory),
     takeLatest(REMOVE_CATEGORY, handleRemoveCategory),
-    takeLatest(RENAME_CATEGORY, handleRenameCategory)
+    takeLatest(RENAME_CATEGORY, handleRenameCategory),
   ]);
 }
 

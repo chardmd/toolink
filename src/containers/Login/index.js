@@ -27,7 +27,7 @@ class Login extends Component {
       email: "",
       password: "",
       emailError: "",
-      passwordError: ""
+      passwordError: "",
     };
   }
 
@@ -35,11 +35,11 @@ class Login extends Component {
     const isValid = validateEmail(email);
     if (!isValid) {
       this.setState({
-        emailError: "Invalid Email Address"
+        emailError: "Invalid Email Address",
       });
     } else {
       this.setState({
-        emailError: ""
+        emailError: "",
       });
     }
   };
@@ -47,11 +47,11 @@ class Login extends Component {
   handleValidatePassword = password => {
     if (!validatePassword(password)) {
       this.setState({
-        passwordError: "Invalid password"
+        passwordError: "Invalid password",
       });
     } else {
       this.setState({
-        passwordError: ""
+        passwordError: "",
       });
     }
   };
@@ -67,7 +67,7 @@ class Login extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -83,7 +83,7 @@ class Login extends Component {
     event.preventDefault();
     this.props.signIn({
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     });
   };
 
@@ -221,14 +221,14 @@ class Login extends Component {
 const mapStateToProps = state => ({
   isLoading: state.app.isLoading,
   alertOpen: state.login.alertOpen,
-  error: state.login.error
+  error: state.login.error,
 });
 
 const mapDispatchToProps = dispatch => ({
   signIn: data => dispatch(signIn(data)),
   googleSignIn: data => dispatch(googleSignIn(data)),
   facebookSignIn: data => dispatch(facebookSignIn(data)),
-  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen))
+  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen)),
 });
 
 export default connect(

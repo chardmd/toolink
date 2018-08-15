@@ -14,7 +14,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      mobileOpen: false
+      mobileOpen: false,
     };
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     const childProps = {
       isAuthenticated: this.props.isAuthenticated,
-      userHasAuthenticated: this.props.setAuthenticated
+      userHasAuthenticated: this.props.setAuthenticated,
     };
 
     return (
@@ -66,13 +66,13 @@ const mapStateToProps = state => ({
   isAuthenticating: state.app.isAuthenticating,
   isAuthenticated: state.app.isAuthenticated,
   birthDate: state.home.birthDate,
-  lifeSpan: state.home.lifeSpan
+  lifeSpan: state.home.lifeSpan,
 });
 
 const mapDispatchToProps = dispatch => ({
   setAuthenticated: status => dispatch(setAuthenticated(status)),
   getAuthenticatedUser: () => dispatch(getAuthenticatedUser()),
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
 });
 
 export default compose(

@@ -25,8 +25,8 @@ import "./CategoryList.css";
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper
-  }
+    backgroundColor: theme.palette.background.paper,
+  },
 });
 
 class CategoryList extends React.Component {
@@ -38,7 +38,7 @@ class CategoryList extends React.Component {
       category: "",
       anchorEl: null,
       activeCategory: 0,
-      activeTrash: -1
+      activeTrash: -1,
     };
 
     this.renderCategories = this.renderCategories.bind(this);
@@ -54,7 +54,7 @@ class CategoryList extends React.Component {
 
   toggleIsInputActive = status => {
     this.setState({
-      isInputActive: status
+      isInputActive: status,
     });
   };
 
@@ -73,14 +73,14 @@ class CategoryList extends React.Component {
   selectCategory(index) {
     this.setState({
       activeCategory: index,
-      activeTrash: -1
+      activeTrash: -1,
     });
   }
 
   selectTrash(index) {
     this.setState({
       activeTrash: index,
-      activeCategory: -1
+      activeCategory: -1,
     });
   }
 
@@ -171,7 +171,7 @@ class CategoryList extends React.Component {
             <TextField
               id="search"
               InputLabelProps={{
-                shrink: true
+                shrink: true,
               }}
               label="Category Name"
               type="search"
@@ -204,7 +204,7 @@ CategoryList.propTypes = {
   addCategory: PropTypes.func,
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
-  getLinkData: PropTypes.func
+  getLinkData: PropTypes.func,
 };
 
 export default withStyles(styles)(CategoryList);

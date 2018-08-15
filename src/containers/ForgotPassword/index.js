@@ -12,7 +12,7 @@ import {
   forgotPassword,
   forgotPasswordCode,
   setLoading,
-  setAlertOpen
+  setAlertOpen,
 } from "./actions";
 import "./ForgotPassword.css";
 
@@ -30,8 +30,8 @@ class ForgotPassword extends Component {
         email: "",
         password: "",
         confirmPassword: "",
-        confirmationCode: ""
-      }
+        confirmationCode: "",
+      },
     };
   }
 
@@ -53,15 +53,15 @@ class ForgotPassword extends Component {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: message
-        }
+          [property]: message,
+        },
       });
     } else {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: ""
-        }
+          [property]: "",
+        },
       });
     }
   };
@@ -72,15 +72,15 @@ class ForgotPassword extends Component {
       this.setState({
         error: {
           ...this.state.error,
-          email: "Invalid email address"
-        }
+          email: "Invalid email address",
+        },
       });
     } else {
       this.setState({
         error: {
           ...this.state.error,
-          email: ""
-        }
+          email: "",
+        },
       });
     }
   };
@@ -90,15 +90,15 @@ class ForgotPassword extends Component {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: "Invalid password"
-        }
+          [property]: "Invalid password",
+        },
       });
     } else {
       this.setState({
         error: {
           ...this.state.error,
-          [property]: ""
-        }
+          [property]: "",
+        },
       });
     }
   };
@@ -109,7 +109,7 @@ class ForgotPassword extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
     });
   };
 
@@ -273,7 +273,7 @@ const mapStateToProps = state => ({
   isLoading: state.forgotPassword.isLoading,
   isSuccess: state.forgotPassword.isSuccess,
   alertOpen: state.forgotPassword.alertOpen,
-  error: state.forgotPassword.error
+  error: state.forgotPassword.error,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -281,7 +281,7 @@ const mapDispatchToProps = dispatch => ({
   forgotPasswordCode: (email, confirmationCode, password) =>
     dispatch(forgotPasswordCode(email, confirmationCode, password)),
   setLoading: isLoading => dispatch(setLoading(isLoading)),
-  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen))
+  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen)),
 });
 
 export default connect(

@@ -12,7 +12,7 @@ const mainReducer = combineReducers({
   app: appReducer,
   login: loginReducer,
   forgotPassword: forgotPasswordReducer,
-  signUp: signUpReducer
+  signUp: signUpReducer,
 });
 
 const rootReducer = (state, action) => {

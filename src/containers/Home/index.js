@@ -18,7 +18,7 @@ import {
   addCategory,
   removeCategory,
   renameCategory,
-  loadHome
+  loadHome,
 } from "./actions";
 
 //css
@@ -29,7 +29,7 @@ class Home extends Component {
     super(props);
 
     this.state = {
-      isActive: false
+      isActive: false,
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
@@ -58,7 +58,7 @@ class Home extends Component {
 
   onToggleStatus(status) {
     this.setState({
-      isActive: status
+      isActive: status,
     });
   }
 
@@ -132,7 +132,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   previewList: state.home.previewList,
-  categories: state.home.categories
+  categories: state.home.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -142,7 +142,7 @@ const mapDispatchToProps = dispatch => ({
   addCategory: category => dispatch(addCategory(category)),
   removeCategory: id => dispatch(removeCategory(id)),
   renameCategory: (id, text) => dispatch(renameCategory(id, text)),
-  loadHome: () => dispatch(loadHome())
+  loadHome: () => dispatch(loadHome()),
 });
 
 export default connect(

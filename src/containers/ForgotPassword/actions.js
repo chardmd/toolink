@@ -4,41 +4,41 @@ import {
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILED,
-  FORGOT_PASSWORD_CODE
+  FORGOT_PASSWORD_CODE,
 } from "./constants";
 
 export function setLoading(isLoading) {
   return {
     type: SET_LOADING,
-    isLoading
+    isLoading,
   };
 }
 
 export function setAlertOpen(alertOpen) {
   return {
     type: SET_ALERT_OPEN,
-    alertOpen
+    alertOpen,
   };
 }
 
 export function forgotPassword(email) {
   return {
     type: FORGOT_PASSWORD,
-    email
+    email,
   };
 }
 
 export function forgotPasswordSuccess(isSuccess) {
   return {
     type: FORGOT_PASSWORD_SUCCESS,
-    isSuccess
+    isSuccess,
   };
 }
 
 export function forgotPasswordFailed(err) {
   return {
     type: FORGOT_PASSWORD_FAILED,
-    err
+    err,
   };
 }
 
@@ -47,6 +47,6 @@ export function forgotPasswordCode(email, confirmationCode, password) {
     type: FORGOT_PASSWORD_CODE,
     email,
     confirmationCode,
-    password
+    password,
   };
 }

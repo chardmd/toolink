@@ -19,7 +19,7 @@ class RenameDialog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      categoryName: props.categoryName
+      categoryName: props.categoryName,
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -62,7 +62,7 @@ class RenameDialog extends React.Component {
             <TextField
               autoFocus
               InputLabelProps={{
-                shrink: true
+                shrink: true,
               }}
               margin="dense"
               id="rename_category"
@@ -94,7 +94,7 @@ RenameDialog.propTypes = {
   categoryName: PropTypes.string,
   toggleStatus: PropTypes.func,
   onClose: PropTypes.func,
-  renameCategory: PropTypes.func
+  renameCategory: PropTypes.func,
 };
 
 export default RenameDialog;

@@ -2,14 +2,14 @@ import {
   LOGOUT,
   SET_AUTHENTICATED,
   SET_AUTHENTICATING,
-  SET_LOADING
+  SET_LOADING,
 } from "./constants";
 
 const INITIAL_STATE = {
   isAuthenticating: true,
   isAuthenticated: false,
   isLoading: false,
-  err: null
+  err: null,
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -17,17 +17,17 @@ const appReducer = (state = INITIAL_STATE, action) => {
     case SET_AUTHENTICATING:
       return {
         ...state,
-        isAuthenticating: action.status
+        isAuthenticating: action.status,
       };
     case SET_AUTHENTICATED:
       return {
         ...state,
-        isAuthenticated: action.status
+        isAuthenticated: action.status,
       };
     case SET_LOADING:
       return {
         ...state,
-        isLoading: action.status
+        isLoading: action.status,
       };
     case LOGOUT:
       return state;

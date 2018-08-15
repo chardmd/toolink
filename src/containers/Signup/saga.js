@@ -15,7 +15,7 @@ import {
   signUpSuccess,
   signUpFailed,
   confirmSignUpSuccess,
-  confirmSignUpFailed
+  confirmSignUpFailed,
 } from "./actions";
 
 import { setAuthenticated } from "../App/actions";
@@ -56,7 +56,7 @@ function* handleConfirmSignUp({ email, confirmationCode, password }) {
 function* SignupSaga() {
   yield all([
     takeLatest(SIGN_UP, handleSignUp),
-    takeLatest(CONFIRM_SIGN_UP, handleConfirmSignUp)
+    takeLatest(CONFIRM_SIGN_UP, handleConfirmSignUp),
   ]);
 }
 

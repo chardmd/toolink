@@ -4,7 +4,7 @@ import {
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILED,
-  FORGOT_PASSWORD_CODE
+  FORGOT_PASSWORD_CODE,
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -12,8 +12,8 @@ const INITIAL_STATE = {
   success: false,
   alertOpen: false,
   error: {
-    message: ""
-  }
+    message: "",
+  },
 };
 
 const forgotPasswordReducer = (state = INITIAL_STATE, action) => {
@@ -21,24 +21,24 @@ const forgotPasswordReducer = (state = INITIAL_STATE, action) => {
     case SET_LOADING:
       return {
         ...state,
-        isLoading: action.isLoading
+        isLoading: action.isLoading,
       };
     case SET_ALERT_OPEN:
       return {
         ...state,
-        alertOpen: action.alertOpen
+        alertOpen: action.alertOpen,
       };
     case FORGOT_PASSWORD:
       return state;
     case FORGOT_PASSWORD_SUCCESS:
       return {
         ...state,
-        isSuccess: action.isSuccess
+        isSuccess: action.isSuccess,
       };
     case FORGOT_PASSWORD_FAILED:
       return {
         ...state,
-        error: action.err
+        error: action.err,
       };
     case FORGOT_PASSWORD_CODE:
       return state;

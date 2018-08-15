@@ -6,7 +6,7 @@ import {
   setLoading,
   setAlertOpen,
   forgotPasswordSuccess,
-  forgotPasswordFailed
+  forgotPasswordFailed,
 } from "./actions";
 
 import { setAuthenticated } from "../App/actions";
@@ -50,7 +50,7 @@ function* handleForgotPasswordCode({ email, confirmationCode, password }) {
 function* rootSaga() {
   yield all([
     takeLatest(FORGOT_PASSWORD, handleForgotPassword),
-    takeLatest(FORGOT_PASSWORD_CODE, handleForgotPasswordCode)
+    takeLatest(FORGOT_PASSWORD_CODE, handleForgotPasswordCode),
   ]);
 }
 

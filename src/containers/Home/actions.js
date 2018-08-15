@@ -20,131 +20,131 @@ import {
   RENAME_CATEGORY,
   RENAME_CATEGORY_SUCCESS,
   RENAME_CATEGORY_FAILED,
-  LOAD_HOME
+  LOAD_HOME,
 } from "./constants";
 
 export function getLinkData(category) {
   return {
     type: GET_LINK_DATA,
-    category
+    category,
   };
 }
 
 export function getLinkDataSuccess(data) {
   return {
     type: GET_LINK_DATA_SUCCESS,
-    data
+    data,
   };
 }
 
 export function getLinkDataFailed(err) {
   return {
     type: GET_LINK_DATA_FAILED,
-    err
+    err,
   };
 }
 
 export function getCategories() {
   return {
-    type: GET_CATEGORIES
+    type: GET_CATEGORIES,
   };
 }
 
 export function getCategoriesSuccess(data) {
   return {
     type: GET_CATEGORIES_SUCCESS,
-    data
+    data,
   };
 }
 
 export function getCategoriesFailed(err) {
   return {
     type: GET_CATEGORIES_FAILED,
-    err
+    err,
   };
 }
 
 export function saveLink(link) {
   return {
     type: SAVE_LINK,
-    link
+    link,
   };
 }
 
 export function saveLinkSuccess(data) {
   return {
     type: SAVE_LINK_SUCCESS,
-    data
+    data,
   };
 }
 
 export function saveLinkFailed(err) {
   return {
     type: SAVE_LINK_FAILED,
-    err
+    err,
   };
 }
 
 export function removeLink(id) {
   return {
     type: REMOVE_LINK,
-    id
+    id,
   };
 }
 
 export function removeLinkSuccess(id) {
   return {
     type: REMOVE_LINK_SUCCESS,
-    id
+    id,
   };
 }
 
 export function removeLinkFailed(err) {
   return {
     type: REMOVE_LINK_FAILED,
-    err
+    err,
   };
 }
 
 export function addCategory(category) {
   return {
     type: ADD_CATEGORY,
-    category
+    category,
   };
 }
 
 export function addCategorySuccess(data) {
   return {
     type: ADD_CATEGORY_SUCCESS,
-    data
+    data,
   };
 }
 
 export function addCategoryFailed(err) {
   return {
     type: ADD_CATEGORY_FAILED,
-    err
+    err,
   };
 }
 
 export function removeCategory(id) {
   return {
     type: REMOVE_CATEGORY,
-    id
+    id,
   };
 }
 
 export function removeCategorySuccess(id) {
   return {
     type: REMOVE_CATEGORY_SUCCESS,
-    id
+    id,
   };
 }
 
 export function removeCategoryFailed(err) {
   return {
     type: REMOVE_CATEGORY_FAILED,
-    err
+    err,
   };
 }
 
@@ -152,7 +152,7 @@ export function renameCategory(id, text) {
   return {
     type: RENAME_CATEGORY,
     id,
-    text
+    text,
   };
 }
 
@@ -160,19 +160,19 @@ export function renameCategorySuccess(id, text) {
   return {
     type: RENAME_CATEGORY_SUCCESS,
     id,
-    text
+    text,
   };
 }
 
 export function renameCategoryFailed(err) {
   return {
     type: RENAME_CATEGORY_FAILED,
-    err
+    err,
   };
 }
 
 export function loadHome() {
   return {
-    type: LOAD_HOME
+    type: LOAD_HOME,
   };
 }

@@ -13,15 +13,15 @@ import "./MediaCard.css";
 const styles = theme => ({
   details: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   content: {
-    flex: "1 0 auto"
+    flex: "1 0 auto",
   },
   cover: {
     width: 200,
-    height: 200
-  }
+    height: 200,
+  },
 });
 
 function openInNewTab(url) {
@@ -84,7 +84,7 @@ MediaCard.propTypes = {
   description: PropTypes.string,
   image: PropTypes.string,
   url: PropTypes.string,
-  removeLink: PropTypes.func
+  removeLink: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(MediaCard);

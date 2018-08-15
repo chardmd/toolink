@@ -46,7 +46,7 @@ class NavBar extends React.Component {
 NavBar.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
-  handleDrawerToggle: PropTypes.func.isRequired
+  handleDrawerToggle: PropTypes.func.isRequired,
 };
 
 export default NavBar;

@@ -11,6 +11,6 @@ export default function* rootSaga() {
     fork(appSaga),
     fork(loginSaga),
     fork(forgotPasswordSaga),
-    fork(SignUpSaga)
+    fork(SignUpSaga),
   ]);
 }

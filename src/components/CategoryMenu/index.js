@@ -24,7 +24,7 @@ class CategoryMenu extends React.Component {
     this.state = {
       anchorEl: null,
       renameDialogOpen: false,
-      removeDialogOpen: false
+      removeDialogOpen: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -43,13 +43,13 @@ class CategoryMenu extends React.Component {
 
   toggleRenameDialog(status) {
     this.setState({
-      renameDialogOpen: status
+      renameDialogOpen: status,
     });
   }
 
   toggleRemoveDialog(status) {
     this.setState({
-      removeDialogOpen: status
+      removeDialogOpen: status,
     });
   }
 
@@ -89,8 +89,8 @@ class CategoryMenu extends React.Component {
           onClose={this.handleClose}
           PaperProps={{
             style: {
-              width: 100
-            }
+              width: 100,
+            },
           }}
         >
           <MenuItem
@@ -121,7 +121,7 @@ CategoryMenu.propTypes = {
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
   categoryId: PropTypes.number,
-  categoryName: PropTypes.string
+  categoryName: PropTypes.string,
 };
 
 export default CategoryMenu;

@@ -14,7 +14,7 @@ import {
   SIGN_UP_FAILED,
   CONFIRM_SIGN_UP,
   CONFIRM_SIGN_UP_SUCCESS,
-  CONFIRM_SIGN_UP_FAILED
+  CONFIRM_SIGN_UP_FAILED,
 } from "./constants";
 
 const initialState = {
@@ -22,8 +22,8 @@ const initialState = {
   success: false,
   alertOpen: false,
   error: {
-    message: ""
-  }
+    message: "",
+  },
 };
 
 function signupReducer(state = initialState, action) {
@@ -33,24 +33,24 @@ function signupReducer(state = initialState, action) {
     case SET_LOADING:
       return {
         ...state,
-        isLoading: action.isLoading
+        isLoading: action.isLoading,
       };
     case SET_ALERT_OPEN:
       return {
         ...state,
-        alertOpen: action.alertOpen
+        alertOpen: action.alertOpen,
       };
     case SIGN_UP:
       return state;
     case SIGN_UP_SUCCESS:
       return {
         ...state,
-        isSuccess: action.isSuccess
+        isSuccess: action.isSuccess,
       };
     case SIGN_UP_FAILED:
       return {
         ...state,
-        error: action.error
+        error: action.error,
       };
     case CONFIRM_SIGN_UP:
       return state;
@@ -59,7 +59,7 @@ function signupReducer(state = initialState, action) {
     case CONFIRM_SIGN_UP_FAILED:
       return {
         ...state,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;

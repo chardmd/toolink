@@ -20,12 +20,12 @@ import {
   RENAME_CATEGORY,
   RENAME_CATEGORY_SUCCESS,
   RENAME_CATEGORY_FAILED,
-  LOAD_HOME
+  LOAD_HOME,
 } from "./constants";
 
 const INITIAL_STATE = {
   previewList: [],
-  categories: []
+  categories: [],
 };
 
 const homeReducer = (state = INITIAL_STATE, action) => {
@@ -35,19 +35,19 @@ const homeReducer = (state = INITIAL_STATE, action) => {
     case GET_LINK_DATA_SUCCESS:
       return {
         ...state,
-        previewList: action.data
+        previewList: action.data,
       };
     case GET_LINK_DATA_FAILED:
       return {
         ...state,
-        err: action.err
+        err: action.err,
       };
     case GET_CATEGORIES:
       return state;
     case GET_CATEGORIES_SUCCESS:
       return {
         ...state,
-        categories: action.data
+        categories: action.data,
       };
     case GET_CATEGORIES_FAILED:
       return state;
@@ -57,12 +57,12 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       const data = action.data;
       return {
         ...state,
-        previewList: [data, ...state.previewList]
+        previewList: [data, ...state.previewList],
       };
     case SAVE_LINK_FAILED:
       return {
         ...state,
-        err: action.err
+        err: action.err,
       };
     case REMOVE_LINK:
       return state;
@@ -70,24 +70,24 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       const linkId = action.id;
       return {
         ...state,
-        previewList: state.previewList.filter(i => i.id !== linkId)
+        previewList: state.previewList.filter(i => i.id !== linkId),
       };
     case REMOVE_LINK_FAILED:
       return {
         ...state,
-        err: action.err
+        err: action.err,
       };
     case ADD_CATEGORY:
       return state;
     case ADD_CATEGORY_SUCCESS:
       return {
         ...state,
-        categories: [...state.categories, action.data]
+        categories: [...state.categories, action.data],
       };
     case ADD_CATEGORY_FAILED:
       return {
         ...state,
-        err: action.err
+        err: action.err,
       };
     case REMOVE_CATEGORY:
       return state;
@@ -95,12 +95,12 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       const catId = action.id;
       return {
         ...state,
-        categories: state.categories.filter(i => i.id !== catId)
+        categories: state.categories.filter(i => i.id !== catId),
       };
     case REMOVE_CATEGORY_FAILED:
       return {
         ...state,
-        err: action.err
+        err: action.err,
       };
     case RENAME_CATEGORY:
       return state;
@@ -109,7 +109,7 @@ const homeReducer = (state = INITIAL_STATE, action) => {
     case RENAME_CATEGORY_FAILED:
       return {
         ...state,
-        err: action.err
+        err: action.err,
       };
     case LOAD_HOME:
       return state;
@@ -131,7 +131,7 @@ const renameCategory = (state, id, text) => {
   }, []);
   return {
     ...state,
-    categories
+    categories,
   };
 };
 
