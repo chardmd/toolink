@@ -1,5 +1,5 @@
 import { takeLatest, put, all } from "redux-saga/effects";
-//import axios from "axios";
+
 import {
   GET_LINK_DATA,
   GET_CATEGORIES,
