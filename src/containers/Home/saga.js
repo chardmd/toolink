@@ -24,10 +24,6 @@ import {
   removeCategorySuccess,
   removeCategoryFailed,
   renameCategorySuccess,
-
-
-
-  
   renameCategoryFailed,
 } from "./actions";
 

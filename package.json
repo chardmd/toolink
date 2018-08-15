@@ -32,7 +32,7 @@
     "build:netlify": "npm run build && cp _redirects build/_redirects",
     "eject": "react-scripts eject",
     "pretty-quick": "pretty-quick",
-    "prepush": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged"
   },
   "devDependencies": {
     "husky": "^0.14.3",
