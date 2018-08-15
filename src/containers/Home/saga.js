@@ -23,7 +23,7 @@ import {
   addCategoryFailed,
   removeCategorySuccess,
   removeCategoryFailed,
-  renameCategorySuccess, renameCategoryFailed,
+  renameCategorySuccess, renameCategoryFailed
 } from "./actions";
 
   import { displayAlert } from "../App/actions";
