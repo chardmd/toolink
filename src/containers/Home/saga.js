@@ -23,21 +23,26 @@ import {
   addCategoryFailed,
   removeCategorySuccess,
   removeCategoryFailed,
-  renameCategorySuccess, renameCategoryFailed
+  renameCategorySuccess,
+
+
+
+  
+  renameCategoryFailed,
 } from "./actions";
 
-  import { displayAlert } from "../App/actions";
+import { displayAlert } from "../App/actions";
 
 import data from "./data.json";
 import newData from "./new.json";
 import categories from "./categories.json";
 
-  function* handleLoadHome() {
+function* handleLoadHome() {
   yield handleGetCategories();
   yield handleGetLinkData(categories[0]);
 }
 
-  function* handleGetCategories() {
+function* handleGetCategories() {
   try {
     // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
     // const response = yield call([axios, axios.get], url);

@@ -31,6 +31,7 @@
     "generate": "plop --plopfile generators/index.js",
     "build:netlify": "npm run build && cp _redirects build/_redirects",
     "eject": "react-scripts eject",
+    "pretty-quick": "pretty-quick",
     "prepush": "pretty-quick --staged"
   },
   "devDependencies": {
