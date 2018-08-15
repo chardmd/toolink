@@ -33,7 +33,7 @@ import data from "./data.json";
 import newData from "./new.json";
 import categories from "./categories.json";
 
-function* handleLoadHome() {
+  function* handleLoadHome() {
   yield handleGetCategories();
   yield handleGetLinkData(categories[0]);
 }
