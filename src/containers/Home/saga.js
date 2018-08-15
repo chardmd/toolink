@@ -27,6 +27,8 @@ import {
   renameCategoryFailed,
 } from "./actions";
 
+import { displayAlert } from "../App/actions";
+
 import data from "./data.json";
 import newData from "./new.json";
 import categories from "./categories.json";
@@ -86,6 +88,7 @@ function* handleAddCategory({ category }) {
 function* handleRemoveCategory({ id }) {
   try {
     yield put(removeCategorySuccess(id));
+    yield put(displayAlert("Category successfully removed", true));
   } catch (e) {
     yield put(removeCategoryFailed(e));
   }

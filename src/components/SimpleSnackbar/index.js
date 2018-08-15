@@ -27,7 +27,7 @@ class SimpleSnackbar extends React.Component {
       return;
     }
 
-    this.props.toggleOpen(false);
+    this.props.toggleOpen("", false);
   };
 
   render() {
@@ -40,7 +40,7 @@ class SimpleSnackbar extends React.Component {
             horizontal: "right",
           }}
           open={open}
-          autoHideDuration={6000}
+          autoHideDuration={3000}
           onClose={this.handleClose}
           ContentProps={{
             "aria-describedby": "message-id",

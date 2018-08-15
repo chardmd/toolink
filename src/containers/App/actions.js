@@ -3,6 +3,7 @@ import {
   SET_AUTHENTICATING,
   SET_AUTHENTICATED,
   SET_LOADING,
+  DISPLAY_ALERT,
 } from "./constants";
 
 export function logout() {
@@ -28,6 +29,14 @@ export function setAuthenticated(status) {
 export function setLoading(status) {
   return {
     type: SET_LOADING,
+    status,
+  };
+}
+
+export function displayAlert(message, status) {
+  return {
+    type: DISPLAY_ALERT,
+    message,
     status,
   };
 }

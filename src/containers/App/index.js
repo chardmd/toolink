@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar";
 
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
-import { logout, setAuthenticated } from "./actions";
+import { logout, setAuthenticated, displayAlert } from "./actions";
 
 //components
 import SimpleSnackbar from "../../components/SimpleSnackbar";
@@ -49,9 +49,9 @@ class App extends Component {
               <div className="toolbar" />
               <Routes childProps={childProps} />
               <SimpleSnackbar
-                message={"Hello"}
-                open={true}
-                toggleOpen={() => {}}
+                message={this.props.alertMessage}
+                open={this.props.alertOpen}
+                toggleOpen={this.props.displayAlert}
               />
             </main>
           </div>
@@ -74,14 +74,15 @@ class App extends Component {
 const mapStateToProps = state => ({
   isAuthenticating: state.app.isAuthenticating,
   isAuthenticated: state.app.isAuthenticated,
-  birthDate: state.home.birthDate,
-  lifeSpan: state.home.lifeSpan,
+  alertOpen: state.app.alertOpen,
+  alertMessage: state.app.alertMessage,
 });
 
 const mapDispatchToProps = dispatch => ({
   setAuthenticated: status => dispatch(setAuthenticated(status)),
   getAuthenticatedUser: () => dispatch(getAuthenticatedUser()),
   logout: () => dispatch(logout()),
+  displayAlert: (message, status) => dispatch(displayAlert(message, status)),
 });
 
 export default compose(

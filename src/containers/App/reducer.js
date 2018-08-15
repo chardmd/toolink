@@ -3,6 +3,7 @@ import {
   SET_AUTHENTICATED,
   SET_AUTHENTICATING,
   SET_LOADING,
+  DISPLAY_ALERT,
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -10,6 +11,8 @@ const INITIAL_STATE = {
   isAuthenticated: false,
   isLoading: false,
   err: null,
+  alertMessage: "",
+  alertOpen: false,
 };
 
 const appReducer = (state = INITIAL_STATE, action) => {
@@ -31,6 +34,12 @@ const appReducer = (state = INITIAL_STATE, action) => {
       };
     case LOGOUT:
       return state;
+    case DISPLAY_ALERT:
+      return {
+        ...state,
+        alertMessage: action.message,
+        alertOpen: action.status,
+      };
     default:
       return state;
   }
