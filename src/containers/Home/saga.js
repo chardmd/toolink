@@ -64,6 +64,7 @@ function* handleSaveLink({ link }) {
   try {
     console.table({ link });
     yield put(saveLinkSuccess(newData));
+    yield put(displayAlert("Link successfully saved", true));
   } catch (e) {
     yield put(saveLinkFailed(e));
   }
@@ -72,16 +73,20 @@ function* handleSaveLink({ link }) {
 function* handleRemoveLink({ id }) {
   try {
     yield put(removeLinkSuccess(id));
+    yield put(displayAlert("Link successfully removed", true));
   } catch (e) {
     yield put(removeLinkFailed(e));
+    yield put(displayAlert(e.message, true));
   }
 }
 
 function* handleAddCategory({ category }) {
   try {
     yield put(addCategorySuccess({ id: 10, name: category }));
+    yield put(displayAlert("Category successfully added", true));
   } catch (e) {
     yield put(addCategoryFailed(e));
+    yield put(displayAlert(e.message, true));
   }
 }
 
@@ -91,14 +96,17 @@ function* handleRemoveCategory({ id }) {
     yield put(displayAlert("Category successfully removed", true));
   } catch (e) {
     yield put(removeCategoryFailed(e));
+    yield put(displayAlert(e.message, true));
   }
 }
 
 function* handleRenameCategory({ id, text }) {
   try {
     yield put(renameCategorySuccess(id, text));
+    yield put(displayAlert("Category successfully updated", true));
   } catch (e) {
     yield put(renameCategoryFailed(e));
+    yield put(displayAlert(e.message, true));
   }
 }
 
