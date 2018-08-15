@@ -31,7 +31,7 @@
     "generate": "plop --plopfile generators/index.js",
     "build:netlify": "npm run build && cp _redirects build/_redirects",
     "eject": "react-scripts eject",
-    "pre-commit": "pretty-quick --staged"
+    "prepush": "pretty-quick --staged"
   },
   "devDependencies": {
     "husky": "^0.14.3",
