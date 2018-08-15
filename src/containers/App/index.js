@@ -7,6 +7,10 @@ import NavBar from "../../components/NavBar";
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
 import { logout, setAuthenticated } from "./actions";
+
+//components
+import SimpleSnackbar from "../../components/SimpleSnackbar";
+
 import "./App.css";
 
 class App extends Component {
@@ -44,6 +48,11 @@ class App extends Component {
             <main className="content">
               <div className="toolbar" />
               <Routes childProps={childProps} />
+              <SimpleSnackbar
+                message={"Hello"}
+                open={true}
+                toggleOpen={() => {}}
+              />
             </main>
           </div>
           {!this.props.isAuthenticated && (
