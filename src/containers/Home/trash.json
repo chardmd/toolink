@@ -1,33 +1,34 @@
 [
   {
-    id: 1,
-    author: "Ryan Hoover",
-    date: null,
-    description:
+    "id": 1,
+    "author": "Ryan Hoover",
+    "date": null,
+    "description":
       "You’ll learn the basic building blocks to spin up new startup ideas and putting together the different pieces like a landing page, database, notification system and a newsletter.",
-    image:
+    "image":
       "https://uploads-ssl.webflow.com/5afbf79eefeddfdbb2ec179d/5afc291aab090f0a37d9c72b_newco%20logo%20transparent.png",
-    logo:
+    "logo":
       "https://uploads-ssl.webflow.com/5afbf79eefeddfdbb2ec179d/5b0f102eac197b1336df6cf1_Artboard%20Copy%2015.png",
-    publisher: null,
-    title: "newCo",
-    url: "http://newco.app/",
-    lang: null,
-    video: null,
+    "publisher": null,
+    "title": "newCo",
+    "url": "http://newco.app/",
+    "lang": null,
+    "video": null
   },
   {
-    id: 2,
-    author: null,
-    date: "2018-08-05T12:00:00.000Z",
-    description:
+    "id": 2,
+    "author": null,
+    "date": "2018-08-05T12:00:00.000Z",
+    "description":
       "Connect with fellow entrepreneurs, developers, and bootstrappers who are sharing the strategies and revenue numbers behind their companies.",
-    image: "https://www.indiehackers.com/images/shareables/home.jpg",
-    logo:
+    "image": "https://www.indiehackers.com/images/shareables/home.jpg",
+    "logo":
       "https://www.indiehackers.com/images/favicons/favicon--192x192-0b4e94a8d09dc1c58461645f54cc7a.png",
-    publisher: "Indie Hackers",
-    title: "Indie Hackers: Work Together to Build Profitable Online Businesses",
-    url: "https://www.indiehackers.com",
-    lang: null,
-    video: null,
-  },
-];
+    "publisher": "Indie Hackers",
+    "title":
+      "Indie Hackers: Work Together to Build Profitable Online Businesses",
+    "url": "https://www.indiehackers.com",
+    "lang": null,
+    "video": null
+  }
+]
