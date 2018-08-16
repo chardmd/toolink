@@ -11,11 +11,10 @@ import { TextField, Paper, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 //components
-import BaseSnackBar from "../../components/BaseSnackBar";
 import LoaderButton from "../../components/LoaderButton";
 
 import { validateEmail, validatePassword } from "../../libs/utils.js";
-import { signUp, confirmSignUp, setLoading, setAlertOpen } from "./actions";
+import { signUp, confirmSignUp, setLoading } from "./actions";
 
 import "./Signup.css";
 
@@ -263,12 +262,6 @@ export class Signup extends React.Component {
         {this.props.isSuccess
           ? this.renderConfirmationForm()
           : this.renderForm()}
-        <BaseSnackBar
-          variant="error"
-          message={this.props.error.message}
-          open={this.props.alertOpen}
-          onClose={this.handleAlertClose}
-        />
       </div>
     );
   }
@@ -286,7 +279,6 @@ const mapDispatchToProps = dispatch => ({
   confirmSignUp: (email, confirmationCode, password) =>
     dispatch(confirmSignUp(email, confirmationCode, password)),
   setLoading: isLoading => dispatch(setLoading(isLoading)),
-  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen)),
 });
 
 export default connect(

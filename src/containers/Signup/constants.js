@@ -7,7 +7,6 @@
 export const DEFAULT_ACTION = "app/Signup/DEFAULT_ACTION";
 
 export const SET_LOADING = "app/Signup/SET_LOADING";
-export const SET_ALERT_OPEN = "app/Signup/SET_ALERT_OPEN";
 
 export const SIGN_UP = "app/Signup/SIGN_UP";
 export const SIGN_UP_SUCCESS = "app/Signup/SIGN_UP_SUCCESS";

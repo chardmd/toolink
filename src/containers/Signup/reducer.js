@@ -8,7 +8,6 @@
 import {
   DEFAULT_ACTION,
   SET_LOADING,
-  SET_ALERT_OPEN,
   SIGN_UP,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILED,
@@ -34,11 +33,6 @@ function signupReducer(state = initialState, action) {
       return {
         ...state,
         isLoading: action.isLoading,
-      };
-    case SET_ALERT_OPEN:
-      return {
-        ...state,
-        alertOpen: action.alertOpen,
       };
     case SIGN_UP:
       return state;

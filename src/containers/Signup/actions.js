@@ -6,7 +6,6 @@
 
 import {
   SET_LOADING,
-  SET_ALERT_OPEN,
   SIGN_UP,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILED,
@@ -19,13 +18,6 @@ export function setLoading(isLoading) {
   return {
     type: SET_LOADING,
     isLoading,
-  };
-}
-
-export function setAlertOpen(alertOpen) {
-  return {
-    type: SET_ALERT_OPEN,
-    alertOpen,
   };
 }
 
