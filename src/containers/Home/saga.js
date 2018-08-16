@@ -9,6 +9,7 @@ import {
   REMOVE_CATEGORY,
   RENAME_CATEGORY,
   LOAD_HOME,
+  GET_TRASH,
 } from "./constants";
 import {
   getLinkDataSuccess,
@@ -25,6 +26,8 @@ import {
   removeCategoryFailed,
   renameCategorySuccess,
   renameCategoryFailed,
+  getTrashSuccess,
+  getTrashFailed,
 } from "./actions";
 
 import { displayAlert } from "../App/actions";
@@ -32,6 +35,7 @@ import { displayAlert } from "../App/actions";
 import data from "./data.json";
 import newData from "./new.json";
 import categories from "./categories.json";
+import trash from "./trash.json";
 
 function* handleLoadHome() {
   yield handleGetCategories();
@@ -109,6 +113,18 @@ function* handleRenameCategory({ id, text }) {
   }
 }
 
+function* handleGetTrash() {
+  try {
+    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
+    // const response = yield call([axios, axios.get], url);
+    // console.log("response", response.data);
+    yield put(getTrashSuccess(trash));
+  } catch (e) {
+    yield put(getTrashFailed(e));
+    yield put(displayAlert(e.message, true));
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(LOAD_HOME, handleLoadHome),
@@ -119,6 +135,7 @@ function* rootSaga() {
     takeLatest(ADD_CATEGORY, handleAddCategory),
     takeLatest(REMOVE_CATEGORY, handleRemoveCategory),
     takeLatest(RENAME_CATEGORY, handleRenameCategory),
+    takeLatest(GET_TRASH, handleGetTrash),
   ]);
 }
 

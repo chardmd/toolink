@@ -18,6 +18,7 @@ import {
   removeCategory,
   renameCategory,
   loadHome,
+  getTrash,
 } from "./actions";
 
 //css
@@ -108,6 +109,7 @@ class Home extends Component {
               removeCategory={this.props.removeCategory}
               renameCategory={this.props.renameCategory}
               getLinkData={this.props.getLinkData}
+              getTrash={this.props.getTrash}
             />
           </Grid>
           <Grid
@@ -142,6 +144,7 @@ const mapDispatchToProps = dispatch => ({
   removeCategory: id => dispatch(removeCategory(id)),
   renameCategory: (id, text) => dispatch(renameCategory(id, text)),
   loadHome: () => dispatch(loadHome()),
+  getTrash: () => dispatch(getTrash()),
 });
 
 export default connect(

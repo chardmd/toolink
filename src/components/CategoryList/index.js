@@ -149,6 +149,7 @@ class CategoryList extends React.Component {
           className={`listItem ${0 === activeTrash && "active"}`}
           onClick={() => {
             this.selectTrash(0);
+            this.props.getTrash();
           }}
         >
           <ListItemAvatar>
@@ -205,6 +206,7 @@ CategoryList.propTypes = {
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
   getLinkData: PropTypes.func,
+  getTrash: PropTypes.func,
 };
 
 export default withStyles(styles)(CategoryList);

@@ -21,6 +21,9 @@ import {
   RENAME_CATEGORY_SUCCESS,
   RENAME_CATEGORY_FAILED,
   LOAD_HOME,
+  GET_TRASH,
+  GET_TRASH_SUCCESS,
+  GET_TRASH_FAILED,
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -50,7 +53,10 @@ const homeReducer = (state = INITIAL_STATE, action) => {
         categories: action.data,
       };
     case GET_CATEGORIES_FAILED:
-      return state;
+      return {
+        ...state,
+        err: action.err,
+      };
     case SAVE_LINK:
       return state;
     case SAVE_LINK_SUCCESS:
@@ -113,6 +119,18 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       };
     case LOAD_HOME:
       return state;
+    case GET_TRASH:
+      return state;
+    case GET_TRASH_SUCCESS:
+      return {
+        ...state,
+        previewList: action.data,
+      };
+    case GET_TRASH_FAILED:
+      return {
+        ...state,
+        err: action.err,
+      };
     default:
       return state;
   }

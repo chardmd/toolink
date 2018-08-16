@@ -26,4 +26,8 @@ export const RENAME_CATEGORY = "app/Home/RENAME_CATEGORY";
 export const RENAME_CATEGORY_SUCCESS = "app/Home/RENAME_CATEGORY_SUCCESS";
 export const RENAME_CATEGORY_FAILED = "app/Home/RENAME_CATEGORY_FAILED";
 
+export const GET_TRASH = "app/Home/GET_TRASH";
+export const GET_TRASH_SUCCESS = "app/Home/GET_TRASH_SUCCESS";
+export const GET_TRASH_FAILED = "app/Home/GET_TRASH_FAILED";
+
 export const LOAD_HOME = "app/Home/LOAD_HOME";
