@@ -1,5 +1,4 @@
 import {
-  SET_ALERT_OPEN,
   GOOGLE_SIGN_IN,
   GOOGLE_SIGN_IN_SUCCESS,
   GOOGLE_SIGN_IN_FAILED,
@@ -13,13 +12,6 @@ import {
   GET_AUTHENTICATED_USER_SUCCESS,
   GET_AUTHENTICATED_USER_FAILED,
 } from "./constants";
-
-export function setAlertOpen(alertOpen) {
-  return {
-    type: SET_ALERT_OPEN,
-    alertOpen,
-  };
-}
 
 export function googleSignIn(data) {
   return {

@@ -7,7 +7,6 @@ import { TextField, Paper, Typography, Hidden, Grid } from "@material-ui/core";
 
 //components
 import LoaderButton from "../../components/LoaderButton";
-import BaseSnackBar from "../../components/BaseSnackBar";
 
 import googleIcon from "../../assets/google.svg";
 import facebookIcon from "../../assets/facebook.svg";
@@ -15,7 +14,7 @@ import welcomeImage from "../../assets/welcome.svg";
 import config from "../../config";
 
 import { validateEmail, validatePassword } from "../../libs/utils.js";
-import { signIn, googleSignIn, facebookSignIn, setAlertOpen } from "./actions";
+import { signIn, googleSignIn, facebookSignIn } from "./actions";
 
 import "./Login.css";
 
@@ -207,12 +206,6 @@ class Login extends Component {
             </div>
           </Grid>
         </Grid>
-        <BaseSnackBar
-          variant="error"
-          message={this.props.error.message}
-          open={this.props.alertOpen}
-          onClose={this.handleAlertClose}
-        />
       </div>
     );
   }
@@ -220,15 +213,12 @@ class Login extends Component {
 
 const mapStateToProps = state => ({
   isLoading: state.app.isLoading,
-  alertOpen: state.login.alertOpen,
-  error: state.login.error,
 });
 
 const mapDispatchToProps = dispatch => ({
   signIn: data => dispatch(signIn(data)),
   googleSignIn: data => dispatch(googleSignIn(data)),
   facebookSignIn: data => dispatch(facebookSignIn(data)),
-  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen)),
 });
 
 export default connect(

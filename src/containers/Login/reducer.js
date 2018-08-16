@@ -1,5 +1,4 @@
 import {
-  SET_ALERT_OPEN,
   GOOGLE_SIGN_IN,
   GOOGLE_SIGN_IN_SUCCESS,
   GOOGLE_SIGN_IN_FAILED,
@@ -16,7 +15,6 @@ import {
 
 const INITIAL_STATE = {
   data: null,
-  alertOpen: false,
   error: {
     message: "",
   },
@@ -24,11 +22,6 @@ const INITIAL_STATE = {
 
 const loginReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SET_ALERT_OPEN:
-      return {
-        ...state,
-        alertOpen: action.alertOpen,
-      };
     case SIGN_IN:
       return state;
     case SIGN_IN_SUCCESS:

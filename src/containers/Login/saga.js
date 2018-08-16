@@ -9,7 +9,6 @@ import {
   GET_AUTHENTICATED_USER,
 } from "./constants";
 import {
-  setAlertOpen,
   signInSuccess,
   signInFailed,
   googleSignInSuccess,
@@ -24,6 +23,7 @@ import {
   setAuthenticating,
   setAuthenticated,
   setLoading,
+  displayAlert,
 } from "../App/actions";
 
 function* handleSignIn({ data }) {
@@ -34,8 +34,7 @@ function* handleSignIn({ data }) {
     yield put(signInSuccess(response));
     yield put(setAuthenticated(true));
   } catch (e) {
-    console.error(e);
-    yield put(setAlertOpen(true));
+    yield put(displayAlert(e.message, true));
     yield put(signInFailed(e));
   }
   yield put(setLoading(false));
@@ -68,8 +67,7 @@ function* handleGoogleSignIn({ data }) {
     yield put(googleSignInSuccess(result));
     yield put(setAuthenticated(true));
   } catch (e) {
-    console.error(e);
-    yield put(setAlertOpen(true));
+    yield put(displayAlert(e.message, true));
     yield put(googleSignInFailed(e));
   }
   yield put(setLoading(false));
@@ -103,8 +101,7 @@ function* handleFacebookSignIn({ data }) {
     yield put(facebookSignInSuccess(result));
     yield put(setAuthenticated(true));
   } catch (e) {
-    console.error(e);
-    yield put(setAlertOpen(true));
+    yield put(displayAlert(e.message, true));
     yield put(facebookSignInFailed(e));
   }
 

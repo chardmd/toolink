@@ -12,7 +12,6 @@ import CategoryList from "../../components/CategoryList";
 //actions
 import {
   getLinkData,
-  getCategories,
   saveLink,
   removeLink,
   addCategory,

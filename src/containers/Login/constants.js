@@ -1,5 +1,3 @@
-export const SET_ALERT_OPEN = "app/Login/SET_ALERT_OPEN";
-
 export const GOOGLE_SIGN_IN = "app/Login/GOOGLE_SIGN_IN";
 export const GOOGLE_SIGN_IN_SUCCESS = "app/Login/GOOGLE_SIGN_IN_SUCCESS";
 export const GOOGLE_SIGN_IN_FAILED = "app/Login/GOOGLE_SIGN_IN_FAILED";
