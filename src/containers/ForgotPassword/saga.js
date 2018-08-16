@@ -4,12 +4,11 @@ import { Auth } from "aws-amplify";
 import { FORGOT_PASSWORD, FORGOT_PASSWORD_CODE } from "./constants";
 import {
   setLoading,
-  setAlertOpen,
   forgotPasswordSuccess,
   forgotPasswordFailed,
 } from "./actions";
 
-import { setAuthenticated } from "../App/actions";
+import { setAuthenticated, displayAlert } from "../App/actions";
 import { signInSuccess, signInFailed } from "../Login/actions";
 
 function* handleForgotPassword({ email }) {
@@ -18,8 +17,7 @@ function* handleForgotPassword({ email }) {
     yield call([Auth, Auth.forgotPassword], email);
     yield put(forgotPasswordSuccess(true));
   } catch (e) {
-    console.error(e);
-    yield put(setAlertOpen(true));
+    yield put(displayAlert(e.message, true));
     yield put(forgotPasswordFailed(e));
   }
   yield put(setLoading(false));
@@ -40,8 +38,7 @@ function* handleForgotPasswordCode({ email, confirmationCode, password }) {
     yield put(signInSuccess(response));
     yield put(setAuthenticated(true));
   } catch (e) {
-    console.error(e);
-    yield put(setAlertOpen(true));
+    yield put(displayAlert(e.message, true));
     yield put(signInFailed(e));
   }
   yield put(setLoading(false));

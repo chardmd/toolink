@@ -1,6 +1,5 @@
 import {
   SET_LOADING,
-  SET_ALERT_OPEN,
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILED,
@@ -11,13 +10,6 @@ export function setLoading(isLoading) {
   return {
     type: SET_LOADING,
     isLoading,
-  };
-}
-
-export function setAlertOpen(alertOpen) {
-  return {
-    type: SET_ALERT_OPEN,
-    alertOpen,
   };
 }
 

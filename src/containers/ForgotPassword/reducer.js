@@ -1,6 +1,5 @@
 import {
   SET_LOADING,
-  SET_ALERT_OPEN,
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAILED,
@@ -10,7 +9,6 @@ import {
 const INITIAL_STATE = {
   isLoading: false,
   success: false,
-  alertOpen: false,
   error: {
     message: "",
   },
@@ -22,11 +20,6 @@ const forgotPasswordReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoading: action.isLoading,
-      };
-    case SET_ALERT_OPEN:
-      return {
-        ...state,
-        alertOpen: action.alertOpen,
       };
     case FORGOT_PASSWORD:
       return state;

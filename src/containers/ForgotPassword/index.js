@@ -4,16 +4,10 @@ import { TextField, Paper, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
 
 //components
-import BaseSnackBar from "../../components/BaseSnackBar";
 import LoaderButton from "../../components/LoaderButton";
 
 import { validateEmail, validatePassword } from "../../libs/utils.js";
-import {
-  forgotPassword,
-  forgotPasswordCode,
-  setLoading,
-  setAlertOpen,
-} from "./actions";
+import { forgotPassword, forgotPasswordCode, setLoading } from "./actions";
 import "./ForgotPassword.css";
 
 class ForgotPassword extends Component {
@@ -258,12 +252,6 @@ class ForgotPassword extends Component {
         {this.props.isSuccess
           ? this.renderConfirmationForm()
           : this.renderForm()}
-        <BaseSnackBar
-          variant="error"
-          message={this.props.error.message}
-          open={this.props.alertOpen}
-          onClose={this.handleAlertClose}
-        />
       </div>
     );
   }
@@ -272,7 +260,6 @@ class ForgotPassword extends Component {
 const mapStateToProps = state => ({
   isLoading: state.forgotPassword.isLoading,
   isSuccess: state.forgotPassword.isSuccess,
-  alertOpen: state.forgotPassword.alertOpen,
   error: state.forgotPassword.error,
 });
 
@@ -281,7 +268,6 @@ const mapDispatchToProps = dispatch => ({
   forgotPasswordCode: (email, confirmationCode, password) =>
     dispatch(forgotPasswordCode(email, confirmationCode, password)),
   setLoading: isLoading => dispatch(setLoading(isLoading)),
-  setAlertOpen: alertOpen => dispatch(setAlertOpen(alertOpen)),
 });
 
 export default connect(
