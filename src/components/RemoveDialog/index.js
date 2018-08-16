@@ -18,14 +18,6 @@ import "./RemoveDialog.css";
 class RemoveDialog extends React.Component {
   constructor(props) {
     super(props);
-
-    this.handleDelete = this.handleDelete.bind(this);
-  }
-
-  handleDelete() {
-    const { categoryId } = this.props;
-    this.props.removeCategory(categoryId);
-    this.props.onClose();
   }
 
   render() {
@@ -39,20 +31,17 @@ class RemoveDialog extends React.Component {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">
-            {"Delete this category?"}
-          </DialogTitle>
+          <DialogTitle id="alert-dialog-title">{this.props.title}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              This will delete all related tools and links under this category.
-              Press the 'delete' button to continue.
+              {this.props.message}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.props.onClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleDelete} color="primary">
+            <Button onClick={this.props.onSave} color="primary">
               Delete
             </Button>
           </DialogActions>
@@ -63,9 +52,10 @@ class RemoveDialog extends React.Component {
 }
 
 RemoveDialog.propTypes = {
-  categoryId: PropTypes.number,
   isActive: PropTypes.bool,
-  removeCategory: PropTypes.func,
+  title: PropTypes.string,
+  message: PropTypes.string,
+  onSave: PropTypes.func,
   onClose: PropTypes.func,
 };
 

@@ -1,6 +1,6 @@
 /**
  *
- * CategoryMenu
+ * TrashMenu
  *
  */
 
@@ -12,24 +12,22 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 //components
-import RenameDialog from "../RenameDialog";
 import RemoveDialog from "../RemoveDialog";
 
-import "./CategoryMenu.css";
+import "./TrashMenu.css";
 
-class CategoryMenu extends React.Component {
+class TrashMenu extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       anchorEl: null,
-      renameDialogOpen: false,
       removeDialogOpen: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.toggleRenameDialog = this.toggleRenameDialog.bind(this);
+    this.toggleRemoveDialog = this.toggleRemoveDialog.bind(this);
     this.handleRemoveCategory = this.handleRemoveCategory.bind(this);
   }
 
@@ -41,12 +39,6 @@ class CategoryMenu extends React.Component {
     this.setState({ anchorEl: null });
   }
 
-  toggleRenameDialog(status) {
-    this.setState({
-      renameDialogOpen: status,
-    });
-  }
-
   toggleRemoveDialog(status) {
     this.setState({
       removeDialogOpen: status,
@@ -54,29 +46,16 @@ class CategoryMenu extends React.Component {
   }
 
   handleRemoveCategory() {
-    const { categoryId } = this.props;
-    this.props.removeCategory(categoryId);
     this.toggleRemoveDialog(false);
   }
 
   render() {
     const { anchorEl } = this.state;
-    const { categoryId, categoryName } = this.props;
     return (
       <Fragment>
-        <RenameDialog
-          categoryId={categoryId}
-          categoryName={categoryName}
-          isActive={this.state.renameDialogOpen}
-          onClose={() => {
-            this.toggleRenameDialog(false);
-          }}
-          renameCategory={this.props.renameCategory}
-        />
         <RemoveDialog
-          title={`Delete this category?`}
-          message={`This will delete all related tools and links under this category.
-          Press the 'delete' button to continue.`}
+          title={`Empty Trash?`}
+          message={`Are you sure you want to permanently erase the items in the Trash? You can’t undo this action.`}
           isActive={this.state.removeDialogOpen}
           onSave={this.handleRemoveCategory}
           onClose={() => {
@@ -97,22 +76,13 @@ class CategoryMenu extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem
-            key={`menu-rename`}
-            onClick={() => {
-              this.toggleRenameDialog(true);
-              this.handleClose();
-            }}
-          >
-            Rename
-          </MenuItem>
-          <MenuItem
             key={`menu-remove`}
             onClick={() => {
               this.toggleRemoveDialog(true);
               this.handleClose();
             }}
           >
-            Remove
+            Empty Trash
           </MenuItem>
         </Menu>
       </Fragment>
@@ -120,11 +90,8 @@ class CategoryMenu extends React.Component {
   }
 }
 
-CategoryMenu.propTypes = {
-  removeCategory: PropTypes.func,
-  renameCategory: PropTypes.func,
-  categoryId: PropTypes.number,
-  categoryName: PropTypes.string,
+TrashMenu.propTypes = {
+  emptyTrash: PropTypes.func,
 };
 
-export default CategoryMenu;
+export default TrashMenu;
