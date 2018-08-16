@@ -29,6 +29,8 @@ const styles = theme => ({
   },
 });
 
+const INACTIVE = -1;
+
 class CategoryList extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +40,7 @@ class CategoryList extends React.Component {
       category: "",
       anchorEl: null,
       activeCategory: 0,
-      activeTrash: -1,
+      activeTrash: INACTIVE,
     };
 
     this.renderCategories = this.renderCategories.bind(this);
@@ -73,14 +75,14 @@ class CategoryList extends React.Component {
   selectCategory(index) {
     this.setState({
       activeCategory: index,
-      activeTrash: -1,
+      activeTrash: INACTIVE,
     });
   }
 
   selectTrash(index) {
     this.setState({
       activeTrash: index,
-      activeCategory: -1,
+      activeCategory: INACTIVE,
     });
   }
 
@@ -188,7 +190,12 @@ class CategoryList extends React.Component {
               }}
             />
           )}
-          <Button color="secondary" onClick={this.onAddCategory} size="large">
+          <Button
+            color="secondary"
+            onClick={this.onAddCategory}
+            size="large"
+            disabled={this.state.activeCategory === -1}
+          >
             <Icon>add</Icon>
             &nbsp;
             <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
