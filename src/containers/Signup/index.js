@@ -183,7 +183,7 @@ export class Signup extends React.Component {
       <div>
         <Paper elevation={3} className="paper">
           <Typography variant="headline" component="h3" align="center">
-            Sign Up
+            Start using TooLink!
           </Typography>
           <form onSubmit={this.handleSubmit}>
             <div>
@@ -241,7 +241,7 @@ export class Signup extends React.Component {
                 fullWidth
                 type="submit"
                 isLoading={this.props.isLoading}
-                text="Signup"
+                text="Sign Up FREE"
                 loadingText="Signing up…"
               />
             </div>

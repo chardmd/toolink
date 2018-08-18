@@ -209,7 +209,7 @@ class ForgotPassword extends Component {
       <div>
         <Paper elevation={3} className="paper">
           <Typography variant="headline" component="h3" align="center">
-            Forgotten your password?
+            Forgot your password?
           </Typography>
           <form onSubmit={this.handleSubmit}>
             <div>
@@ -231,7 +231,7 @@ class ForgotPassword extends Component {
                 fullWidth
                 type="submit"
                 isLoading={this.props.isLoading}
-                text="Continue"
+                text="Reset Password"
                 loadingText="Sending code .."
               />
             </div>

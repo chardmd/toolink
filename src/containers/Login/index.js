@@ -111,7 +111,7 @@ class Login extends Component {
               <form onSubmit={this.handleSubmit}>
                 <div>
                   <Typography variant="headline" component="h3" align="center">
-                    Login
+                    Great to see you again!
                   </Typography>
                 </div>
                 <div>
@@ -200,7 +200,7 @@ class Login extends Component {
               <p>
                 Don't have an account?&nbsp;&nbsp;
                 <Link to="/signup" className="secondary">
-                  Sign up
+                  Get Started
                 </Link>
               </p>
             </div>
