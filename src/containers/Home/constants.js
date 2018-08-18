@@ -10,24 +10,4 @@ export const REMOVE_LINK = "app/Home/REMOVE_LINK";
 export const REMOVE_LINK_SUCCESS = "app/Home/REMOVE_LINK_SUCCESS";
 export const REMOVE_LINK_FAILED = "app/Home/REMOVE_LINK_FAILED";
 
-export const GET_CATEGORIES = "app/Home/GET_CATEGORIES";
-export const GET_CATEGORIES_SUCCESS = "app/Home/GET_CATEGORIES_SUCCESS";
-export const GET_CATEGORIES_FAILED = "app/Home/GET_CATEGORIES_FAILED";
-
-export const ADD_CATEGORY = "app/Home/ADD_CATEGORY";
-export const ADD_CATEGORY_SUCCESS = "app/Home/ADD_CATEGORY_SUCCESS";
-export const ADD_CATEGORY_FAILED = "app/Home/ADD_CATEGORY_FAILED";
-
-export const REMOVE_CATEGORY = "app/Home/REMOVE_CATEGORY";
-export const REMOVE_CATEGORY_SUCCESS = "app/Home/REMOVE_CATEGORY_SUCCESS";
-export const REMOVE_CATEGORY_FAILED = "app/Home/REMOVE_CATEGORY_FAILED";
-
-export const RENAME_CATEGORY = "app/Home/RENAME_CATEGORY";
-export const RENAME_CATEGORY_SUCCESS = "app/Home/RENAME_CATEGORY_SUCCESS";
-export const RENAME_CATEGORY_FAILED = "app/Home/RENAME_CATEGORY_FAILED";
-
-export const GET_TRASH = "app/Home/GET_TRASH";
-export const GET_TRASH_SUCCESS = "app/Home/GET_TRASH_SUCCESS";
-export const GET_TRASH_FAILED = "app/Home/GET_TRASH_FAILED";
-
 export const LOAD_HOME = "app/Home/LOAD_HOME";
