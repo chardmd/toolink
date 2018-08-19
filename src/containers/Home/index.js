@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { compose } from "recompose";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -33,9 +34,12 @@ class Home extends Component {
 
   componentWillReceiveProps(nextProps) {
     //load the data of first category
+    const categoryId = parseInt(nextProps.match.params.categoryId, 10);
     if (this.props.categories !== nextProps.categories) {
       const firstCategory =
-        nextProps.categories.length !== 0 ? nextProps.categories[0] : null;
+        nextProps.categories.length !== 0
+          ? nextProps.categories.find(c => c.id === categoryId)
+          : null;
       if (firstCategory !== null) {
         this.props.getCategoryLinks(firstCategory.id);
       }
@@ -109,7 +113,9 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(getCategories()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(Home);
