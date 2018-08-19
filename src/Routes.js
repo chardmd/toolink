@@ -15,8 +15,7 @@ const AsyncForgotPassword = asyncComponent(() =>
 export default ({ childProps }) => (
   <Switch>
     <AuthenticatedRoute
-      path="/"
-      exact
+      path="/home/:categoryId?"
       component={AsyncHome}
       props={childProps}
     />

@@ -6,8 +6,10 @@
  */
 
 import { takeLatest, put, all } from "redux-saga/effects";
+import { push } from "connected-react-router";
 
 import { GET_CATEGORY_LINKS, SAVE_LINK, REMOVE_LINK } from "./constants";
+
 import {
   getCategoryLinksSuccess,
   getCategoryLinksFailed,
@@ -27,6 +29,7 @@ function* handleGetCategoryLinks({ categoryId }) {
     // const response = yield call([axios, axios.get], url);
     // console.log("response", response.data);
     yield put(getCategoryLinksSuccess(data));
+    yield put(push(`/home/${categoryId}`));
   } catch (e) {
     yield put(getCategoryLinksFailed(e));
   }
