@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import Divider from "@material-ui/core/Divider";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -36,6 +40,23 @@ class Home extends Component {
     const { previewList } = this.props;
     return (
       <div className="Home">
+        <Toolbar className="toolbox">
+          <div>
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              onClick={() => {
+                this.onToggleStatus(true);
+              }}
+            >
+              <Icon>link</Icon>
+              &nbsp;
+              <span>Add Link</span>
+            </Button>
+          </div>
+        </Toolbar>
+        <Divider />
         <FormDialog
           isActive={this.state.isActive}
           toggleStatus={this.onToggleStatus}
@@ -63,6 +84,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   previewList: state.home.previewList,
+  categories: state.app.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
