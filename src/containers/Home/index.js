@@ -9,7 +9,7 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getLinkData, saveLink, removeLink, loadHome } from "./actions";
+import { saveLink, removeLink, loadHome } from "./actions";
 
 //css
 import "./Home.css";
@@ -88,7 +88,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getLinkData: category => dispatch(getLinkData(category)),
   saveLink: link => dispatch(saveLink(link)),
   removeLink: id => dispatch(removeLink(id)),
   loadHome: () => dispatch(loadHome()),

@@ -9,6 +9,7 @@ import {
   RENAME_CATEGORY,
   GET_TRASH,
   GET_CATEGORIES,
+  GET_CATEGORY_LINKS,
 } from "./constants";
 import {
   setAuthenticating,
@@ -24,10 +25,13 @@ import {
   getTrashFailed,
   getCategoriesSuccess,
   getCategoriesFailed,
+  getCategoryLinksSuccess,
+  getCategoryLinksFailed,
 } from "./actions";
 
 import categories from "./categories.json";
 import trash from "./trash.json";
+import data from "./data.json";
 
 function* handleLogout() {
   try {
@@ -93,6 +97,16 @@ function* handleGetCategories() {
   }
 }
 
+function* handleGetCategoryLinks({ categoryId }) {
+  try {
+    // const response = yield call([axios, axios.get], url);
+    // console.log("response", response.data);
+    yield put(getCategoryLinksSuccess(data));
+  } catch (e) {
+    yield put(getCategoryLinksFailed(e));
+  }
+}
+
 function* rootSaga() {
   yield all([
     takeLatest(LOGOUT, handleLogout),
@@ -101,6 +115,7 @@ function* rootSaga() {
     takeLatest(RENAME_CATEGORY, handleRenameCategory),
     takeLatest(GET_TRASH, handleGetTrash),
     takeLatest(GET_CATEGORIES, handleGetCategories),
+    takeLatest(GET_CATEGORY_LINKS, handleGetCategoryLinks),
   ]);
 }
 

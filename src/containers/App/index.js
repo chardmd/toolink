@@ -19,6 +19,7 @@ import {
   renameCategory,
   getTrash,
   getCategories,
+  getCategoryLinks,
 } from "./actions";
 
 //components
@@ -86,7 +87,7 @@ class App extends Component {
                 addCategory={this.props.addCategory}
                 removeCategory={this.props.removeCategory}
                 renameCategory={this.props.renameCategory}
-                getLinkData={this.props.getLinkData}
+                getCategoryLinks={this.props.getCategoryLinks}
                 getTrash={this.props.getTrash}
               />
             )}
@@ -134,6 +135,7 @@ const mapDispatchToProps = dispatch => ({
   renameCategory: (id, text) => dispatch(renameCategory(id, text)),
   getTrash: () => dispatch(getTrash()),
   getCategories: () => dispatch(getCategories()),
+  getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
 });
 
 export default compose(

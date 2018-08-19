@@ -19,6 +19,9 @@ import {
   GET_TRASH,
   GET_TRASH_FAILED,
   GET_TRASH_SUCCESS,
+  GET_CATEGORY_LINKS,
+  GET_CATEGORY_LINKS_SUCCESS,
+  GET_CATEGORY_LINKS_FAILED,
 } from "./constants";
 
 export function logout() {
@@ -53,6 +56,27 @@ export function displayAlert(message, status) {
     type: DISPLAY_ALERT,
     message,
     status,
+  };
+}
+
+export function getCategoryLinks(categoryId) {
+  return {
+    type: GET_CATEGORY_LINKS,
+    categoryId,
+  };
+}
+
+export function getCategoryLinksSuccess(data) {
+  return {
+    type: GET_CATEGORY_LINKS_SUCCESS,
+    data,
+  };
+}
+
+export function getCategoryLinksFailed(err) {
+  return {
+    type: GET_CATEGORY_LINKS_FAILED,
+    err,
   };
 }
 

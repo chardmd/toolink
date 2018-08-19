@@ -104,7 +104,7 @@ class CategoryList extends React.Component {
           key={`category-${category.id}`}
           onClick={() => {
             this.selectCategory(index);
-            this.props.getLinkData(category.id);
+            this.props.getCategoryLinks(category.id);
           }}
         >
           <ListItemAvatar>
@@ -232,7 +232,7 @@ CategoryList.propTypes = {
   addCategory: PropTypes.func,
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
-  getLinkData: PropTypes.func,
+  getCategoryLinks: PropTypes.func,
   getTrash: PropTypes.func,
 };
 

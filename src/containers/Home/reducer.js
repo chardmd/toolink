@@ -1,7 +1,4 @@
 import {
-  GET_LINK_DATA,
-  GET_LINK_DATA_SUCCESS,
-  GET_LINK_DATA_FAILED,
   SAVE_LINK,
   SAVE_LINK_SUCCESS,
   SAVE_LINK_FAILED,
@@ -17,18 +14,6 @@ const INITIAL_STATE = {
 
 const homeReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_LINK_DATA:
-      return state;
-    case GET_LINK_DATA_SUCCESS:
-      return {
-        ...state,
-        previewList: action.data,
-      };
-    case GET_LINK_DATA_FAILED:
-      return {
-        ...state,
-        err: action.err,
-      };
     case SAVE_LINK:
       return state;
     case SAVE_LINK_SUCCESS:

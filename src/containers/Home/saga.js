@@ -2,8 +2,6 @@ import { takeLatest, put, all } from "redux-saga/effects";
 
 import { GET_LINK_DATA, SAVE_LINK, REMOVE_LINK, LOAD_HOME } from "./constants";
 import {
-  getLinkDataSuccess,
-  getLinkDataFailed,
   saveLinkSuccess,
   saveLinkFailed,
   removeLinkSuccess,
@@ -11,23 +9,9 @@ import {
 } from "./actions";
 
 import { displayAlert } from "../App/actions";
-
-import data from "./data.json";
 import newData from "./new.json";
 
-function* handleLoadHome() {
-  yield handleGetLinkData({});
-}
-
-function* handleGetLinkData({ category }) {
-  try {
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
-    yield put(getLinkDataSuccess(data));
-  } catch (e) {
-    yield put(getLinkDataFailed(e));
-  }
-}
+function* handleLoadHome() {}
 
 function* handleSaveLink({ link }) {
   try {
@@ -52,7 +36,6 @@ function* handleRemoveLink({ id }) {
 function* rootSaga() {
   yield all([
     takeLatest(LOAD_HOME, handleLoadHome),
-    takeLatest(GET_LINK_DATA, handleGetLinkData),
     takeLatest(SAVE_LINK, handleSaveLink),
     takeLatest(REMOVE_LINK, handleRemoveLink),
   ]);
