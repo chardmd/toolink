@@ -41,7 +41,8 @@ class Home extends Component {
     ) {
       const firstCategory = isNaN(categoryId)
         ? nextProps.categories[0]
-        : nextProps.categories.find(c => c.id === categoryId);
+        : nextProps.categories.find(c => c.id === categoryId) ||
+          nextProps.categories[0];
       if (firstCategory !== null) {
         this.props.getCategoryLinks(firstCategory.id);
       }

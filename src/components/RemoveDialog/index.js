@@ -26,6 +26,11 @@ class RemoveDialog extends React.Component {
           maxWidth="sm"
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          onKeyPress={e => {
+            if (e.key === "Enter") {
+              this.props.onSave();
+            }
+          }}
         >
           <DialogTitle id="alert-dialog-title">{this.props.title}</DialogTitle>
           <DialogContent>
