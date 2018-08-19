@@ -1,8 +1,6 @@
 import { LOAD_HOME } from "./constants";
 
-const INITIAL_STATE = {
-  links: [],
-};
+const INITIAL_STATE = {};
 
 const homeReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
