@@ -28,8 +28,11 @@ class Home extends Component {
 
   componentDidMount() {
     //load the data of first category
-    const firstCategory = this.props.categories[0];
-    this.props.getCategoryLinks(firstCategory.id);
+    const firstCategory =
+      this.props.categories.length !== 0 ? this.props.categories[0] : null;
+    if (firstCategory !== null) {
+      this.props.getCategoryLinks(firstCategory.id);
+    }
   }
 
   onToggleStatus(status) {
