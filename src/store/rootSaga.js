@@ -4,6 +4,8 @@ import appSaga from "../containers/App/saga";
 import loginSaga from "../containers/Login/saga";
 import forgotPasswordSaga from "../containers/ForgotPassword/saga";
 import SignUpSaga from "../containers/Signup/saga";
+import CategoriesSaga from "../containers/Categories/saga";
+import LinksSaga from "../containers/Links/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -12,5 +14,7 @@ export default function* rootSaga() {
     fork(loginSaga),
     fork(forgotPasswordSaga),
     fork(SignUpSaga),
+    fork(CategoriesSaga),
+    fork(LinksSaga),
   ]);
 }

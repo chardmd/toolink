@@ -10,7 +10,7 @@ import FormDialog from "../../components/FormDialog";
 
 //actions
 import { saveLink, removeLink, loadHome } from "./actions";
-import { getCategoryLinks } from "../App/actions";
+import { getCategoryLinks } from "../Categories/actions";
 
 //css
 import "./Home.css";

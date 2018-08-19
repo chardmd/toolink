@@ -10,17 +10,15 @@ import NavBar from "../../components/NavBar";
 import CategoryList from "../../components/CategoryList";
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
+import { logout, setAuthenticated, displayAlert } from "./actions";
 import {
-  logout,
-  setAuthenticated,
-  displayAlert,
   addCategory,
   removeCategory,
   renameCategory,
   getTrash,
   getCategories,
   getCategoryLinks,
-} from "./actions";
+} from "../Categories/actions";
 
 //components
 import SimpleSnackbar from "../../components/SimpleSnackbar";
@@ -122,7 +120,7 @@ const mapStateToProps = state => ({
   isAuthenticated: state.app.isAuthenticated,
   alertOpen: state.app.alertOpen,
   alertMessage: state.app.alertMessage,
-  categories: state.app.categories,
+  categories: state.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
