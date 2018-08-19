@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
-import Divider from "@material-ui/core/Divider";
 
 //components
 import MediaCard from "../../components/MediaCard";
