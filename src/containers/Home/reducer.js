@@ -6,13 +6,10 @@ import {
   REMOVE_LINK_SUCCESS,
   REMOVE_LINK_FAILED,
   LOAD_HOME,
-  GET_CATEGORY_LINKS,
-  GET_CATEGORY_LINKS_SUCCESS,
-  GET_CATEGORY_LINKS_FAILED,
 } from "./constants";
 
 const INITIAL_STATE = {
-  previewList: [],
+  links: [],
 };
 
 const homeReducer = (state = INITIAL_STATE, action) => {
@@ -23,7 +20,7 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       const data = action.data;
       return {
         ...state,
-        previewList: [data, ...state.previewList],
+        links: [data, ...state.links],
       };
     case SAVE_LINK_FAILED:
       return {
@@ -36,7 +33,7 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       const linkId = action.id;
       return {
         ...state,
-        previewList: state.previewList.filter(i => i.id !== linkId),
+        links: state.links.filter(i => i.id !== linkId),
       };
     case REMOVE_LINK_FAILED:
       return {
@@ -45,18 +42,6 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       };
     case LOAD_HOME:
       return state;
-    case GET_CATEGORY_LINKS:
-      return state;
-    case GET_CATEGORY_LINKS_SUCCESS:
-      return {
-        ...state,
-        previewList: action.data,
-      };
-    case GET_CATEGORY_LINKS_FAILED:
-      return {
-        ...state,
-        err: action.err,
-      };
     default:
       return state;
   }

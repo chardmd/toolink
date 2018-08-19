@@ -16,10 +16,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import "./RemoveDialog.css";
 
 class RemoveDialog extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>

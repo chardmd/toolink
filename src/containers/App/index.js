@@ -19,6 +19,7 @@ import {
   renameCategory,
   getTrash,
   getCategories,
+  getCategoryLinks,
 } from "./actions";
 
 //components
@@ -134,6 +135,7 @@ const mapDispatchToProps = dispatch => ({
   renameCategory: (id, text) => dispatch(renameCategory(id, text)),
   getTrash: () => dispatch(getTrash()),
   getCategories: () => dispatch(getCategories()),
+  getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
 });
 
 export default compose(

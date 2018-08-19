@@ -9,7 +9,8 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { saveLink, removeLink, loadHome, getCategoryLinks } from "./actions";
+import { saveLink, removeLink, loadHome } from "./actions";
+import { getCategoryLinks } from "../App/actions";
 
 //css
 import "./Home.css";
@@ -38,7 +39,7 @@ class Home extends Component {
   }
 
   render() {
-    const { previewList } = this.props;
+    const { links } = this.props;
     return (
       <div className="Home">
         <Toolbar className="toolbox">
@@ -64,7 +65,7 @@ class Home extends Component {
           saveLink={this.props.saveLink}
         />
         <div className="items">
-          {previewList.map(data => (
+          {links.map(data => (
             <div className="card" key={`preview-${data.id}`}>
               <MediaCard
                 title={data.title}
@@ -85,7 +86,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  previewList: state.home.previewList,
+  links: state.app.links,
   categories: state.app.categories,
 });
 
