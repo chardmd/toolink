@@ -15,13 +15,6 @@
     margin: 0.5em;
 }
 
-.Home .leftCol {
-    height: 100%;
-    overflow: auto;
-    max-height: 100vh;
-    padding-bottom: 10em;
-}
-
 .Home .items {
     height: 100%;
     overflow: auto;
