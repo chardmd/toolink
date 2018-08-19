@@ -9,8 +9,8 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { saveLink, removeLink, loadHome } from "./actions";
-import { getCategoryLinks } from "../Categories/actions";
+import { loadHome } from "./actions";
+import { getCategoryLinks, saveLink, removeLink } from "../Links/actions";
 
 //css
 import "./Home.css";
@@ -89,8 +89,8 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  links: state.app.links,
-  categories: state.app.categories,
+  links: state.links,
+  categories: state.categories,
 });
 
 const mapDispatchToProps = dispatch => ({

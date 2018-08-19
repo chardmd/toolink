@@ -20,9 +20,6 @@ import {
   GET_CATEGORIES,
   GET_CATEGORIES_SUCCESS,
   GET_CATEGORIES_FAILED,
-  GET_CATEGORY_LINKS,
-  GET_CATEGORY_LINKS_SUCCESS,
-  GET_CATEGORY_LINKS_FAILED,
 } from "./constants";
 
 const initialState = [];
@@ -54,18 +51,6 @@ function categoriesReducer(state = initialState, action) {
       return renameCategory(state, action.id, action.text);
     case RENAME_CATEGORY_FAILED:
       return state;
-    case GET_CATEGORY_LINKS:
-      return state;
-    case GET_CATEGORY_LINKS_SUCCESS:
-      return {
-        ...state,
-        links: action.data,
-      };
-    case GET_CATEGORY_LINKS_FAILED:
-      return {
-        ...state,
-        err: action.err,
-      };
     case GET_TRASH:
       return state;
     case GET_TRASH_SUCCESS:

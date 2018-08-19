@@ -4,8 +4,6 @@
  *
  */
 
-export const DEFAULT_ACTION = "app/Categories/DEFAULT_ACTION";
-
 export const ADD_CATEGORY = "app/Categories/ADD_CATEGORY";
 export const ADD_CATEGORY_SUCCESS = "app/Categories/ADD_CATEGORY_SUCCESS";
 export const ADD_CATEGORY_FAILED = "app/Categories/ADD_CATEGORY_FAILED";
@@ -25,9 +23,3 @@ export const GET_CATEGORIES_FAILED = "app/Categories/GET_CATEGORIES_FAILED";
 export const GET_TRASH = "app/Categories/GET_TRASH";
 export const GET_TRASH_SUCCESS = "app/Categories/GET_TRASH_SUCCESS";
 export const GET_TRASH_FAILED = "app/Categories/GET_TRASH_FAILED";
-
-export const GET_CATEGORY_LINKS = "app/Categories/GET_CATEGORY_LINKS";
-export const GET_CATEGORY_LINKS_SUCCESS =
-  "app/Categories/GET_CATEGORY_LINKS_SUCCESS";
-export const GET_CATEGORY_LINKS_FAILED =
-  "app/Categories/GET_CATEGORY_LINKS_FAILED";

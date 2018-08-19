@@ -13,7 +13,6 @@ const INITIAL_STATE = {
   err: null,
   alertMessage: "",
   alertOpen: false,
-  categories: [],
   links: [],
 };
 

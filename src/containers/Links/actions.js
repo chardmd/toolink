@@ -4,10 +4,77 @@
  *
  */
 
-import { DEFAULT_ACTION } from "./constants";
+import {
+  GET_CATEGORY_LINKS,
+  GET_CATEGORY_LINKS_SUCCESS,
+  GET_CATEGORY_LINKS_FAILED,
+  SAVE_LINK,
+  SAVE_LINK_SUCCESS,
+  SAVE_LINK_FAILED,
+  REMOVE_LINK,
+  REMOVE_LINK_SUCCESS,
+  REMOVE_LINK_FAILED,
+} from "./constants";
 
-export function defaultAction() {
+export function getCategoryLinks(categoryId) {
   return {
-    type: DEFAULT_ACTION,
+    type: GET_CATEGORY_LINKS,
+    categoryId,
+  };
+}
+
+export function getCategoryLinksSuccess(data) {
+  return {
+    type: GET_CATEGORY_LINKS_SUCCESS,
+    data,
+  };
+}
+
+export function getCategoryLinksFailed(err) {
+  return {
+    type: GET_CATEGORY_LINKS_FAILED,
+    err,
+  };
+}
+
+export function saveLink(link) {
+  return {
+    type: SAVE_LINK,
+    link,
+  };
+}
+
+export function saveLinkSuccess(data) {
+  return {
+    type: SAVE_LINK_SUCCESS,
+    data,
+  };
+}
+
+export function saveLinkFailed(err) {
+  return {
+    type: SAVE_LINK_FAILED,
+    err,
+  };
+}
+
+export function removeLink(id) {
+  return {
+    type: REMOVE_LINK,
+    id,
+  };
+}
+
+export function removeLinkSuccess(id) {
+  return {
+    type: REMOVE_LINK_SUCCESS,
+    id,
+  };
+}
+
+export function removeLinkFailed(err) {
+  return {
+    type: REMOVE_LINK_FAILED,
+    err,
   };
 }

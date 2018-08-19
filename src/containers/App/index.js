@@ -17,8 +17,8 @@ import {
   renameCategory,
   getTrash,
   getCategories,
-  getCategoryLinks,
 } from "../Categories/actions";
+import { getCategoryLinks } from "../Links/actions";
 
 //components
 import SimpleSnackbar from "../../components/SimpleSnackbar";

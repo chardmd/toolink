@@ -5,7 +5,6 @@
  */
 
 import {
-  DEFAULT_ACTION,
   ADD_CATEGORY,
   ADD_CATEGORY_SUCCESS,
   ADD_CATEGORY_FAILED,
@@ -21,16 +20,7 @@ import {
   GET_TRASH,
   GET_TRASH_FAILED,
   GET_TRASH_SUCCESS,
-  GET_CATEGORY_LINKS,
-  GET_CATEGORY_LINKS_SUCCESS,
-  GET_CATEGORY_LINKS_FAILED,
 } from "./constants";
-
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
 
 export function addCategory(category) {
   return {
@@ -133,27 +123,6 @@ export function getTrashSuccess(data) {
 export function getTrashFailed(err) {
   return {
     type: GET_TRASH_FAILED,
-    err,
-  };
-}
-
-export function getCategoryLinks(categoryId) {
-  return {
-    type: GET_CATEGORY_LINKS,
-    categoryId,
-  };
-}
-
-export function getCategoryLinksSuccess(data) {
-  return {
-    type: GET_CATEGORY_LINKS_SUCCESS,
-    data,
-  };
-}
-
-export function getCategoryLinksFailed(err) {
-  return {
-    type: GET_CATEGORY_LINKS_FAILED,
     err,
   };
 }
