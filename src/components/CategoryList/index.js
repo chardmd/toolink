@@ -189,13 +189,12 @@ class CategoryList extends React.Component {
             <div className="addContainer">
               {this.state.isInputActive && (
                 <TextField
-                  id="search"
                   InputLabelProps={{
                     shrink: true,
                   }}
                   label="Category Name"
                   type="search"
-                  className="textField"
+                  className="addCategoryField"
                   margin="normal"
                   fullWidth
                   autoFocus

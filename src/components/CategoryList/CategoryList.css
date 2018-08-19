@@ -9,13 +9,18 @@
 .CategoryList .addContainer {
     display: flex;
     flex-direction: column;
-    margin: 5% 0;
-    justify-content: flex-start;
+    margin: 5%;
+    justify-content: center;
+    width: 90%;
 }
 
 .CategoryList .addContainer button {
-    text-align: left;
-    justify-content: left;
+    text-align: center;
+    justify-content: center;
+}
+
+.CategoryList .addCategoryField {
+    justify-content: center;
 }
 
 .CategoryList .subHeader {
