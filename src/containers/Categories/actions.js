@@ -17,9 +17,6 @@ import {
   GET_CATEGORIES,
   GET_CATEGORIES_SUCCESS,
   GET_CATEGORIES_FAILED,
-  GET_TRASH,
-  GET_TRASH_FAILED,
-  GET_TRASH_SUCCESS,
 } from "./constants";
 
 export function addCategory(category) {
@@ -103,26 +100,6 @@ export function getCategoriesSuccess(data) {
 export function getCategoriesFailed(err) {
   return {
     type: GET_CATEGORIES_FAILED,
-    err,
-  };
-}
-
-export function getTrash() {
-  return {
-    type: GET_TRASH,
-  };
-}
-
-export function getTrashSuccess(data) {
-  return {
-    type: GET_TRASH_SUCCESS,
-    data,
-  };
-}
-
-export function getTrashFailed(err) {
-  return {
-    type: GET_TRASH_FAILED,
     err,
   };
 }

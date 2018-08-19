@@ -14,9 +14,6 @@ import {
   RENAME_CATEGORY,
   RENAME_CATEGORY_SUCCESS,
   RENAME_CATEGORY_FAILED,
-  GET_TRASH,
-  GET_TRASH_SUCCESS,
-  GET_TRASH_FAILED,
   GET_CATEGORIES,
   GET_CATEGORIES_SUCCESS,
   GET_CATEGORIES_FAILED,
@@ -51,18 +48,6 @@ function categoriesReducer(state = initialState, action) {
       return renameCategory(state, action.id, action.text);
     case RENAME_CATEGORY_FAILED:
       return state;
-    case GET_TRASH:
-      return state;
-    case GET_TRASH_SUCCESS:
-      return {
-        ...state,
-        links: action.data,
-      };
-    case GET_TRASH_FAILED:
-      return {
-        ...state,
-        err: action.err,
-      };
     default:
       return state;
   }

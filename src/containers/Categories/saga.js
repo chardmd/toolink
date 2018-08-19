@@ -11,7 +11,6 @@ import {
   ADD_CATEGORY,
   REMOVE_CATEGORY,
   RENAME_CATEGORY,
-  GET_TRASH,
   GET_CATEGORIES,
 } from "./constants";
 import {
@@ -21,8 +20,6 @@ import {
   removeCategoryFailed,
   renameCategorySuccess,
   renameCategoryFailed,
-  getTrashSuccess,
-  getTrashFailed,
   getCategoriesSuccess,
   getCategoriesFailed,
 } from "./actions";
@@ -30,7 +27,6 @@ import {
 import { displayAlert } from "../App/actions";
 
 import categories from "./categories.json";
-import trash from "./trash.json";
 
 function* handleGetCategories() {
   try {
@@ -73,25 +69,12 @@ function* handleRenameCategory({ id, text }) {
   }
 }
 
-function* handleGetTrash() {
-  try {
-    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
-    yield put(getTrashSuccess(trash));
-  } catch (e) {
-    yield put(getTrashFailed(e));
-    yield put(displayAlert(e.message, true));
-  }
-}
-
 function* CategoriesSaga() {
   yield all([
     takeLatest(GET_CATEGORIES, handleGetCategories),
     takeLatest(ADD_CATEGORY, handleAddCategory),
     takeLatest(REMOVE_CATEGORY, handleRemoveCategory),
     takeLatest(RENAME_CATEGORY, handleRenameCategory),
-    takeLatest(GET_TRASH, handleGetTrash),
   ]);
 }
 

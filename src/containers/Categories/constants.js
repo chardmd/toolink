@@ -19,7 +19,3 @@ export const RENAME_CATEGORY_FAILED = "app/Categories/RENAME_CATEGORY_FAILED";
 export const GET_CATEGORIES = "app/Categories/GET_CATEGORIES";
 export const GET_CATEGORIES_SUCCESS = "app/Categories/GET_CATEGORIES_SUCCESS";
 export const GET_CATEGORIES_FAILED = "app/Categories/GET_CATEGORIES_FAILED";
-
-export const GET_TRASH = "app/Categories/GET_TRASH";
-export const GET_TRASH_SUCCESS = "app/Categories/GET_TRASH_SUCCESS";
-export const GET_TRASH_FAILED = "app/Categories/GET_TRASH_FAILED";

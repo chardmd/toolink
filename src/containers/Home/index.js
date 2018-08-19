@@ -31,12 +31,14 @@ class Home extends Component {
     this.props.getCategories();
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
     //load the data of first category
-    const firstCategory =
-      this.props.categories.length !== 0 ? this.props.categories[0] : null;
-    if (firstCategory !== null) {
-      this.props.getCategoryLinks(firstCategory.id);
+    if (this.props.categories !== nextProps.categories) {
+      const firstCategory =
+        nextProps.categories.length !== 0 ? nextProps.categories[0] : null;
+      if (firstCategory !== null) {
+        this.props.getCategoryLinks(firstCategory.id);
+      }
     }
   }
 
@@ -94,8 +96,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  links: state.links,
   categories: state.categories,
+  links: state.links,
+  trash: state.trash,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -15,10 +15,10 @@ import {
   addCategory,
   removeCategory,
   renameCategory,
-  getTrash,
   getCategories,
 } from "../Categories/actions";
 import { getCategoryLinks } from "../Links/actions";
+import { getTrash } from "../Trash/actions";
 
 //components
 import SimpleSnackbar from "../../components/SimpleSnackbar";
