@@ -10,6 +10,7 @@ import FormDialog from "../../components/FormDialog";
 
 //actions
 import { loadHome } from "./actions";
+import { getCategories } from "../Categories/actions";
 import { getCategoryLinks, saveLink, removeLink } from "../Links/actions";
 
 //css
@@ -24,6 +25,10 @@ class Home extends Component {
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.getCategories();
   }
 
   componentDidMount() {
@@ -98,6 +103,7 @@ const mapDispatchToProps = dispatch => ({
   removeLink: id => dispatch(removeLink(id)),
   loadHome: () => dispatch(loadHome()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
+  getCategories: () => dispatch(getCategories()),
 });
 
 export default connect(

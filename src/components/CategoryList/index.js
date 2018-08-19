@@ -6,6 +6,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { SyncLoader } from "react-spinners";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -95,35 +96,43 @@ class CategoryList extends React.Component {
   renderCategories() {
     const { classes } = this.props;
     const { activeCategory } = this.state;
-    const content = this.props.categories.map((data, index) => {
-      const category = data;
-      return (
-        <ListItem
-          button
-          className={`listItem ${index === activeCategory && "active"}`}
-          key={`category-${category.id}`}
-          onClick={() => {
-            this.selectCategory(index);
-            this.props.getCategoryLinks(category.id);
-          }}
-        >
-          <ListItemAvatar>
-            <Avatar>
-              <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary={category.name} />
-          <ListItemSecondaryAction>
-            <CategoryMenu
-              categoryId={category.id}
-              categoryName={category.name}
-              removeCategory={this.props.removeCategory}
-              renameCategory={this.props.renameCategory}
-            />
-          </ListItemSecondaryAction>
-        </ListItem>
+
+    const content =
+      this.props.categories.length === 0 ? (
+        <div className="loader">
+          <SyncLoader color={"#2196f3"} loading size={25} />
+        </div>
+      ) : (
+        this.props.categories.map((data, index) => {
+          const category = data;
+          return (
+            <ListItem
+              button
+              className={`listItem ${index === activeCategory && "active"}`}
+              key={`category-${category.id}`}
+              onClick={() => {
+                this.selectCategory(index);
+                this.props.getCategoryLinks(category.id);
+              }}
+            >
+              <ListItemAvatar>
+                <Avatar>
+                  <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={category.name} />
+              <ListItemSecondaryAction>
+                <CategoryMenu
+                  categoryId={category.id}
+                  categoryName={category.name}
+                  removeCategory={this.props.removeCategory}
+                  renameCategory={this.props.renameCategory}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })
       );
-    });
     return (
       <List
         component="nav"
