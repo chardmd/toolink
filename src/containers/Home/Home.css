@@ -15,16 +15,12 @@
     margin: 0.5em;
 }
 
-.Home .leftCol {
-    height: 100%;
-    overflow: auto;
-    max-height: 100vh;
-    padding-bottom: 10em;
-}
-
-.Home .rightCol {
+.Home .items {
     height: 100%;
     overflow: auto;
     max-height: 100vh;
     padding-bottom: 12em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

@@ -1,7 +1,6 @@
 .NavBar .appBar {
     position: absolute;
-    /* margin-left: 280px;
-    width: calc(100% - 280px); */
+    z-index: 9999;
 }
 
 @media all and (max-width: 959px) {
