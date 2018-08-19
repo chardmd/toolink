@@ -63,20 +63,22 @@ class Home extends Component {
           categories={this.props.categories}
           saveLink={this.props.saveLink}
         />
-        {previewList.map(data => (
-          <div className="card" key={`preview-${data.id}`}>
-            <MediaCard
-              title={data.title}
-              description={data.description}
-              image={data.image}
-              url={data.url}
-              author={data.author}
-              publisher={data.publisher}
-              id={data.id}
-              removeLink={this.props.removeLink}
-            />
-          </div>
-        ))}
+        <div className="items">
+          {previewList.map(data => (
+            <div className="card" key={`preview-${data.id}`}>
+              <MediaCard
+                title={data.title}
+                description={data.description}
+                image={data.image}
+                url={data.url}
+                author={data.author}
+                publisher={data.publisher}
+                id={data.id}
+                removeLink={this.props.removeLink}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
