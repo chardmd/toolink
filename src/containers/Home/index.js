@@ -56,7 +56,6 @@ class Home extends Component {
             </Button>
           </div>
         </Toolbar>
-        <Divider />
         <FormDialog
           isActive={this.state.isActive}
           toggleStatus={this.onToggleStatus}

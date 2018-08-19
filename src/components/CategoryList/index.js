@@ -16,6 +16,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import Drawer from "@material-ui/core/Drawer";
 import { withStyles } from "@material-ui/core/styles";
 
 //components
@@ -28,6 +29,10 @@ const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
   },
+  drawerPaper: {
+    position: "relative",
+  },
+  toolbar: theme.mixins.toolbar,
 });
 
 const INACTIVE = -1;
@@ -172,40 +177,52 @@ class CategoryList extends React.Component {
   render() {
     return (
       <div className="CategoryList">
-        <div className="categories">{this.renderCategories()}</div>
-        <div className="addContainer">
-          {this.state.isInputActive && (
-            <TextField
-              id="search"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              label="Category Name"
-              type="search"
-              className="textField"
-              margin="normal"
-              fullWidth
-              autoFocus
-              onChange={this.handleChange}
-              onBlur={e => {
-                if (e.target.value.length === 0) {
-                  this.toggleIsInputActive(false);
-                }
-              }}
-            />
-          )}
-          <Button
-            color="secondary"
-            onClick={this.onAddCategory}
-            size="large"
-            disabled={this.state.activeCategory === -1}
-          >
-            <Icon>add</Icon>
-            &nbsp;
-            <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
-          </Button>
-        </div>
-        <div>{this.renderMaintenance()}</div>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: this.props.classes.drawerPaper,
+          }}
+        >
+          <div className={this.props.classes.toolbar} />
+          <div className="catList">
+            <div className="categories">{this.renderCategories()}</div>
+            <div className="addContainer">
+              {this.state.isInputActive && (
+                <TextField
+                  id="search"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  label="Category Name"
+                  type="search"
+                  className="textField"
+                  margin="normal"
+                  fullWidth
+                  autoFocus
+                  onChange={this.handleChange}
+                  onBlur={e => {
+                    if (e.target.value.length === 0) {
+                      this.toggleIsInputActive(false);
+                    }
+                  }}
+                />
+              )}
+              <Button
+                color="secondary"
+                onClick={this.onAddCategory}
+                size="large"
+                disabled={this.state.activeCategory === -1}
+              >
+                <Icon>add</Icon>
+                &nbsp;
+                <span>
+                  {this.state.isInputActive ? "Save" : "Add Category"}
+                </span>
+              </Button>
+            </div>
+            <div>{this.renderMaintenance()}</div>
+          </div>
+        </Drawer>
       </div>
     );
   }

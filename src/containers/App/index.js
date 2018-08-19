@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import { Link, withRouter } from "react-router-dom";
-import Divider from "@material-ui/core/Divider";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
-import Grid from "@material-ui/core/Grid";
 
 import NavBar from "../../components/NavBar";
-import SimpleDrawer from "../../components/SimpleDrawer";
+import CategoryList from "../../components/CategoryList";
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
 import {
@@ -83,7 +81,7 @@ class App extends Component {
               handleDrawerToggle={this.handleDrawerToggle}
             />
             {this.props.isAuthenticated && (
-              <SimpleDrawer
+              <CategoryList
                 categories={this.props.categories}
                 addCategory={this.props.addCategory}
                 removeCategory={this.props.removeCategory}
