@@ -9,7 +9,7 @@ import Icon from "@material-ui/core/Icon";
 import Grid from "@material-ui/core/Grid";
 
 import NavBar from "../../components/NavBar";
-import CategoryList from "../../components/CategoryList";
+import SimpleDrawer from "../../components/SimpleDrawer";
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
 import {
@@ -83,7 +83,7 @@ class App extends Component {
               handleDrawerToggle={this.handleDrawerToggle}
             />
             {this.props.isAuthenticated && (
-              <CategoryList
+              <SimpleDrawer
                 categories={this.props.categories}
                 addCategory={this.props.addCategory}
                 removeCategory={this.props.removeCategory}
@@ -94,24 +94,7 @@ class App extends Component {
             )}
             <main className="content">
               <div className="toolbar" />
-              <Grid container spacing={8}>
-                <Grid item xs={12}>
-                  <Divider />
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={9}
-                  container
-                  direction="row"
-                  justify="center"
-                  alignItems="center"
-                  className="rightCol"
-                >
-                  <Routes childProps={childProps} />
-                </Grid>
-              </Grid>
+              <Routes childProps={childProps} />
               <SimpleSnackbar
                 message={this.props.alertMessage}
                 open={this.props.alertOpen}
