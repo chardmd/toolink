@@ -19,9 +19,6 @@ import {
   GET_CATEGORIES,
   GET_CATEGORIES_SUCCESS,
   GET_CATEGORIES_FAILED,
-  GET_CATEGORY_LINKS,
-  GET_CATEGORY_LINKS_SUCCESS,
-  GET_CATEGORY_LINKS_FAILED,
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -113,18 +110,6 @@ const appReducer = (state = INITIAL_STATE, action) => {
         categories: action.data,
       };
     case GET_CATEGORIES_FAILED:
-      return {
-        ...state,
-        err: action.err,
-      };
-    case GET_CATEGORY_LINKS:
-      return state;
-    case GET_CATEGORY_LINKS_SUCCESS:
-      return {
-        ...state,
-        previewList: action.data,
-      };
-    case GET_CATEGORY_LINKS_FAILED:
       return {
         ...state,
         err: action.err,

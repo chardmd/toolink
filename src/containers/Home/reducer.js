@@ -6,6 +6,9 @@ import {
   REMOVE_LINK_SUCCESS,
   REMOVE_LINK_FAILED,
   LOAD_HOME,
+  GET_CATEGORY_LINKS,
+  GET_CATEGORY_LINKS_SUCCESS,
+  GET_CATEGORY_LINKS_FAILED,
 } from "./constants";
 
 const INITIAL_STATE = {
@@ -42,6 +45,18 @@ const homeReducer = (state = INITIAL_STATE, action) => {
       };
     case LOAD_HOME:
       return state;
+    case GET_CATEGORY_LINKS:
+      return state;
+    case GET_CATEGORY_LINKS_SUCCESS:
+      return {
+        ...state,
+        previewList: action.data,
+      };
+    case GET_CATEGORY_LINKS_FAILED:
+      return {
+        ...state,
+        err: action.err,
+      };
     default:
       return state;
   }

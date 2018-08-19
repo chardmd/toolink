@@ -9,7 +9,7 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { saveLink, removeLink, loadHome } from "./actions";
+import { saveLink, removeLink, loadHome, getCategoryLinks } from "./actions";
 
 //css
 import "./Home.css";
@@ -26,7 +26,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.loadHome();
+    //load the data of first category
+    const firstCategory = this.props.categories[0];
+    this.props.getCategoryLinks(firstCategory.id);
   }
 
   onToggleStatus(status) {
@@ -91,6 +93,7 @@ const mapDispatchToProps = dispatch => ({
   saveLink: link => dispatch(saveLink(link)),
   removeLink: id => dispatch(removeLink(id)),
   loadHome: () => dispatch(loadHome()),
+  getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
 });
 
 export default connect(

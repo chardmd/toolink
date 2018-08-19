@@ -1,7 +1,7 @@
 import {
-  GET_LINK_DATA,
-  GET_LINK_DATA_SUCCESS,
-  GET_LINK_DATA_FAILED,
+  GET_CATEGORY_LINKS,
+  GET_CATEGORY_LINKS_SUCCESS,
+  GET_CATEGORY_LINKS_FAILED,
   SAVE_LINK,
   SAVE_LINK_SUCCESS,
   SAVE_LINK_FAILED,
@@ -49,6 +49,27 @@ export function removeLinkSuccess(id) {
 export function removeLinkFailed(err) {
   return {
     type: REMOVE_LINK_FAILED,
+    err,
+  };
+}
+
+export function getCategoryLinks(categoryId) {
+  return {
+    type: GET_CATEGORY_LINKS,
+    categoryId,
+  };
+}
+
+export function getCategoryLinksSuccess(data) {
+  return {
+    type: GET_CATEGORY_LINKS_SUCCESS,
+    data,
+  };
+}
+
+export function getCategoryLinksFailed(err) {
+  return {
+    type: GET_CATEGORY_LINKS_FAILED,
     err,
   };
 }
