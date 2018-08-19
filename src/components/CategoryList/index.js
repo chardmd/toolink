@@ -21,7 +21,6 @@ import { withStyles } from "@material-ui/core/styles";
 
 //components
 import CategoryMenu from "../CategoryMenu";
-import TrashMenu from "../TrashMenu";
 
 import "./CategoryList.css";
 
@@ -179,9 +178,6 @@ class CategoryList extends React.Component {
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary="Trash" />
-          <ListItemSecondaryAction>
-            <TrashMenu emptyTrash={() => {}} />
-          </ListItemSecondaryAction>
         </ListItem>
       </List>
     );
