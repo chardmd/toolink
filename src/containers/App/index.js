@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import { Link, withRouter } from "react-router-dom";
+import { matchPath } from "react-router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -32,6 +33,8 @@ class App extends Component {
     this.state = {
       mobileOpen: false,
     };
+
+    this.getActiveCategoryId = this.getActiveCategoryId.bind(this);
   }
 
   componentDidMount() {
@@ -63,11 +66,22 @@ class App extends Component {
     );
   }
 
+  getActiveCategoryId() {
+    const match = matchPath(this.props.location.pathname, {
+      path: "/home/:categoryId",
+      exact: true,
+      strict: false,
+    });
+    return match === null ? 0 : parseInt(match.params.categoryId, 10);
+  }
+
   render() {
     const childProps = {
       isAuthenticated: this.props.isAuthenticated,
       userHasAuthenticated: this.props.setAuthenticated,
     };
+    // get categoryId from the url
+    const activeCategoryId = this.getActiveCategoryId();
 
     return (
       !this.props.isAuthenticating && (
@@ -86,6 +100,7 @@ class App extends Component {
                 renameCategory={this.props.renameCategory}
                 getCategoryLinks={this.props.getCategoryLinks}
                 getTrash={this.props.getTrash}
+                activeCategoryId={activeCategoryId}
               />
             )}
             <main className="content">

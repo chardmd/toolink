@@ -6,7 +6,6 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import { SyncLoader } from "react-spinners";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -29,6 +28,7 @@ import "./CategoryList.css";
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
+    minWidth: 240,
   },
   drawerPaper: {
     position: "relative",
@@ -46,7 +46,7 @@ class CategoryList extends React.Component {
       isInputActive: false,
       category: "",
       anchorEl: null,
-      activeCategory: 0,
+      activeCategoryId: this.props.activeCategoryId || 0,
       activeTrash: INACTIVE,
     };
 
@@ -55,6 +55,14 @@ class CategoryList extends React.Component {
     this.onAddCategory = this.onAddCategory.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
     this.selectTrash = this.selectTrash.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.activeCategoryId !== nextProps.activeCategoryId) {
+      this.setState({
+        activeCategoryId: nextProps.activeCategoryId,
+      });
+    }
   }
 
   handleChange = event => {
@@ -79,9 +87,9 @@ class CategoryList extends React.Component {
     }
   }
 
-  selectCategory(index) {
+  selectCategory(categoryId) {
     this.setState({
-      activeCategory: index,
+      activeCategoryId: categoryId,
       activeTrash: INACTIVE,
     });
   }
@@ -89,50 +97,46 @@ class CategoryList extends React.Component {
   selectTrash(index) {
     this.setState({
       activeTrash: index,
-      activeCategory: INACTIVE,
+      activeCategoryId: INACTIVE,
     });
   }
 
   renderCategories() {
     const { classes } = this.props;
-    const { activeCategory } = this.state;
+    const { activeCategoryId } = this.state;
 
     const content =
-      this.props.categories.length === 0 ? (
-        <div className="loader">
-          <SyncLoader color={"#2196f3"} loading size={25} />
-        </div>
-      ) : (
-        this.props.categories.map((data, index) => {
-          const category = data;
-          return (
-            <ListItem
-              button
-              className={`listItem ${index === activeCategory && "active"}`}
-              key={`category-${category.id}`}
-              onClick={() => {
-                this.selectCategory(index);
-                this.props.getCategoryLinks(category.id);
-              }}
-            >
-              <ListItemAvatar>
-                <Avatar>
-                  <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={category.name} />
-              <ListItemSecondaryAction>
-                <CategoryMenu
-                  categoryId={category.id}
-                  categoryName={category.name}
-                  removeCategory={this.props.removeCategory}
-                  renameCategory={this.props.renameCategory}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          );
-        })
-      );
+      this.props.categories.length !== 0 &&
+      this.props.categories.map((data, index) => {
+        const category = data;
+        return (
+          <ListItem
+            button
+            className={`listItem ${category.id === activeCategoryId &&
+              "active"}`}
+            key={`category-${category.id}`}
+            onClick={() => {
+              this.selectCategory(index);
+              this.props.getCategoryLinks(category.id);
+            }}
+          >
+            <ListItemAvatar>
+              <Avatar>
+                <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary={category.name} />
+            <ListItemSecondaryAction>
+              <CategoryMenu
+                categoryId={category.id}
+                categoryName={category.name}
+                removeCategory={this.props.removeCategory}
+                renameCategory={this.props.renameCategory}
+              />
+            </ListItemSecondaryAction>
+          </ListItem>
+        );
+      });
     return (
       <List
         component="nav"
@@ -186,51 +190,53 @@ class CategoryList extends React.Component {
   render() {
     return (
       <div className="CategoryList">
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: this.props.classes.drawerPaper,
-          }}
-        >
-          <div className={this.props.classes.toolbar} />
-          <div className="catList">
-            <div className="categories">{this.renderCategories()}</div>
-            <div className="addContainer">
-              {this.state.isInputActive && (
-                <TextField
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  label="Category Name"
-                  type="search"
-                  className="addCategoryField"
-                  margin="normal"
-                  fullWidth
-                  autoFocus
-                  onChange={this.handleChange}
-                  onBlur={e => {
-                    if (e.target.value.length === 0) {
-                      this.toggleIsInputActive(false);
-                    }
-                  }}
-                />
-              )}
-              <Button
-                color="secondary"
-                onClick={this.onAddCategory}
-                size="large"
-                disabled={this.state.activeCategory === -1}
-              >
-                <Icon>add</Icon>
-                &nbsp;
-                <span>
-                  {this.state.isInputActive ? "Save" : "Add Category"}
-                </span>
-              </Button>
+        {this.props.categories.length !== 0 && (
+          <Drawer
+            variant="permanent"
+            classes={{
+              paper: this.props.classes.drawerPaper,
+            }}
+          >
+            <div className={this.props.classes.toolbar} />
+            <div className="catList">
+              <div className="categories">{this.renderCategories()}</div>
+              <div className="addContainer">
+                {this.state.isInputActive && (
+                  <TextField
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    label="Category Name"
+                    type="search"
+                    className="addCategoryField"
+                    margin="normal"
+                    fullWidth
+                    autoFocus
+                    onChange={this.handleChange}
+                    onBlur={e => {
+                      if (e.target.value.length === 0) {
+                        this.toggleIsInputActive(false);
+                      }
+                    }}
+                  />
+                )}
+                <Button
+                  color="secondary"
+                  onClick={this.onAddCategory}
+                  size="large"
+                  disabled={this.state.activeCategory === -1}
+                >
+                  <Icon>add</Icon>
+                  &nbsp;
+                  <span>
+                    {this.state.isInputActive ? "Save" : "Add Category"}
+                  </span>
+                </Button>
+              </div>
+              <div>{this.renderMaintenance()}</div>
             </div>
-            <div>{this.renderMaintenance()}</div>
-          </div>
-        </Drawer>
+          </Drawer>
+        )}
       </div>
     );
   }
@@ -243,6 +249,7 @@ CategoryList.propTypes = {
   renameCategory: PropTypes.func,
   getCategoryLinks: PropTypes.func,
   getTrash: PropTypes.func,
+  activeCategoryId: PropTypes.number,
 };
 
 export default withStyles(styles)(CategoryList);

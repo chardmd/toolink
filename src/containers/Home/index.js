@@ -35,11 +35,13 @@ class Home extends Component {
   componentWillReceiveProps(nextProps) {
     //load the data of first category
     const categoryId = parseInt(nextProps.match.params.categoryId, 10);
-    if (this.props.categories !== nextProps.categories) {
-      const firstCategory =
-        nextProps.categories.length !== 0
-          ? nextProps.categories.find(c => c.id === categoryId)
-          : null;
+    if (
+      this.props.categories !== nextProps.categories &&
+      nextProps.categories.length !== 0
+    ) {
+      const firstCategory = isNaN(categoryId)
+        ? nextProps.categories[0]
+        : nextProps.categories.find(c => c.id === categoryId);
       if (firstCategory !== null) {
         this.props.getCategoryLinks(firstCategory.id);
       }
