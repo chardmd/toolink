@@ -28,7 +28,7 @@ import "./CategoryList.css";
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    minWidth: 240,
+    minWidth: 300,
   },
   drawerPaper: {
     position: "relative",
