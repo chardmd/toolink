@@ -106,7 +106,7 @@ class CategoryList extends React.Component {
 
     const content =
       this.props.categories.length !== 0 &&
-      this.props.categories.map((data, index) => {
+      this.props.categories.map(data => {
         const category = data;
         return (
           <ListItem
@@ -115,7 +115,7 @@ class CategoryList extends React.Component {
               "active"}`}
             key={`category-${category.id}`}
             onClick={() => {
-              this.selectCategory(index);
+              this.selectCategory(category.id);
               this.props.getCategoryLinks(category.id);
             }}
           >
