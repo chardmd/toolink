@@ -15,7 +15,7 @@ class NavBar extends React.Component {
         <AppBar className={this.props.isAuthenticated ? "appBar" : ""}>
           <Toolbar>
             <Typography variant="title" color="inherit" className="flex">
-              <Link to="/home">TooLink</Link>
+              <Link to="/categories">TooLink</Link>
             </Typography>
             {this.props.isAuthenticated ? (
               <Fragment>

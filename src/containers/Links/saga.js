@@ -29,7 +29,7 @@ function* handleGetCategoryLinks({ categoryId }) {
     // const response = yield call([axios, axios.get], url);
     // console.log("response", response.data);
     yield put(getCategoryLinksSuccess(data));
-    yield put(push(`/home/${categoryId}`));
+    yield put(push(`/categories/${categoryId}`));
   } catch (e) {
     yield put(getCategoryLinksFailed(e));
   }

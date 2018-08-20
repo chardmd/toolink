@@ -6,6 +6,7 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
+const AsyncTrash = asyncComponent(() => import("./containers/Trash"));
 const AsyncLogin = asyncComponent(() => import("./containers/Login"));
 const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
 const AsyncForgotPassword = asyncComponent(() =>
@@ -15,8 +16,13 @@ const AsyncForgotPassword = asyncComponent(() =>
 export default ({ childProps }) => (
   <Switch>
     <AuthenticatedRoute
-      path="/home/:categoryId?"
+      path="/categories/:categoryId?"
       component={AsyncHome}
+      props={childProps}
+    />
+    <AuthenticatedRoute
+      path="/maintenance/trash"
+      component={AsyncTrash}
       props={childProps}
     />
     <UnauthenticatedRoute

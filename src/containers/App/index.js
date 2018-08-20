@@ -68,7 +68,7 @@ class App extends Component {
 
   getActiveCategoryId() {
     const match = matchPath(this.props.location.pathname, {
-      path: "/home/:categoryId",
+      path: "/categories/:categoryId",
       exact: true,
       strict: false,
     });

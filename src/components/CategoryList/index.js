@@ -6,6 +6,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -166,10 +167,11 @@ class CategoryList extends React.Component {
       >
         <ListItem
           button
+          component={Link}
+          to="/maintenance/trash"
           className={`listItem ${0 === activeTrash && "active"}`}
           onClick={() => {
             this.selectTrash(0);
-            this.props.getTrash();
           }}
         >
           <ListItemAvatar>
