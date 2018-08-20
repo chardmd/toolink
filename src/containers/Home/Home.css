@@ -28,3 +28,10 @@
 .Home .MediaCard .card:hover {
     background: rgba(33, 150, 243, 0.08);
 }
+
+.Home .MediaCard .content {
+    display: flex;
+    width: 400px;
+    height: 200px;
+    cursor: pointer;
+}

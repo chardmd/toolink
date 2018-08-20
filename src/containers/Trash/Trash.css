@@ -24,3 +24,9 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.Trash .MediaCard .content {
+    display: flex;
+    width: 400px;
+    height: 200px;
+}

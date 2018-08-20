@@ -11,10 +11,5 @@
     margin: 5px 3px;
 }
 
-.MediaCard .content {
-    display: flex;
-    width: 400px;
-    height: 200px;
-    cursor: pointer;
-}
+
 
