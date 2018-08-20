@@ -10,7 +10,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import { getTrash, deleteTrash } from "./actions";
+import { getTrash, deleteTrash, deleteAll } from "./actions";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -24,11 +24,14 @@ export class Trash extends React.Component {
 
     this.state = {
       removeDialogOpen: false,
+      emptyTrashDialogOpen: false,
       selectedLinkId: null,
     };
 
     this.handleRemoveDialog = this.handleRemoveDialog.bind(this);
     this.toggleRemoveDialog = this.toggleRemoveDialog.bind(this);
+    this.toggleEmptyTrashDialog = this.toggleEmptyTrashDialog.bind(this);
+    this.handleEmptyTrashDialog = this.handleEmptyTrashDialog.bind(this);
   }
 
   componentDidMount() {
@@ -48,13 +51,39 @@ export class Trash extends React.Component {
     this.toggleRemoveDialog(false);
   }
 
+  toggleEmptyTrashDialog(status) {
+    this.setState({
+      emptyTrashDialogOpen: status,
+    });
+  }
+
+  handleEmptyTrashDialog() {
+    this.props.deleteAll();
+    this.toggleEmptyTrashDialog(false);
+  }
+
   render() {
     const { trash } = this.props;
     return (
       <div className="Trash">
         <Toolbar className="toolbox">
           <div>
-            <Button variant="extendedFab" aria-label="Delete">
+            <RemoveDialog
+              title={`Delete all the links in the trash?`}
+              message={`You will permanently erase links in the trash. You can't undo this action. Press 'delete' to continue.`}
+              isActive={this.state.emptyTrashDialogOpen}
+              onSave={this.handleEmptyTrashDialog}
+              onClose={() => {
+                this.toggleEmptyTrashDialog(false);
+              }}
+            />
+            <Button
+              variant="extendedFab"
+              aria-label="Delete"
+              onClick={() => {
+                this.toggleEmptyTrashDialog(true);
+              }}
+            >
               <DeleteIcon />
               &nbsp;Empty Trash
             </Button>
@@ -100,6 +129,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getTrash: () => dispatch(getTrash()),
   deleteTrash: id => dispatch(deleteTrash(id)),
+  deleteAll: () => dispatch(deleteAll()),
 });
 
 export default connect(

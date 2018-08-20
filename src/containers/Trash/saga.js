@@ -7,13 +7,15 @@
 
 import { takeLatest, put, all } from "redux-saga/effects";
 
-import { GET_TRASH, DELETE_TRASH } from "./constants";
+import { GET_TRASH, DELETE_TRASH, DELETE_ALL } from "./constants";
 
 import {
   getTrashSuccess,
   getTrashFailed,
   deleteTrashSuccess,
   deleteTrashFailed,
+  deleteAllSuccess,
+  deleteAllFailed,
 } from "./actions";
 import { displayAlert } from "../App/actions";
 
@@ -41,10 +43,21 @@ function* handleDeleteTrash({ id }) {
   }
 }
 
+function* handleDeleteAll() {
+  try {
+    yield put(deleteAllSuccess());
+    yield put(displayAlert("Empty Trash Success.", true));
+  } catch (e) {
+    yield put(deleteAllFailed(e));
+    yield put(displayAlert(e.message, true));
+  }
+}
+
 function* TrashSaga() {
   yield all([
     takeLatest(GET_TRASH, handleGetTrash),
     takeLatest(DELETE_TRASH, handleDeleteTrash),
+    takeLatest(DELETE_ALL, handleDeleteAll),
   ]);
 }
 

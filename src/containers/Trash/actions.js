@@ -11,6 +11,9 @@ import {
   DELETE_TRASH,
   DELETE_TRASH_SUCCESS,
   DELETE_TRASH_FAILED,
+  DELETE_ALL,
+  DELETE_ALL_FAILED,
+  DELETE_ALL_SUCCESS,
 } from "./constants";
 
 export function getTrash() {
@@ -50,6 +53,25 @@ export function deleteTrashSuccess(id) {
 export function deleteTrashFailed(err) {
   return {
     type: DELETE_TRASH_FAILED,
+    err,
+  };
+}
+
+export function deleteAll() {
+  return {
+    type: DELETE_ALL,
+  };
+}
+
+export function deleteAllSuccess() {
+  return {
+    type: DELETE_ALL_SUCCESS,
+  };
+}
+
+export function deleteAllFailed(err) {
+  return {
+    type: DELETE_ALL_FAILED,
     err,
   };
 }

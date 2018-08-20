@@ -12,6 +12,9 @@ import {
   DELETE_TRASH,
   DELETE_TRASH_SUCCESS,
   DELETE_TRASH_FAILED,
+  DELETE_ALL,
+  DELETE_ALL_SUCCESS,
+  DELETE_ALL_FAILED,
 } from "./constants";
 
 const initialState = {
@@ -38,6 +41,15 @@ function trashReducer(state = initialState, action) {
         data: state.data.filter(i => i.id !== trashId),
       };
     case DELETE_TRASH_FAILED:
+      return state;
+    case DELETE_ALL:
+      return state;
+    case DELETE_ALL_SUCCESS:
+      return {
+        ...state,
+        data: [],
+      };
+    case DELETE_ALL_FAILED:
       return state;
     default:
       return state;

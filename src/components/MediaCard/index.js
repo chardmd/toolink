@@ -70,7 +70,7 @@ MediaCard.propTypes = {
   image: PropTypes.string,
   url: PropTypes.string,
   removeLink: PropTypes.func,
-  icon: PropTypes.func,
+  icon: PropTypes.string,
 };
 
 export default withStyles(styles, { withTheme: true })(MediaCard);

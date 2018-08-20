@@ -11,3 +11,7 @@ export const GET_TRASH_FAILED = "app/Trash/GET_TRASH_FAILED";
 export const DELETE_TRASH = "app/Trash/DELETE_TRASH";
 export const DELETE_TRASH_SUCCESS = "app/Trash/DELETE_TRASH_SUCCESS";
 export const DELETE_TRASH_FAILED = "app/Trash/DELETE_TRASH_FAILED";
+
+export const DELETE_ALL = "app/Trash/DELETE_ALL";
+export const DELETE_ALL_SUCCESS = "app/Trash/DELETE_ALL_SUCCESS";
+export const DELETE_ALL_FAILED = "app/Trash/DELETE_ALL_FAILED";
