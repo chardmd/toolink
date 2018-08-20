@@ -7,9 +7,14 @@
 
 import { takeLatest, put, all } from "redux-saga/effects";
 
-import { GET_TRASH } from "./constants";
+import { GET_TRASH, DELETE_TRASH } from "./constants";
 
-import { getTrashSuccess, getTrashFailed } from "./actions";
+import {
+  getTrashSuccess,
+  getTrashFailed,
+  deleteTrashSuccess,
+  deleteTrashFailed,
+} from "./actions";
 import { displayAlert } from "../App/actions";
 
 import trash from "./trash.json";
@@ -26,8 +31,21 @@ function* handleGetTrash() {
   }
 }
 
+function* handleDeleteTrash({ id }) {
+  try {
+    yield put(deleteTrashSuccess(id));
+    yield put(displayAlert("Link permanently deleted.", true));
+  } catch (e) {
+    yield put(deleteTrashFailed(e));
+    yield put(displayAlert(e.message, true));
+  }
+}
+
 function* TrashSaga() {
-  yield all([takeLatest(GET_TRASH, handleGetTrash)]);
+  yield all([
+    takeLatest(GET_TRASH, handleGetTrash),
+    takeLatest(DELETE_TRASH, handleDeleteTrash),
+  ]);
 }
 
 export default TrashSaga;

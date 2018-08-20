@@ -9,6 +9,7 @@
 .MediaCard .icon {
     font-size: 1.8em;
     margin: 5px 3px;
+    cursor: pointer;
 }
 
 
