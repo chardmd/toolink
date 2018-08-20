@@ -13,6 +13,7 @@
 
 .Home .card {
     margin: 0.5em;
+    border: 1px solid transparent;
 }
 
 .Home .items {
@@ -27,6 +28,7 @@
 
 .Home .MediaCard .card:hover {
     background: rgba(33, 150, 243, 0.08);
+    border: 1px solid #2196f3;
 }
 
 .Home .MediaCard .content {
