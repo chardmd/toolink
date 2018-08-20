@@ -5,8 +5,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
+import Icon from "@material-ui/core/Icon";
 
 import "./MediaCard.css";
 
@@ -24,22 +23,12 @@ const styles = theme => ({
   },
 });
 
-function openInNewTab(url) {
-  var win = window.open(url, "_blank");
-  win.focus();
-}
-
 function MediaCard(props) {
-  const { classes, title, description, url, author, publisher, id } = props;
+  const { classes, title, description, url, author, publisher } = props;
   return (
     <div className="MediaCard">
       <Card className="card">
-        <div
-          className="content"
-          onClick={() => {
-            openInNewTab(url);
-          }}
-        >
+        <div className="content" onClick={props.onClick}>
           <CardMedia className={classes.cover} image={props.image} />
           <div className={classes.details}>
             <CardContent className={classes.content}>
@@ -64,13 +53,9 @@ function MediaCard(props) {
             </CardContent>
           </div>
         </div>
-        <IconButton>
-          <CloseIcon
-            onClick={e => {
-              props.removeLink(id);
-            }}
-          />
-        </IconButton>
+        <Icon className="icon" onClick={props.removeLink}>
+          {props.icon}
+        </Icon>
       </Card>
     </div>
   );
@@ -85,6 +70,7 @@ MediaCard.propTypes = {
   image: PropTypes.string,
   url: PropTypes.string,
   removeLink: PropTypes.func,
+  icon: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(MediaCard);

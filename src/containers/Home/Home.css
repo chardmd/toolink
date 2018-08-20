@@ -24,3 +24,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.Home .MediaCard .card:hover {
+    background: rgba(33, 150, 243, 0.08);
+}

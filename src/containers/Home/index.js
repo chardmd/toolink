@@ -17,6 +17,11 @@ import { getCategoryLinks, saveLink, removeLink } from "../Links/actions";
 //css
 import "./Home.css";
 
+function openInNewTab(url) {
+  var win = window.open(url, "_blank");
+  win.focus();
+}
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +67,7 @@ class Home extends Component {
         <Toolbar className="toolbox">
           <div>
             <Button
-              variant="contained"
+              variant="extendedFab"
               color="secondary"
               size="large"
               onClick={() => {
@@ -92,7 +97,13 @@ class Home extends Component {
                 author={data.author}
                 publisher={data.publisher}
                 id={data.id}
-                removeLink={this.props.removeLink}
+                removeLink={() => {
+                  this.props.removeLink(data.id);
+                }}
+                onClick={() => {
+                  openInNewTab(data.url);
+                }}
+                icon="close"
               />
             </div>
           ))}

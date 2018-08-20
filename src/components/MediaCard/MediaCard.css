@@ -6,6 +6,11 @@
     display: flex;
 }
 
+.MediaCard .icon {
+    font-size: 1.8em;
+    margin: 5px 3px;
+}
+
 .MediaCard .content {
     display: flex;
     width: 400px;
@@ -13,6 +18,3 @@
     cursor: pointer;
 }
 
-.MediaCard .card:hover {
-    background: rgba(33, 150, 243, 0.08);
-}
