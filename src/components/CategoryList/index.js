@@ -219,6 +219,7 @@ class CategoryList extends React.Component {
                   />
                 )}
                 <Button
+                  variant="outlined"
                   color="secondary"
                   onClick={this.onAddCategory}
                   size="large"

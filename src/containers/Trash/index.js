@@ -30,7 +30,8 @@ export class Trash extends React.Component {
         <Toolbar className="toolbox">
           <div>
             <Button variant="extendedFab" aria-label="Delete">
-              <DeleteIcon /> Empty Trash
+              <DeleteIcon />
+              &nbsp;Empty Trash
             </Button>
           </div>
         </Toolbar>
