@@ -16,6 +16,7 @@ import "./SideBar.css";
 import CategoryList from "../CategoryList";
 import Maintenance from "../Maintenance";
 import AddCategory from "../AddCategory";
+import FavItem from "../FavItem";
 
 const styles = theme => ({
   root: {
@@ -59,6 +60,9 @@ class SideBar extends React.Component {
             }}
           >
             <div className={this.props.classes.toolbar} />
+            <div className="favourites">
+              <FavItem />
+            </div>
             <div className="catList">
               <div className="categories">
                 <CategoryList

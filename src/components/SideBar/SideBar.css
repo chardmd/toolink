@@ -1,6 +1,9 @@
+.SideBar .favourites {
+    margin-top: 1em;
+}
+
 .SideBar .catList {
     width: 100%;
-    margin-top: 1em;
 }
 
 .SideBar .active {
