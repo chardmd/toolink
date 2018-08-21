@@ -5,6 +5,7 @@ import asyncComponent from "./components/AsyncComponent";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
+const AsyncFavourites = asyncComponent(() => import("./containers/Favourites"));
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
 const AsyncTrash = asyncComponent(() => import("./containers/Trash"));
 const AsyncLogin = asyncComponent(() => import("./containers/Login"));
@@ -16,7 +17,14 @@ const AsyncForgotPassword = asyncComponent(() =>
 export default ({ childProps }) => (
   <Switch>
     <AuthenticatedRoute
+      path="/"
+      exact
+      component={AsyncFavourites}
+      props={childProps}
+    />
+    <AuthenticatedRoute
       path="/categories/:categoryId?"
+      exact
       component={AsyncHome}
       props={childProps}
     />

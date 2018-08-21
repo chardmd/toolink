@@ -33,10 +33,6 @@ class Home extends Component {
     this.onToggleStatus = this.onToggleStatus.bind(this);
   }
 
-  componentWillMount() {
-    this.props.getCategories();
-  }
-
   componentWillReceiveProps(nextProps) {
     //load the data of first category
     const categoryId = parseInt(nextProps.match.params.categoryId, 10);
