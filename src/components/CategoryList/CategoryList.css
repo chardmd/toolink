@@ -1,36 +1,3 @@
-.CategoryList .catList {
-    width: 100%;
-    margin-top: 1em;
-}
-
-.CategoryList .active {
-    background: rgba(33, 150, 243, 0.08);
-}
-
-.CategoryList .addContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 5%;
-    justify-content: center;
-    width: 90%;
-}
-
-.CategoryList .addContainer button {
-    text-align: center;
-    justify-content: center;
-}
-
-.CategoryList .addCategoryField {
-    justify-content: center;
-}
-
-.CategoryList .subHeader {
-    font-size: 16px !important;
-    color: rgba(0, 0, 0, 0.54);
-    font-size: 0.875rem;
-    box-sizing: border-box;
-    list-style: none;
-    line-height: 48px;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-weight: 500;
+.CategoryList {
+    
 }

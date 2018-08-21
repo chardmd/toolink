@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
 import NavBar from "../../components/NavBar";
-import CategoryList from "../../components/CategoryList";
+import SideBar from "../../components/SideBar";
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
 import { logout, setAuthenticated, displayAlert } from "./actions";
@@ -41,8 +41,10 @@ class App extends Component {
     this.props.getAuthenticatedUser();
   }
 
-  componentDidMount() {
-    this.props.getCategories();
+  componentWillReceiveProps() {
+    if (this.props.categories.length === 0) {
+      this.props.getCategories();
+    }
   }
 
   handleDrawerToggle = () => {
@@ -97,7 +99,7 @@ class App extends Component {
               handleDrawerToggle={this.handleDrawerToggle}
             />
             {this.props.isAuthenticated && (
-              <CategoryList
+              <SideBar
                 categories={this.props.categories}
                 addCategory={this.props.addCategory}
                 removeCategory={this.props.removeCategory}
