@@ -1,5 +1,5 @@
 import React from "react";
-import { hydrate, render } from "react-dom";
+import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import createHistory from "history/createBrowserHistory";
@@ -49,7 +49,7 @@ Amplify.configure({
 const history = createHistory();
 const store = configureStore(history);
 
-const app = (
+ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       {/* place ConnectedRouter under Provider */}
@@ -58,14 +58,8 @@ const app = (
         <App />
       </MuiThemeProvider>
     </ConnectedRouter>
-  </Provider>
+  </Provider>,
+  document.getElementById("root")
 );
-
-const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-  hydrate(app, rootElement);
-} else {
-  render(app, rootElement);
-}
 
 registerServiceWorker();
