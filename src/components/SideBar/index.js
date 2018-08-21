@@ -7,9 +7,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import Drawer from "@material-ui/core/Drawer";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -18,6 +15,7 @@ import "./SideBar.css";
 //components
 import CategoryList from "../CategoryList";
 import Maintenance from "../Maintenance";
+import AddCategory from "../AddCategory";
 
 const styles = theme => ({
   root: {
@@ -38,13 +36,9 @@ class SideBar extends React.Component {
 
     this.state = {
       isInputActive: false,
-      category: "",
       activeCategoryId: this.props.activeCategoryId || 0,
       activeTrash: INACTIVE,
     };
-
-    this.toggleIsInputActive = this.toggleIsInputActive.bind(this);
-    this.onAddCategory = this.onAddCategory.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,28 +46,6 @@ class SideBar extends React.Component {
       this.setState({
         activeCategoryId: nextProps.activeCategoryId,
       });
-    }
-  }
-
-  handleChange = event => {
-    this.setState({ category: event.target.value });
-  };
-
-  toggleIsInputActive = status => {
-    this.setState({
-      isInputActive: status,
-    });
-  };
-
-  onAddCategory() {
-    if (this.state.isInputActive) {
-      const category = this.state.category;
-      if (category.length !== 0) {
-        this.props.addCategory(category);
-        this.toggleIsInputActive(false);
-      }
-    } else {
-      this.toggleIsInputActive(true);
     }
   }
 
@@ -100,38 +72,7 @@ class SideBar extends React.Component {
                 />
               </div>
               <div className="addContainer">
-                {this.state.isInputActive && (
-                  <TextField
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    label="Category Name"
-                    type="search"
-                    className="addCategoryField"
-                    margin="normal"
-                    fullWidth
-                    autoFocus
-                    onChange={this.handleChange}
-                    onBlur={e => {
-                      if (e.target.value.length === 0) {
-                        this.toggleIsInputActive(false);
-                      }
-                    }}
-                  />
-                )}
-                <Button
-                  variant="outlined"
-                  color="secondary"
-                  onClick={this.onAddCategory}
-                  size="large"
-                  disabled={this.state.activeCategory === -1}
-                >
-                  <Icon>add</Icon>
-                  &nbsp;
-                  <span>
-                    {this.state.isInputActive ? "Save" : "Add Category"}
-                  </span>
-                </Button>
+                <AddCategory addCategory={this.props.addCategory} />
               </div>
               <div>
                 <Maintenance activeTrash={this.state.activeTrash} />

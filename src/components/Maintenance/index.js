@@ -83,7 +83,7 @@ class Maintenance extends React.Component {
 }
 
 Maintenance.propTypes = {
-  activeTrash: PropTypes.string,
+  activeTrash: PropTypes.number,
 };
 
 export default withStyles(styles)(Maintenance);
