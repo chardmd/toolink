@@ -35,7 +35,6 @@ class SideBar extends React.Component {
     super(props);
 
     this.state = {
-      isInputActive: false,
       activeCategoryId: this.props.activeCategoryId || 0,
       activeTrash: INACTIVE,
     };
