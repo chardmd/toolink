@@ -5,9 +5,13 @@ import asyncComponent from "./components/AsyncComponent";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
-const AsyncFavourites = asyncComponent(() => import("./containers/Favourites"));
+const AsyncQuickAccess = asyncComponent(() =>
+  import("./containers/QuickAccess")
+);
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
-const AsyncTrash = asyncComponent(() => import("./containers/Trash"));
+const AsyncMaintenance = asyncComponent(() =>
+  import("./containers/Maintenance")
+);
 const AsyncLogin = asyncComponent(() => import("./containers/Login"));
 const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
 const AsyncForgotPassword = asyncComponent(() =>
@@ -19,7 +23,7 @@ export default ({ childProps }) => (
     <AuthenticatedRoute
       path="/"
       exact
-      component={AsyncFavourites}
+      component={AsyncQuickAccess}
       props={childProps}
     />
     <AuthenticatedRoute
@@ -30,7 +34,7 @@ export default ({ childProps }) => (
     />
     <AuthenticatedRoute
       path="/maintenance/trash"
-      component={AsyncTrash}
+      component={AsyncMaintenance}
       props={childProps}
     />
     <UnauthenticatedRoute

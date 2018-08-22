@@ -9,9 +9,9 @@ import { connect } from "react-redux";
 
 import { defaultAction } from "./actions";
 
-import "./Favourites.css";
+import "./QuickAccess.css";
 
-export class Favourites extends React.Component {
+export class QuickAccess extends React.Component {
   render() {
     return <div />;
   }
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Favourites);
+)(QuickAccess);

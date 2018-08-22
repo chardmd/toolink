@@ -16,9 +16,9 @@ import { getTrash, deleteTrash, deleteAll } from "./actions";
 import MediaCard from "../../components/MediaCard";
 import RemoveDialog from "../../components/RemoveDialog";
 
-import "./Trash.css";
+import "./Maintenance.css";
 
-export class Trash extends React.Component {
+export class Maintenance extends React.Component {
   constructor(props) {
     super(props);
 
@@ -65,7 +65,7 @@ export class Trash extends React.Component {
   render() {
     const { trash } = this.props;
     return (
-      <div className="Trash">
+      <div className="Maintenance">
         <Toolbar className="toolbox">
           <div>
             <RemoveDialog
@@ -135,4 +135,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Trash);
+)(Maintenance);
