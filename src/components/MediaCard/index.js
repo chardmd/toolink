@@ -53,9 +53,20 @@ function MediaCard(props) {
             </CardContent>
           </div>
         </div>
-        <Icon className="icon" onClick={props.removeLink}>
-          {props.icon}
-        </Icon>
+        <div className="actions">
+          {props.bookmark && (
+            <Icon
+              className="icon"
+              color={props.bookmarkStatus && "secondary"}
+              onClick={props.bookmarkLink}
+            >
+              favorite_outline
+            </Icon>
+          )}
+          <Icon className="icon" onClick={props.removeLink}>
+            {props.icon}
+          </Icon>
+        </div>
       </Card>
     </div>
   );
@@ -71,6 +82,9 @@ MediaCard.propTypes = {
   url: PropTypes.string,
   removeLink: PropTypes.func,
   icon: PropTypes.string,
+  bookmark: PropTypes.bool,
+  bookmarkStatus: PropTypes.bool,
+  bookmarkLink: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(MediaCard);

@@ -16,3 +16,7 @@ export const SAVE_LINK_FAILED = "app/Links/SAVE_LINK_FAILED";
 export const REMOVE_LINK = "app/Links/REMOVE_LINK";
 export const REMOVE_LINK_SUCCESS = "app/Links/REMOVE_LINK_SUCCESS";
 export const REMOVE_LINK_FAILED = "app/Links/REMOVE_LINK_FAILED";
+
+export const BOOKMARK_LINK = "app/Links/BOOKMARK_LINK";
+export const BOOKMARK_LINK_SUCCESS = "app/Links/BOOKMARK_LINK_SUCCESS";
+export const BOOKMARK_LINK_FAILED = "app/Links/BOOKMARK_LINK_FAILED";

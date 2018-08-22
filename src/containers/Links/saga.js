@@ -8,7 +8,12 @@
 import { takeLatest, put, all } from "redux-saga/effects";
 import { push } from "connected-react-router";
 
-import { GET_CATEGORY_LINKS, SAVE_LINK, REMOVE_LINK } from "./constants";
+import {
+  GET_CATEGORY_LINKS,
+  SAVE_LINK,
+  REMOVE_LINK,
+  BOOKMARK_LINK,
+} from "./constants";
 
 import {
   getCategoryLinksSuccess,
@@ -17,6 +22,8 @@ import {
   saveLinkFailed,
   removeLinkSuccess,
   removeLinkFailed,
+  bookmarkLinkSuccess,
+  bookmarkLinkFailed,
 } from "./actions";
 
 import { displayAlert } from "../App/actions";
@@ -55,11 +62,20 @@ function* handleRemoveLink({ id }) {
   }
 }
 
+function* handleBookmarkLink({ id }) {
+  try {
+    yield put(bookmarkLinkSuccess(id, newData));
+  } catch (e) {
+    yield put(saveLinkFailed(e));
+  }
+}
+
 function* LinksSaga() {
   yield all([
     takeLatest(GET_CATEGORY_LINKS, handleGetCategoryLinks),
     takeLatest(SAVE_LINK, handleSaveLink),
     takeLatest(REMOVE_LINK, handleRemoveLink),
+    takeLatest(BOOKMARK_LINK, handleBookmarkLink),
   ]);
 }
 

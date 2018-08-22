@@ -12,5 +12,13 @@
     cursor: pointer;
 }
 
+.MediaCard .actions {
+    display: flex;
+}
+
+.MediaCard .highLight {
+    color: yellow;
+}
+
 
 

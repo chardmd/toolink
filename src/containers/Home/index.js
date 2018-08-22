@@ -12,7 +12,12 @@ import FormDialog from "../../components/FormDialog";
 //actions
 import { loadHome } from "./actions";
 import { getCategories } from "../Categories/actions";
-import { getCategoryLinks, saveLink, removeLink } from "../Links/actions";
+import {
+  getCategoryLinks,
+  saveLink,
+  removeLink,
+  bookmarkLink,
+} from "../Links/actions";
 
 //css
 import "./Home.css";
@@ -100,6 +105,11 @@ class Home extends Component {
                   openInNewTab(data.url);
                 }}
                 icon="close"
+                bookmark
+                bookmarkStatus={data.bookmarkStatus}
+                bookmarkLink={() => {
+                  this.props.bookmarkLink(data.id);
+                }}
               />
             </div>
           ))}
@@ -121,6 +131,7 @@ const mapDispatchToProps = dispatch => ({
   loadHome: () => dispatch(loadHome()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
   getCategories: () => dispatch(getCategories()),
+  bookmarkLink: id => dispatch(bookmarkLink(id)),
 });
 
 export default compose(

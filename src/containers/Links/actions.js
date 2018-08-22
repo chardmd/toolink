@@ -14,6 +14,9 @@ import {
   REMOVE_LINK,
   REMOVE_LINK_SUCCESS,
   REMOVE_LINK_FAILED,
+  BOOKMARK_LINK,
+  BOOKMARK_LINK_SUCCESS,
+  BOOKMARK_LINK_FAILED,
 } from "./constants";
 
 export function getCategoryLinks(categoryId) {
@@ -75,6 +78,28 @@ export function removeLinkSuccess(id) {
 export function removeLinkFailed(err) {
   return {
     type: REMOVE_LINK_FAILED,
+    err,
+  };
+}
+
+export function bookmarkLink(id) {
+  return {
+    type: BOOKMARK_LINK,
+    id,
+  };
+}
+
+export function bookmarkLinkSuccess(id, data) {
+  return {
+    type: BOOKMARK_LINK_SUCCESS,
+    id,
+    data,
+  };
+}
+
+export function bookmarkLinkFailed(err) {
+  return {
+    type: BOOKMARK_LINK_FAILED,
     err,
   };
 }

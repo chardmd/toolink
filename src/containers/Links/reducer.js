@@ -14,6 +14,9 @@ import {
   REMOVE_LINK,
   REMOVE_LINK_SUCCESS,
   REMOVE_LINK_FAILED,
+  BOOKMARK_LINK,
+  BOOKMARK_LINK_SUCCESS,
+  BOOKMARK_LINK_FAILED,
 } from "./constants";
 
 const initialState = [];
@@ -39,6 +42,13 @@ function linksReducer(state = initialState, action) {
       const linkId = action.id;
       return state.filter(i => i.id !== linkId);
     case REMOVE_LINK_FAILED:
+      return state;
+    case BOOKMARK_LINK:
+      return state;
+    case BOOKMARK_LINK_SUCCESS:
+      const bookmarkData = { ...action.data, bookmarkStatus: true };
+      return state.map(l => (l.id == action.id ? bookmarkData : l));
+    case BOOKMARK_LINK_FAILED:
       return state;
     default:
       return state;
