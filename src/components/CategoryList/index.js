@@ -28,6 +28,12 @@ const styles = theme => ({
 });
 
 class CategoryList extends React.Component {
+  componentDidMount() {
+    if (this.props.activeCategoryId) {
+      this.props.updateActiveItem(false, true, false);
+    }
+  }
+
   render() {
     const { classes } = this.props;
 

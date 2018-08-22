@@ -38,21 +38,9 @@ class Home extends Component {
     this.onToggleStatus = this.onToggleStatus.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    //load the data of first category
-    const categoryId = parseInt(nextProps.match.params.categoryId, 10);
-    if (
-      this.props.categories !== nextProps.categories &&
-      nextProps.categories.length !== 0
-    ) {
-      const firstCategory = isNaN(categoryId)
-        ? nextProps.categories[0]
-        : nextProps.categories.find(c => c.id === categoryId) ||
-          nextProps.categories[0];
-      if (firstCategory !== null) {
-        this.props.getCategoryLinks(firstCategory.id);
-      }
-    }
+  componentDidMount() {
+    const categoryId = parseInt(this.props.match.params.categoryId, 10);
+    this.props.getCategoryLinks(categoryId);
   }
 
   onToggleStatus(status) {
