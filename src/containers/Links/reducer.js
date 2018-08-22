@@ -47,7 +47,7 @@ function linksReducer(state = initialState, action) {
       return state;
     case BOOKMARK_LINK_SUCCESS:
       const bookmarkData = { ...action.data, bookmarkStatus: true };
-      return state.map(l => (l.id == action.id ? bookmarkData : l));
+      return state.map(l => (l.id === action.id ? bookmarkData : l));
     case BOOKMARK_LINK_FAILED:
       return state;
     default:

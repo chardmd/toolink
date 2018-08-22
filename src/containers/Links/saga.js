@@ -66,7 +66,7 @@ function* handleBookmarkLink({ id }) {
   try {
     yield put(bookmarkLinkSuccess(id, newData));
   } catch (e) {
-    yield put(saveLinkFailed(e));
+    yield put(bookmarkLinkFailed(e));
   }
 }
 
