@@ -1,3 +1,22 @@
-.Favourites {
-    
+.QuickAccess {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+}
+
+.QuickAccess .onboarding {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin-top: -17%;
+}
+
+.QuickAccess .noFavImage {
+    width: 50%;
+    margin-top: 10%;
 }
