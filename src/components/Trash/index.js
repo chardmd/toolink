@@ -1,6 +1,6 @@
 /**
  *
- * Maintenance
+ * Trash
  *
  */
 
@@ -16,45 +16,13 @@ import List from "@material-ui/core/List";
 import Avatar from "@material-ui/core/Avatar";
 import { withStyles } from "@material-ui/core/styles";
 
-import "./Maintenance.css";
+import "./Trash.css";
 
-const INACTIVE = -1;
-
-const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    minWidth: 300,
-  },
-  drawerPaper: {
-    position: "relative",
-  },
-  toolbar: theme.mixins.toolbar,
-});
-
-class Maintenance extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeTrash: INACTIVE,
-    };
-
-    this.selectTrash = this.selectTrash.bind(this);
-  }
-
-  selectTrash(index) {
-    this.setState({
-      activeTrash: index,
-    });
-  }
-
+class Trash extends React.Component {
   render() {
-    const { classes } = this.props;
-    const { activeTrash } = this.state;
     return (
       <List
         component="nav"
-        className={classes.root}
         subheader={
           <ListSubheader className="subHeader" component="div">
             Maintenance
@@ -65,9 +33,9 @@ class Maintenance extends React.Component {
           button
           component={Link}
           to="/maintenance/trash"
-          className={`listItem ${0 === activeTrash && "active"}`}
+          className={`listItem ${this.props.isActive && "active"}`}
           onClick={() => {
-            this.selectTrash(0);
+            this.props.updateActiveItem(false, false, true);
           }}
         >
           <ListItemAvatar>
@@ -82,8 +50,9 @@ class Maintenance extends React.Component {
   }
 }
 
-Maintenance.propTypes = {
-  activeTrash: PropTypes.number,
+Trash.propTypes = {
+  updateActiveItem: PropTypes.func,
+  isActive: PropTypes.bool,
 };
 
-export default withStyles(styles)(Maintenance);
+export default Trash;

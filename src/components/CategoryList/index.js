@@ -25,32 +25,11 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     minWidth: 300,
   },
-  drawerPaper: {
-    position: "relative",
-  },
-  toolbar: theme.mixins.toolbar,
 });
 
 class CategoryList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeCategoryId: this.props.activeCategoryId || 0,
-    };
-
-    this.selectCategory = this.selectCategory.bind(this);
-  }
-
-  selectCategory(categoryId) {
-    this.setState({
-      activeCategoryId: categoryId,
-    });
-  }
-
   render() {
     const { classes } = this.props;
-    const { activeCategoryId } = this.state;
 
     const content =
       this.props.categories.length !== 0 &&
@@ -59,11 +38,13 @@ class CategoryList extends React.Component {
         return (
           <ListItem
             button
-            className={`listItem ${category.id === activeCategoryId &&
+            className={`listItem ${category.id ===
+              this.props.activeCategoryId &&
+              this.props.isActive &&
               "active"}`}
             key={`category-${category.id}`}
             onClick={() => {
-              this.selectCategory(category.id);
+              this.props.updateActiveItem(false, true, false);
               this.props.getCategoryLinks(category.id);
             }}
           >
@@ -106,6 +87,8 @@ CategoryList.propTypes = {
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
   activeCategoryId: PropTypes.number,
+  updateActiveItem: PropTypes.func,
+  isActive: PropTypes.bool,
 };
 
 export default withStyles(styles)(CategoryList);

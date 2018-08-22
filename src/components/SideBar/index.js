@@ -14,39 +14,36 @@ import "./SideBar.css";
 
 //components
 import CategoryList from "../CategoryList";
-import Maintenance from "../Maintenance";
+import Trash from "../Trash";
 import AddCategory from "../AddCategory";
 import FavItem from "../FavItem";
 
 const styles = theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    minWidth: 300,
-  },
   drawerPaper: {
     position: "relative",
   },
   toolbar: theme.mixins.toolbar,
 });
 
-const INACTIVE = -1;
-
 class SideBar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeCategoryId: this.props.activeCategoryId || 0,
-      activeTrash: INACTIVE,
+      isQuickAccessActive: true,
+      isCategoriesActive: false,
+      isTrashActive: false,
     };
+
+    this.updateActiveItem = this.updateActiveItem.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.state.activeCategoryId !== nextProps.activeCategoryId) {
-      this.setState({
-        activeCategoryId: nextProps.activeCategoryId,
-      });
-    }
+  updateActiveItem(isQuickAccessActive, isCategoriesActive, isTrashActive) {
+    this.setState({
+      isQuickAccessActive,
+      isCategoriesActive,
+      isTrashActive,
+    });
   }
 
   render() {
@@ -61,7 +58,10 @@ class SideBar extends React.Component {
           >
             <div className={this.props.classes.toolbar} />
             <div className="favourites">
-              <FavItem />
+              <FavItem
+                updateActiveItem={this.updateActiveItem}
+                isActive={this.state.isQuickAccessActive}
+              />
             </div>
             <div className="catList">
               <div className="categories">
@@ -71,14 +71,19 @@ class SideBar extends React.Component {
                   removeCategory={this.props.removeCategory}
                   renameCategory={this.props.renameCategory}
                   getCategoryLinks={this.props.getCategoryLinks}
-                  activeCategoryId={this.state.activeCategoryId}
+                  activeCategoryId={this.props.activeCategoryId}
+                  updateActiveItem={this.updateActiveItem}
+                  isActive={this.state.isCategoriesActive}
                 />
               </div>
               <div className="addContainer">
                 <AddCategory addCategory={this.props.addCategory} />
               </div>
               <div>
-                <Maintenance activeTrash={this.state.activeTrash} />
+                <Trash
+                  updateActiveItem={this.updateActiveItem}
+                  isActive={this.state.isTrashActive}
+                />
               </div>
             </div>
           </Drawer>
