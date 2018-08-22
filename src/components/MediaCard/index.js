@@ -6,6 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import "./MediaCard.css";
 
@@ -20,6 +21,11 @@ const styles = theme => ({
   cover: {
     width: 200,
     height: 200,
+  },
+  lightTooltip: {
+    background: theme.palette.common.white,
+    color: theme.palette.text.primary,
+    fontSize: 13,
   },
 });
 
@@ -55,17 +61,24 @@ function MediaCard(props) {
         </div>
         <div className="actions">
           {props.bookmark && (
-            <Icon
-              className="icon"
-              color={props.bookmarkStatus && "secondary"}
-              onClick={props.bookmarkLink}
+            <Tooltip
+              title="Favourite"
+              classes={{ tooltip: classes.lightTooltip }}
             >
-              favorite_outline
-            </Icon>
+              <Icon
+                className="icon"
+                color={props.bookmarkStatus && "secondary"}
+                onClick={props.bookmarkLink}
+              >
+                favorite_outline
+              </Icon>
+            </Tooltip>
           )}
-          <Icon className="icon" onClick={props.removeLink}>
-            {props.icon}
-          </Icon>
+          <Tooltip title="Remove" classes={{ tooltip: classes.lightTooltip }}>
+            <Icon className="icon" onClick={props.removeLink}>
+              {props.icon}
+            </Icon>
+          </Tooltip>
         </div>
       </Card>
     </div>
