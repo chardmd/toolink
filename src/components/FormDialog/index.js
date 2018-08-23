@@ -12,7 +12,7 @@ import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
 import isUrl from "is-url";
 
-import blockImage from "../../assets/blocks.svg";
+import collectionImage from "../../assets/collection.svg";
 
 import "./FormDialog.css";
 
@@ -117,7 +117,11 @@ class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Paste Link</DialogTitle>
           <DialogContent>
             <div className="dialogDisplay">
-              <img src={blockImage} className="blockImage" alt="block" />
+              <img
+                src={collectionImage}
+                className="collectionImage"
+                alt="collection"
+              />
               <DialogContentText>
                 Just paste the link and you are ready to go!
               </DialogContentText>
