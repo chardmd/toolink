@@ -10,6 +10,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
+import isUrl from "is-url";
+
 import blockImage from "../../assets/blocks.svg";
 
 import "./FormDialog.css";
@@ -32,16 +34,18 @@ class FormDialog extends React.Component {
     this.state = {
       link: "",
       activeCategory: 0,
+      linkError: "",
     };
 
     this.renderCategories = this.renderCategories.bind(this);
     this.onAdd = this.onAdd.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
+    this.handleOnBlur = this.handleOnBlur.bind(this);
   }
 
   onAdd = () => {
     const link = this.state.link;
-    if (link.length !== 0) {
+    if (link.length !== 0 && this.state.linkError.length === 0) {
       this.props.saveLink(link);
     }
     this.props.toggleStatus(false);
@@ -54,8 +58,21 @@ class FormDialog extends React.Component {
   }
 
   handleClose = () => {
+    //clear the link error
     this.props.toggleStatus(false);
   };
+
+  handleOnBlur(value) {
+    if (!isUrl(value) && value.length !== 0) {
+      this.setState({
+        linkError: "Invalid Link format",
+      });
+    } else {
+      this.setState({
+        linkError: "",
+      });
+    }
+  }
 
   handleChange = event => {
     this.setState({ link: event.target.value });
@@ -117,6 +134,11 @@ class FormDialog extends React.Component {
               fullWidth
               autoComplete="off"
               onChange={this.handleChange}
+              onBlur={() => {
+                this.handleOnBlur(this.state.link);
+              }}
+              error={this.state.linkError.length !== 0 && true}
+              helperText={this.state.linkError}
             />
           </DialogContent>
           <DialogContent>{this.renderCategories()}</DialogContent>
