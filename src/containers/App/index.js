@@ -19,7 +19,7 @@ import {
   getCategories,
 } from "../Categories/actions";
 import { getCategoryLinks } from "../Links/actions";
-import { getTrash } from "../Trash/actions";
+import { getTrash } from "../Maintenance/actions";
 
 //components
 import SimpleSnackbar from "../../components/SimpleSnackbar";

@@ -7,7 +7,7 @@ import loginReducer from "../containers/Login/reducer";
 import signUpReducer from "../containers/Signup/reducer";
 import categoriesReducer from "../containers/Categories/reducer";
 import linksReducer from "../containers/Links/reducer";
-import trashReducer from "../containers/Trash/reducer";
+import trashReducer from "../containers/Maintenance/reducer";
 
 const mainReducer = combineReducers({
   categories: categoriesReducer,
