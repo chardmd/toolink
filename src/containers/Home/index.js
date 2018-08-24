@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
+import { matchPath } from "react-router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -33,14 +34,24 @@ class Home extends Component {
 
     this.state = {
       isActive: false,
+      categoryId: parseInt(this.props.match.params.categoryId, 10),
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
+    this.getActiveCategoryId = this.getActiveCategoryId.bind(this);
   }
 
   componentDidMount() {
-    const categoryId = parseInt(this.props.match.params.categoryId, 10);
-    this.props.getCategoryLinks(categoryId);
+    this.props.getCategoryLinks(this.state.categoryId);
+  }
+
+  getActiveCategoryId() {
+    const match = matchPath(this.props.location.pathname, {
+      path: "/categories/:categoryId",
+      exact: true,
+      strict: false,
+    });
+    return match === null ? 0 : parseInt(match.params.categoryId, 10);
   }
 
   onToggleStatus(status) {
@@ -51,6 +62,7 @@ class Home extends Component {
 
   render() {
     const { links } = this.props;
+    const categoryId = this.getActiveCategoryId();
     return (
       <div className="Home">
         <Toolbar className="toolbox">
@@ -74,6 +86,7 @@ class Home extends Component {
           toggleStatus={this.onToggleStatus}
           categories={this.props.categories}
           saveLink={this.props.saveLink}
+          activeCategoryId={categoryId}
         />
         <div className="items">
           {links.map(data => (
@@ -114,7 +127,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  saveLink: link => dispatch(saveLink(link)),
+  saveLink: (link, categoryId) => dispatch(saveLink(link, categoryId)),
   removeLink: id => dispatch(removeLink(id)),
   loadHome: () => dispatch(loadHome()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),

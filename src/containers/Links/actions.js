@@ -40,10 +40,11 @@ export function getCategoryLinksFailed(err) {
   };
 }
 
-export function saveLink(link) {
+export function saveLink(link, categoryId) {
   return {
     type: SAVE_LINK,
     link,
+    categoryId,
   };
 }
 

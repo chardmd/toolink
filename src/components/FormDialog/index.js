@@ -33,7 +33,7 @@ class FormDialog extends React.Component {
 
     this.state = {
       link: "",
-      activeCategory: 0,
+      activeCategoryId: props.activeCategoryId,
       linkError: "",
     };
 
@@ -43,17 +43,25 @@ class FormDialog extends React.Component {
     this.handleOnBlur = this.handleOnBlur.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.activeCategoryId !== nextProps.activeCategoryId) {
+      this.setState({
+        activeCategoryId: nextProps.activeCategoryId,
+      });
+    }
+  }
+
   onAdd = () => {
     const link = this.state.link;
     if (link.length !== 0 && this.state.linkError.length === 0) {
-      this.props.saveLink(link);
+      this.props.saveLink(link, this.state.activeCategory);
     }
     this.props.toggleStatus(false);
   };
 
-  selectCategory(index) {
+  selectCategory(categoryId) {
     this.setState({
-      activeCategory: index,
+      activeCategoryId: categoryId,
     });
   }
 
@@ -82,17 +90,19 @@ class FormDialog extends React.Component {
     const { categories } = this.props;
     return (
       categories &&
-      categories.map((category, index) => (
+      categories.map(category => (
         <Chip
           key={`cat-chip-${category.id}`}
           avatar={
             <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
           }
-          color={index === this.state.activeCategory ? "primary" : "default"}
+          color={
+            category.id === this.state.activeCategoryId ? "primary" : "default"
+          }
           label={category.name}
           className={this.props.classes.chip}
           onClick={() => {
-            this.selectCategory(index);
+            this.selectCategory(category.id);
           }}
         />
       ))

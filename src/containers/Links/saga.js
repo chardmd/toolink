@@ -42,7 +42,7 @@ function* handleGetCategoryLinks({ categoryId }) {
   }
 }
 
-function* handleSaveLink({ link }) {
+function* handleSaveLink({ link, categoryId }) {
   try {
     console.table({ link });
     yield put(saveLinkSuccess(newData));
