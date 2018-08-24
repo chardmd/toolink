@@ -80,10 +80,12 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.signIn({
-      email: this.state.email,
-      password: this.state.password,
-    });
+    if (this.validateForm()) {
+      this.props.signIn({
+        email: this.state.email,
+        password: this.state.password,
+      });
+    }
   };
 
   handleAlertClose = () => {
