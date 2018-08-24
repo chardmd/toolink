@@ -145,7 +145,10 @@ class FormDialog extends React.Component {
               helperText={this.state.linkError}
             />
           </DialogContent>
-          <DialogContent>{this.renderCategories()}</DialogContent>
+          <DialogContent>
+            <h4>Choose a category</h4>
+            <div>{this.renderCategories()}</div>
+          </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} size="medium" color="primary">
               Cancel
