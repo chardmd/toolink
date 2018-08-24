@@ -33,7 +33,7 @@
 
 .Home .MediaCard .content {
     display: flex;
-    width: 400px;
+    width: 390px;
     height: 200px;
     cursor: pointer;
 }

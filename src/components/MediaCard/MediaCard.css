@@ -14,6 +14,7 @@
 
 .MediaCard .actions {
     display: flex;
+    flex-direction: column;
 }
 
 .MediaCard .highLight {
