@@ -97,6 +97,7 @@ class App extends Component {
               isAuthenticated={this.props.isAuthenticated}
               handleLogout={this.props.logout}
               handleDrawerToggle={this.handleDrawerToggle}
+              mobileOpen={this.state.mobileOpen}
             />
             {this.props.isAuthenticated && (
               <SideBar
@@ -107,6 +108,8 @@ class App extends Component {
                 getCategoryLinks={this.props.getCategoryLinks}
                 getTrash={this.props.getTrash}
                 activeCategoryId={activeCategoryId}
+                mobileOpen={this.state.mobileOpen}
+                handleDrawerToggle={this.handleDrawerToggle}
               />
             )}
             <main className="content">

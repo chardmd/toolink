@@ -10,7 +10,7 @@
     background: rgba(33, 150, 243, 0.08);
 }
 
-.SideBar .addContainer {
+.addContainer {
     display: flex;
     flex-direction: column;
     margin: 5%;
@@ -18,7 +18,7 @@
     width: 90%;
 }
 
-.SideBar .addContainer button {
+.addContainer button {
     text-align: center;
     justify-content: center;
 }
