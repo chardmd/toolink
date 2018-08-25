@@ -54,7 +54,7 @@ class FormDialog extends React.Component {
   onAdd = () => {
     const link = this.state.link;
     if (link.length !== 0 && this.state.linkError.length === 0) {
-      this.props.saveLink(link, this.state.activeCategory);
+      this.props.saveLink(link, this.state.activeCategoryId);
     }
     this.props.toggleStatus(false);
   };
@@ -88,6 +88,9 @@ class FormDialog extends React.Component {
 
   renderCategories = () => {
     const { categories } = this.props;
+    const activeId = this.state.activeCategoryId
+      ? this.state.activeCategoryId
+      : categories[0].id;
     return (
       categories &&
       categories.map(category => (
@@ -96,9 +99,7 @@ class FormDialog extends React.Component {
           avatar={
             <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
           }
-          color={
-            category.id === this.state.activeCategoryId ? "primary" : "default"
-          }
+          color={category.id === activeId ? "primary" : "default"}
           label={category.name}
           className={this.props.classes.chip}
           onClick={() => {
