@@ -123,7 +123,7 @@ class CategoryMenu extends React.Component {
 CategoryMenu.propTypes = {
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
-  categoryId: PropTypes.number,
+  categoryId: PropTypes.string,
   categoryName: PropTypes.string,
 };
 

@@ -38,7 +38,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "boxweeks",
+        name: "toolink",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION,
       },

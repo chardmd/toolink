@@ -33,8 +33,6 @@ import data from "./data.json";
 
 function* handleGetCategoryLinks({ categoryId }) {
   try {
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
     yield put(getCategoryLinksSuccess(data));
     yield put(push(`/categories/${categoryId}`));
   } catch (e) {

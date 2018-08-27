@@ -34,7 +34,7 @@ class Home extends Component {
 
     this.state = {
       isActive: false,
-      categoryId: parseInt(this.props.match.params.categoryId, 10),
+      categoryId: this.props.match.params.categoryId,
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
@@ -51,7 +51,7 @@ class Home extends Component {
       exact: true,
       strict: false,
     });
-    return match === null ? 0 : parseInt(match.params.categoryId, 10);
+    return match === null ? 0 : match.params.categoryId;
   }
 
   onToggleStatus(status) {

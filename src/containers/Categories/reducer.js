@@ -39,7 +39,7 @@ function categoriesReducer(state = initialState, action) {
       return state;
     case REMOVE_CATEGORY_SUCCESS:
       const catId = action.id;
-      return state.filter(i => i.id !== catId);
+      return state.filter(i => i.categoryId !== catId);
     case REMOVE_CATEGORY_FAILED:
       return state;
     case RENAME_CATEGORY:
@@ -57,7 +57,7 @@ const renameCategory = (state, id, text) => {
   let category = state.find(c => c.id === id);
   category = { ...category, name: text };
   const categories = state.reduce((obj, item) => {
-    if (category.id === item.id) {
+    if (category.categoryId === item.id) {
       obj = obj.concat(category);
     } else {
       obj = obj.concat(item);

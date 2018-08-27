@@ -78,7 +78,7 @@ class App extends Component {
       exact: true,
       strict: false,
     });
-    return match === null ? 0 : parseInt(match.params.categoryId, 10);
+    return match === null ? "0" : match.params.categoryId;
   }
 
   render() {
@@ -88,7 +88,6 @@ class App extends Component {
     };
     // get categoryId from the url
     const activeCategoryId = this.getActiveCategoryId();
-
     return (
       !this.props.isAuthenticating && (
         <div className="App">

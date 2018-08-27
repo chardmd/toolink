@@ -5,7 +5,8 @@
  * configure in store/rootSaga
  */
 
-import { takeLatest, put, all } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
+import { API } from "aws-amplify";
 
 import {
   ADD_CATEGORY,
@@ -26,14 +27,10 @@ import {
 
 import { displayAlert } from "../App/actions";
 
-import categories from "./categories.json";
-
 function* handleGetCategories() {
   try {
-    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
-    yield put(getCategoriesSuccess(categories));
+    const response = yield call([API, API.get], "toolink", "/categories");
+    yield put(getCategoriesSuccess(response));
   } catch (e) {
     yield put(getCategoriesFailed(e));
   }

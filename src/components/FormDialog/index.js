@@ -90,20 +90,22 @@ class FormDialog extends React.Component {
     const { categories } = this.props;
     const activeId = this.state.activeCategoryId
       ? this.state.activeCategoryId
-      : categories[0].id;
+      : categories.length && categories[0].categoryId;
     return (
       categories &&
       categories.map(category => (
         <Chip
-          key={`cat-chip-${category.id}`}
+          key={`cat-chip-${category.categoryId}`}
           avatar={
-            <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
+            <Avatar>
+              {category.categoryName.substring(0, 2).toUpperCase()}
+            </Avatar>
           }
-          color={category.id === activeId ? "primary" : "default"}
-          label={category.name}
+          color={category.categoryId === activeId ? "primary" : "default"}
+          label={category.categoryName}
           className={this.props.classes.chip}
           onClick={() => {
-            this.selectCategory(category.id);
+            this.selectCategory(category.categoryId);
           }}
         />
       ))

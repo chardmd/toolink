@@ -90,7 +90,7 @@ class RenameDialog extends React.Component {
 
 RenameDialog.propTypes = {
   isActive: PropTypes.bool,
-  categoryId: PropTypes.number,
+  categoryId: PropTypes.string,
   categoryName: PropTypes.string,
   toggleStatus: PropTypes.func,
   onClose: PropTypes.func,

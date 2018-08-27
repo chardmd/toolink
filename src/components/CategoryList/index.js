@@ -44,26 +44,28 @@ class CategoryList extends React.Component {
         return (
           <ListItem
             button
-            className={`listItem ${category.id ===
+            className={`listItem ${category.categoryId ===
               this.props.activeCategoryId &&
               this.props.isActive &&
               "active"}`}
-            key={`category-${category.id}`}
+            key={`category-${category.categoryId}`}
             onClick={() => {
               this.props.updateActiveItem(false, true, false);
-              this.props.getCategoryLinks(category.id);
+              this.props.getCategoryLinks(category.categoryId);
             }}
           >
             <ListItemAvatar>
               <Avatar>
-                <Avatar>{category.name.substring(0, 2).toUpperCase()}</Avatar>
+                <Avatar>
+                  {category.categoryName.substring(0, 2).toUpperCase()}
+                </Avatar>
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={category.name} />
+            <ListItemText primary={category.categoryName} />
             <ListItemSecondaryAction>
               <CategoryMenu
-                categoryId={category.id}
-                categoryName={category.name}
+                categoryId={category.categoryId}
+                categoryName={category.categoryName}
                 removeCategory={this.props.removeCategory}
                 renameCategory={this.props.renameCategory}
               />
@@ -92,7 +94,7 @@ CategoryList.propTypes = {
   addCategory: PropTypes.func,
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
-  activeCategoryId: PropTypes.number,
+  activeCategoryId: PropTypes.string,
   updateActiveItem: PropTypes.func,
   isActive: PropTypes.bool,
 };

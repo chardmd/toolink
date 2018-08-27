@@ -133,7 +133,7 @@ SideBar.propTypes = {
   renameCategory: PropTypes.func,
   getCategoryLinks: PropTypes.func,
   getTrash: PropTypes.func,
-  activeCategoryId: PropTypes.number,
+  activeCategoryId: PropTypes.string,
   mobileOpen: PropTypes.bool,
   handleDrawerToggle: PropTypes.func,
 };
