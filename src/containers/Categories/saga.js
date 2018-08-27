@@ -38,7 +38,12 @@ function* handleGetCategories() {
 
 function* handleAddCategory({ category }) {
   try {
-    yield put(addCategorySuccess({ id: 10, name: category }));
+    const response = yield call([API, API.post], "toolink", "/categories", {
+      body: {
+        categoryName: category,
+      },
+    });
+    yield put(addCategorySuccess(response));
     yield put(displayAlert("Category successfully added", true));
   } catch (e) {
     yield put(addCategoryFailed(e));
