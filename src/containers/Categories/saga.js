@@ -53,6 +53,7 @@ function* handleAddCategory({ category }) {
 
 function* handleRemoveCategory({ id }) {
   try {
+    yield call([API, API.del], "toolink", `/categories/${id}`);
     yield put(removeCategorySuccess(id));
     yield put(displayAlert("Category successfully removed", true));
   } catch (e) {
