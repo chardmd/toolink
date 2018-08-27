@@ -62,9 +62,14 @@ function* handleRemoveCategory({ id }) {
   }
 }
 
-function* handleRenameCategory({ id, text }) {
+function* handleRenameCategory({ id, categoryName }) {
   try {
-    yield put(renameCategorySuccess(id, text));
+    yield call([API, API.put], "toolink", `/categories/${id}`, {
+      body: {
+        categoryName: categoryName,
+      },
+    });
+    yield put(renameCategorySuccess(id, categoryName));
     yield put(displayAlert("Category successfully updated", true));
   } catch (e) {
     yield put(renameCategoryFailed(e));

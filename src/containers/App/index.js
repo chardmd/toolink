@@ -152,7 +152,8 @@ const mapDispatchToProps = dispatch => ({
   displayAlert: (message, status) => dispatch(displayAlert(message, status)),
   addCategory: category => dispatch(addCategory(category)),
   removeCategory: id => dispatch(removeCategory(id)),
-  renameCategory: (id, text) => dispatch(renameCategory(id, text)),
+  renameCategory: (id, categoryName) =>
+    dispatch(renameCategory(id, categoryName)),
   getTrash: () => dispatch(getTrash()),
   getCategories: () => dispatch(getCategories()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),

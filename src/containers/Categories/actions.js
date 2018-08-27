@@ -61,19 +61,19 @@ export function removeCategoryFailed(err) {
   };
 }
 
-export function renameCategory(id, text) {
+export function renameCategory(id, categoryName) {
   return {
     type: RENAME_CATEGORY,
     id,
-    text,
+    categoryName,
   };
 }
 
-export function renameCategorySuccess(id, text) {
+export function renameCategorySuccess(id, categoryName) {
   return {
     type: RENAME_CATEGORY_SUCCESS,
     id,
-    text,
+    categoryName,
   };
 }
 

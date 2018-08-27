@@ -45,7 +45,7 @@ function categoriesReducer(state = initialState, action) {
     case RENAME_CATEGORY:
       return state;
     case RENAME_CATEGORY_SUCCESS:
-      return renameCategory(state, action.id, action.text);
+      return renameCategory(state, action.id, action.categoryName);
     case RENAME_CATEGORY_FAILED:
       return state;
     default:
@@ -53,11 +53,11 @@ function categoriesReducer(state = initialState, action) {
   }
 }
 
-const renameCategory = (state, id, text) => {
-  let category = state.find(c => c.id === id);
-  category = { ...category, name: text };
+const renameCategory = (state, id, categoryName) => {
+  let category = state.find(c => c.categoryId === id);
+  category = { ...category, categoryName: categoryName };
   const categories = state.reduce((obj, item) => {
-    if (category.categoryId === item.id) {
+    if (category.categoryId === item.categoryId) {
       obj = obj.concat(category);
     } else {
       obj = obj.concat(item);
