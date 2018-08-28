@@ -30,6 +30,10 @@ export class QuickAccess extends React.Component {
     this.onToggleStatus = this.onToggleStatus.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getCategories();
+  }
+
   onToggleStatus(status) {
     this.setState({
       isActive: status,

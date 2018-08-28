@@ -37,14 +37,9 @@ class App extends Component {
     this.getActiveCategoryId = this.getActiveCategoryId.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAuthenticatedUser();
-  }
-
-  componentWillReceiveProps() {
-    if (this.props.categories.length === 0) {
-      this.props.getCategories();
-    }
+    this.props.getCategories();
   }
 
   handleDrawerToggle = () => {
