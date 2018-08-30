@@ -95,7 +95,7 @@ class Home extends Component {
                 title={data.title}
                 description={data.description}
                 image={data.image}
-                url={data.url}
+                url={data.urlText}
                 author={data.author}
                 publisher={data.publisher}
                 id={data.id}
@@ -103,7 +103,7 @@ class Home extends Component {
                   this.props.removeLink(data.id);
                 }}
                 onClick={() => {
-                  openInNewTab(data.url);
+                  openInNewTab(data.urlText);
                 }}
                 icon="close"
                 bookmark
