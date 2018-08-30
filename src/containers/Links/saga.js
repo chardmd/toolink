@@ -5,8 +5,9 @@
  * configure in store/rootSaga
  */
 
-import { takeLatest, put, all } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
 import { push } from "connected-react-router";
+import { API } from "aws-amplify";
 
 import {
   GET_CATEGORY_LINKS,
@@ -42,8 +43,13 @@ function* handleGetCategoryLinks({ categoryId }) {
 
 function* handleSaveLink({ link, categoryId }) {
   try {
-    console.table({ link });
-    yield put(saveLinkSuccess(newData));
+    const response = yield call([API, API.post], "toolink", "/links", {
+      body: {
+        url: link,
+        categoryId: categoryId,
+      },
+    });
+    yield put(saveLinkSuccess(response));
     yield put(displayAlert("Link successfully saved", true));
   } catch (e) {
     yield put(saveLinkFailed(e));
