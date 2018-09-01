@@ -34,7 +34,11 @@ import data from "./data.json";
 
 function* handleGetCategoryLinks({ categoryId }) {
   try {
-    const response = yield call([API, API.get], "toolink", "/links");
+    const response = yield call(
+      [API, API.get],
+      "toolink",
+      `/links/categories/${categoryId}`
+    );
     yield put(getCategoryLinksSuccess(response));
     yield put(push(`/categories/${categoryId}`));
   } catch (e) {
