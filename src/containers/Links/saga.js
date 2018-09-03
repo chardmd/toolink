@@ -63,6 +63,11 @@ function* handleSaveLink({ link, categoryId }) {
 
 function* handleRemoveLink({ id }) {
   try {
+    yield call([API, API.put], "toolink", `/links/${id}`, {
+      body: {
+        isActive: false,
+      },
+    });
     yield put(removeLinkSuccess(id));
     yield put(displayAlert("Link successfully removed", true));
   } catch (e) {

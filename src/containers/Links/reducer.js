@@ -40,7 +40,7 @@ function linksReducer(state = initialState, action) {
       return state;
     case REMOVE_LINK_SUCCESS:
       const linkId = action.id;
-      return state.filter(i => i.id !== linkId);
+      return state.filter(i => i.linkId !== linkId);
     case REMOVE_LINK_FAILED:
       return state;
     case BOOKMARK_LINK:

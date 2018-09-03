@@ -100,7 +100,7 @@ class Home extends Component {
                 publisher={data.publisher}
                 id={data.id}
                 removeLink={() => {
-                  this.props.removeLink(data.id);
+                  this.props.removeLink(data.linkId);
                 }}
                 onClick={() => {
                   openInNewTab(data.urlText);
