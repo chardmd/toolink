@@ -35,7 +35,7 @@ function MediaCard(props) {
     <div className="MediaCard">
       <Card className="card">
         <div className="content" onClick={props.onClick}>
-          <CardMedia className={classes.cover} image={props.image} />
+          <CardMedia className={classes.cover} image={props.image || "todo"} />
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography variant="title">
@@ -72,7 +72,7 @@ function MediaCard(props) {
             >
               <Icon
                 className="icon"
-                color={props.bookmarkStatus && "secondary"}
+                color={props.isFavourite === true ? "secondary" : "inherit"}
                 onClick={props.bookmarkLink}
               >
                 favorite_outline
@@ -88,7 +88,7 @@ function MediaCard(props) {
 MediaCard.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
-  id: PropTypes.number,
+  id: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
@@ -96,7 +96,7 @@ MediaCard.propTypes = {
   removeLink: PropTypes.func,
   icon: PropTypes.string,
   bookmark: PropTypes.bool,
-  bookmarkStatus: PropTypes.bool,
+  isFavourite: PropTypes.bool,
   bookmarkLink: PropTypes.func,
 };
 

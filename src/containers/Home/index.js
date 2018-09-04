@@ -90,7 +90,7 @@ class Home extends Component {
         />
         <div className="items">
           {links.map(data => (
-            <div className="card" key={`preview-${data.id}`}>
+            <div className="card" key={`preview-${data.linkId}`}>
               <MediaCard
                 title={data.title}
                 description={data.description}
@@ -98,7 +98,7 @@ class Home extends Component {
                 url={data.urlText}
                 author={data.author}
                 publisher={data.publisher}
-                id={data.id}
+                id={data.linkId}
                 removeLink={() => {
                   this.props.removeLink(data.linkId);
                 }}
@@ -107,9 +107,9 @@ class Home extends Component {
                 }}
                 icon="close"
                 bookmark
-                bookmarkStatus={data.bookmarkStatus}
+                isFavourite={data.isFavourite}
                 bookmarkLink={() => {
-                  this.props.bookmarkLink(data.id);
+                  this.props.bookmarkLink(data.linkId, data.isFavourite);
                 }}
               />
             </div>
@@ -132,7 +132,7 @@ const mapDispatchToProps = dispatch => ({
   loadHome: () => dispatch(loadHome()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
   getCategories: () => dispatch(getCategories()),
-  bookmarkLink: id => dispatch(bookmarkLink(id)),
+  bookmarkLink: (id, status) => dispatch(bookmarkLink(id, status)),
 });
 
 export default compose(

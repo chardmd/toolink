@@ -83,18 +83,19 @@ export function removeLinkFailed(err) {
   };
 }
 
-export function bookmarkLink(id) {
+export function bookmarkLink(id, status) {
   return {
     type: BOOKMARK_LINK,
     id,
+    status,
   };
 }
 
-export function bookmarkLinkSuccess(id, data) {
+export function bookmarkLinkSuccess(id, status) {
   return {
     type: BOOKMARK_LINK_SUCCESS,
     id,
-    data,
+    status,
   };
 }
 

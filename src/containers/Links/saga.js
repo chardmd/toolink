@@ -28,9 +28,6 @@ import {
 } from "./actions";
 
 import { displayAlert } from "../App/actions";
-import newData from "./new.json";
-
-import data from "./data.json";
 
 function* handleGetCategoryLinks({ categoryId }) {
   try {
@@ -76,9 +73,14 @@ function* handleRemoveLink({ id }) {
   }
 }
 
-function* handleBookmarkLink({ id }) {
+function* handleBookmarkLink({ id, status }) {
   try {
-    yield put(bookmarkLinkSuccess(id, newData));
+    yield call([API, API.put], "toolink", `/links/${id}`, {
+      body: {
+        isFavourite: !status,
+      },
+    });
+    yield put(bookmarkLinkSuccess(id, status));
   } catch (e) {
     yield put(bookmarkLinkFailed(e));
   }
