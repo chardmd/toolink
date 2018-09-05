@@ -5,9 +5,7 @@ import asyncComponent from "./components/AsyncComponent";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
-const AsyncQuickAccess = asyncComponent(() =>
-  import("./containers/QuickAccess")
-);
+const AsyncFavourites = asyncComponent(() => import("./containers/Favourites"));
 const AsyncHome = asyncComponent(() => import("./containers/Home"));
 const AsyncMaintenance = asyncComponent(() =>
   import("./containers/Maintenance")
@@ -23,7 +21,7 @@ export default ({ childProps }) => (
     <AuthenticatedRoute
       path="/"
       exact
-      component={AsyncQuickAccess}
+      component={AsyncFavourites}
       props={childProps}
     />
     <AuthenticatedRoute

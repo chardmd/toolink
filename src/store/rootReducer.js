@@ -8,6 +8,7 @@ import signUpReducer from "../containers/Signup/reducer";
 import categoriesReducer from "../containers/Categories/reducer";
 import linksReducer from "../containers/Links/reducer";
 import trashReducer from "../containers/Maintenance/reducer";
+import favouritesReducer from "../containers/Favourites/reducer";
 
 const mainReducer = combineReducers({
   categories: categoriesReducer,
@@ -17,6 +18,7 @@ const mainReducer = combineReducers({
   login: loginReducer,
   forgotPassword: forgotPasswordReducer,
   signUp: signUpReducer,
+  favourites: favouritesReducer,
 });
 
 const rootReducer = (state, action) => {

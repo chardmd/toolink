@@ -7,6 +7,7 @@ import SignUpSaga from "../containers/Signup/saga";
 import CategoriesSaga from "../containers/Categories/saga";
 import LinksSaga from "../containers/Links/saga";
 import MaintenanceSaga from "../containers/Maintenance/saga";
+import FavouritesSaga from "../containers/Favourites/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -18,5 +19,6 @@ export default function* rootSaga() {
     fork(CategoriesSaga),
     fork(LinksSaga),
     fork(MaintenanceSaga),
+    fork(FavouritesSaga),
   ]);
 }

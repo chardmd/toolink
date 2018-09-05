@@ -1,4 +1,4 @@
-.QuickAccess {
+.Favourites {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     display: flex;
     justify-content: center;
@@ -6,7 +6,7 @@
     height: 100%;
 }
 
-.QuickAccess .onboarding {
+.Favourites .onboarding {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -16,11 +16,11 @@
     margin-top: -17%;
 }
 
-.QuickAccess .noFavImage {
+.Favourites .noFavImage {
     width: 50%;
     margin-top: 10%;
 }
 
-.QuickAccess h1 {
+.Favourites h1 {
     color: #495057;
 }

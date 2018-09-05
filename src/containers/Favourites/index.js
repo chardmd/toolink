@@ -10,7 +10,7 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
 import tourImage from "../../assets/tour.svg";
-import "./QuickAccess.css";
+import "./Favourites.css";
 
 //components
 import FormDialog from "../../components/FormDialog";
@@ -18,8 +18,9 @@ import FormDialog from "../../components/FormDialog";
 //actions
 import { getCategories } from "../Categories/actions";
 import { saveLink } from "../Links/actions";
+import { getFavourites } from "./actions";
 
-export class QuickAccess extends React.Component {
+export class Favourites extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,6 +32,7 @@ export class QuickAccess extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getFavourites();
     this.props.getCategories();
   }
 
@@ -42,7 +44,7 @@ export class QuickAccess extends React.Component {
 
   render() {
     return (
-      <div className="QuickAccess">
+      <div className="Favourites">
         <div className="onboarding">
           <img src={tourImage} alt="tour" className="noFavImage" />
           <h1>Get started with adding new links</h1>
@@ -72,14 +74,16 @@ export class QuickAccess extends React.Component {
 
 const mapStateToProps = state => ({
   categories: state.categories,
+  favourites: state.favourites,
 });
 
 const mapDispatchToProps = dispatch => ({
   saveLink: link => dispatch(saveLink(link)),
   getCategories: () => dispatch(getCategories()),
+  getFavourites: () => dispatch(getFavourites()),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuickAccess);
+)(Favourites);
