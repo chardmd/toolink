@@ -19,6 +19,9 @@ import {
   getAuthenticatedUserFailed,
 } from "./actions";
 
+import { getCategories } from "../Categories/actions";
+import { getFavourites } from "../Favourites/actions";
+
 import {
   setAuthenticating,
   setAuthenticated,
@@ -32,6 +35,8 @@ function* handleSignIn({ data }) {
     const { email, password } = data;
     const response = yield call([Auth, Auth.signIn], email, password);
     yield put(signInSuccess(response));
+    yield put(getFavourites());
+    yield put(getCategories());
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));
@@ -65,6 +70,8 @@ function* handleGoogleSignIn({ data }) {
       ...user,
     };
     yield put(googleSignInSuccess(result));
+    yield put(getFavourites());
+    yield put(getCategories());
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));
@@ -99,6 +106,8 @@ function* handleFacebookSignIn({ data }) {
       ...user,
     };
     yield put(facebookSignInSuccess(result));
+    yield put(getFavourites());
+    yield put(getCategories());
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));
@@ -113,6 +122,7 @@ function* handleGetAuthenticatedUser() {
   try {
     const response = yield call([Auth, Auth.currentAuthenticatedUser]);
     yield put(getAuthenticatedUserSuccess(response));
+    yield put(getCategories());
     yield put(setAuthenticated(true));
   } catch (e) {
     console.error(e);

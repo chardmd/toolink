@@ -16,7 +16,6 @@ import {
   addCategory,
   removeCategory,
   renameCategory,
-  getCategories,
 } from "../Categories/actions";
 import { getCategoryLinks } from "../Links/actions";
 import { getTrash } from "../Maintenance/actions";
@@ -39,7 +38,6 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getAuthenticatedUser();
-    this.props.getCategories();
   }
 
   handleDrawerToggle = () => {
@@ -150,7 +148,6 @@ const mapDispatchToProps = dispatch => ({
   renameCategory: (id, categoryName) =>
     dispatch(renameCategory(id, categoryName)),
   getTrash: () => dispatch(getTrash()),
-  getCategories: () => dispatch(getCategories()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
 });
 

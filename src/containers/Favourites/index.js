@@ -16,9 +16,7 @@ import "./Favourites.css";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getCategories } from "../Categories/actions";
 import { saveLink } from "../Links/actions";
-import { getFavourites } from "./actions";
 
 export class Favourites extends React.Component {
   constructor(props) {
@@ -29,11 +27,6 @@ export class Favourites extends React.Component {
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
-  }
-
-  componentDidMount() {
-    this.props.getFavourites();
-    this.props.getCategories();
   }
 
   onToggleStatus(status) {
@@ -79,8 +72,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   saveLink: link => dispatch(saveLink(link)),
-  getCategories: () => dispatch(getCategories()),
-  getFavourites: () => dispatch(getFavourites()),
 });
 
 export default connect(
