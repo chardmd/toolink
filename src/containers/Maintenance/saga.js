@@ -4,8 +4,8 @@
  * 
  * configure in store/rootSaga
  */
-
-import { takeLatest, put, all } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
+import { API } from "aws-amplify";
 
 import { GET_TRASH, DELETE_TRASH, DELETE_ALL } from "./constants";
 
@@ -19,14 +19,10 @@ import {
 } from "./actions";
 import { displayAlert } from "../App/actions";
 
-import trash from "./trash.json";
-
 function* handleGetTrash() {
   try {
-    // let url = `https://micro-open-graph-ksguljmysl.now.sh/?url=${category}`;
-    // const response = yield call([axios, axios.get], url);
-    // console.log("response", response.data);
-    yield put(getTrashSuccess(trash));
+    const response = yield call([API, API.get], "toolink", "/trash");
+    yield put(getTrashSuccess(response));
   } catch (e) {
     yield put(getTrashFailed(e));
     yield put(displayAlert(e.message, true));
@@ -35,6 +31,7 @@ function* handleGetTrash() {
 
 function* handleDeleteTrash({ id }) {
   try {
+    yield call([API, API.del], "toolink", `/trash/${id}`);
     yield put(deleteTrashSuccess(id));
     yield put(displayAlert("Link permanently deleted.", true));
   } catch (e) {
@@ -45,6 +42,7 @@ function* handleDeleteTrash({ id }) {
 
 function* handleDeleteAll() {
   try {
+    yield call([API, API.del], "toolink", "/trash");
     yield put(deleteAllSuccess());
     yield put(displayAlert("Empty Trash Success.", true));
   } catch (e) {

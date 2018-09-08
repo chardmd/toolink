@@ -100,7 +100,7 @@ export class Maintenance extends React.Component {
         />
         <div className="items">
           {trash.map(data => (
-            <div className="card" key={`preview-${data.id}`}>
+            <div className="card" key={`preview-${data.linkId}`}>
               <MediaCard
                 title={data.title}
                 description={data.description}
@@ -108,9 +108,9 @@ export class Maintenance extends React.Component {
                 url={data.url}
                 author={data.author}
                 publisher={data.publisher}
-                id={data.id}
+                id={data.linkId}
                 removeLink={() => {
-                  this.toggleRemoveDialog(true, data.id);
+                  this.toggleRemoveDialog(true, data.linkId);
                 }}
                 icon="delete_outline"
               />
@@ -123,7 +123,7 @@ export class Maintenance extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  trash: state.trash.data,
+  trash: state.trash,
 });
 
 const mapDispatchToProps = dispatch => ({
