@@ -8,7 +8,6 @@ import React from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
-import Toolbar from "@material-ui/core/Toolbar";
 
 import tourImage from "../../assets/tour.svg";
 import "./Favourites.css";

@@ -7,22 +7,18 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
-import NavBar from "../../components/NavBar";
-import Sidebar from "../../containers/Sidebar";
-import Routes from "../../Routes";
-import { getAuthenticatedUser } from "../Login/actions";
-import { logout, setAuthenticated, displayAlert } from "./actions";
-import {
-  addCategory,
-  removeCategory,
-  renameCategory,
-} from "../Categories/actions";
-import { getCategoryLinks } from "../Links/actions";
-import { getTrash } from "../Maintenance/actions";
-
 //components
+import NavBar from "../../components/NavBar";
 import SimpleSnackbar from "../../components/SimpleSnackbar";
 
+//containers
+import Sidebar from "../../containers/Sidebar";
+
+//actions
+import { getAuthenticatedUser } from "../Login/actions";
+import { logout, setAuthenticated, displayAlert } from "./actions";
+
+import Routes from "../../Routes";
 import "./App.css";
 
 class App extends Component {
@@ -93,12 +89,6 @@ class App extends Component {
             />
             {this.props.isAuthenticated && (
               <Sidebar
-                categories={this.props.categories}
-                addCategory={this.props.addCategory}
-                removeCategory={this.props.removeCategory}
-                renameCategory={this.props.renameCategory}
-                getCategoryLinks={this.props.getCategoryLinks}
-                getTrash={this.props.getTrash}
                 activeCategoryId={activeCategoryId}
                 mobileOpen={this.state.mobileOpen}
                 handleDrawerToggle={this.handleDrawerToggle}
@@ -135,7 +125,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.app.isAuthenticated,
   alertOpen: state.app.alertOpen,
   alertMessage: state.app.alertMessage,
-  categories: state.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -143,12 +132,6 @@ const mapDispatchToProps = dispatch => ({
   getAuthenticatedUser: () => dispatch(getAuthenticatedUser()),
   logout: () => dispatch(logout()),
   displayAlert: (message, status) => dispatch(displayAlert(message, status)),
-  addCategory: category => dispatch(addCategory(category)),
-  removeCategory: id => dispatch(removeCategory(id)),
-  renameCategory: (id, categoryName) =>
-    dispatch(renameCategory(id, categoryName)),
-  getTrash: () => dispatch(getTrash()),
-  getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
 });
 
 export default compose(

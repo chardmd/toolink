@@ -5,6 +5,9 @@
  */
 
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { compose } from "recompose";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
@@ -18,6 +21,15 @@ import Trash from "../../components/Trash";
 import AddCategory from "../../components/AddCategory";
 import FavItem from "../../components/FavItem";
 
+//actions
+import {
+  addCategory,
+  removeCategory,
+  renameCategory,
+} from "../Categories/actions";
+import { getCategoryLinks } from "../Links/actions";
+import { getTrash } from "../Maintenance/actions";
+
 const styles = theme => ({
   drawerPaper: {
     [theme.breakpoints.up("md")]: {
@@ -27,7 +39,7 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-class SideBar extends React.Component {
+class Sidebar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -126,16 +138,30 @@ class SideBar extends React.Component {
   }
 }
 
-SideBar.propTypes = {
-  categories: PropTypes.array,
-  addCategory: PropTypes.func,
-  removeCategory: PropTypes.func,
-  renameCategory: PropTypes.func,
-  getCategoryLinks: PropTypes.func,
-  getTrash: PropTypes.func,
+Sidebar.propTypes = {
   activeCategoryId: PropTypes.string,
   mobileOpen: PropTypes.bool,
   handleDrawerToggle: PropTypes.func,
 };
 
-export default withStyles(styles, { withTheme: true })(SideBar);
+const mapStateToProps = state => ({
+  categories: state.categories,
+});
+
+const mapDispatchToProps = dispatch => ({
+  addCategory: category => dispatch(addCategory(category)),
+  removeCategory: id => dispatch(removeCategory(id)),
+  renameCategory: (id, categoryName) =>
+    dispatch(renameCategory(id, categoryName)),
+  getTrash: () => dispatch(getTrash()),
+  getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
+});
+
+export default compose(
+  withRouter,
+  withStyles(styles, { withTheme: true }),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Sidebar);
