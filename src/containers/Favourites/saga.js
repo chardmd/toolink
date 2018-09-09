@@ -25,3 +25,4 @@ function* FavouritesSaga() {
 }
 
 export default FavouritesSaga;
+export { handleGetFavourites };

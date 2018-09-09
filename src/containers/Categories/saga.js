@@ -87,3 +87,4 @@ function* CategoriesSaga() {
 }
 
 export default CategoriesSaga;
+export { handleGetCategories };
