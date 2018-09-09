@@ -21,6 +21,7 @@ import {
 } from "../Links/actions";
 
 //css
+import blankImage from "../../assets/blank.svg";
 import "./Home.css";
 
 function openInNewTab(url) {
@@ -89,31 +90,35 @@ class Home extends Component {
           </div>
         </Toolbar>
         <div className="items">
-          {links.map(data => (
-            <div className="card" key={`preview-${data.linkId}`}>
-              <MediaCard
-                title={data.title}
-                description={data.description}
-                image={data.image}
-                url={data.urlText}
-                author={data.author}
-                publisher={data.publisher}
-                id={data.linkId}
-                removeLink={() => {
-                  this.props.removeLink(data.linkId);
-                }}
-                onClick={() => {
-                  openInNewTab(data.urlText);
-                }}
-                icon="close"
-                bookmark
-                isFavourite={data.isFavourite}
-                bookmarkLink={() => {
-                  this.props.bookmarkLink(data.linkId, data.isFavourite);
-                }}
-              />
-            </div>
-          ))}
+          {links.length === 0 ? (
+            <img src={blankImage} alt="blank" className="noCategories" />
+          ) : (
+            links.map(data => (
+              <div className="card" key={`preview-${data.linkId}`}>
+                <MediaCard
+                  title={data.title}
+                  description={data.description}
+                  image={data.image}
+                  url={data.urlText}
+                  author={data.author}
+                  publisher={data.publisher}
+                  id={data.linkId}
+                  removeLink={() => {
+                    this.props.removeLink(data.linkId);
+                  }}
+                  onClick={() => {
+                    openInNewTab(data.urlText);
+                  }}
+                  icon="close"
+                  bookmark
+                  isFavourite={data.isFavourite}
+                  bookmarkLink={() => {
+                    this.props.bookmarkLink(data.linkId, data.isFavourite);
+                  }}
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
     );
