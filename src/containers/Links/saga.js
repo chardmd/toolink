@@ -81,6 +81,12 @@ function* handleBookmarkLink({ id, status }) {
       },
     });
     yield put(bookmarkLinkSuccess(id, status));
+    yield put(
+      displayAlert(
+        `${!status === true ? "Added to" : "Removed from"} Favourites`,
+        true
+      )
+    );
   } catch (e) {
     yield put(bookmarkLinkFailed(e));
   }

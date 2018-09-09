@@ -16,6 +16,8 @@ import {
   removeFavouritesFailed,
 } from "./actions";
 
+import { displayAlert } from "../App/actions";
+
 function* handleGetFavourites() {
   try {
     const response = yield call([API, API.get], "toolink", "/favourites");
@@ -33,6 +35,7 @@ function* handleRemoveFavourites({ id }) {
       },
     });
     yield put(removeFavouritesSuccess(id));
+    yield put(displayAlert("Removed from Favourites", true));
   } catch (e) {
     yield put(removeFavouritesFailed(e));
   }
