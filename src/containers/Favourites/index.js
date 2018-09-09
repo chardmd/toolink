@@ -17,7 +17,8 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { saveLink } from "../Links/actions";
+import { getFavourites } from "./actions";
+import { saveLink, bookmarkLink } from "../Links/actions";
 
 function openInNewTab(url) {
   var win = window.open(url, "_blank");
@@ -35,6 +36,10 @@ export class Favourites extends React.Component {
     this.onToggleStatus = this.onToggleStatus.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getFavourites();
+  }
+
   onToggleStatus(status) {
     this.setState({
       isActive: status,
@@ -44,7 +49,7 @@ export class Favourites extends React.Component {
   render() {
     return (
       <div className="Favourites">
-        {this.props.favourites === null ||
+        {this.props.favourites !== null &&
         this.props.favourites.length === 0 ? (
           <div className="onboarding">
             <img src={tourImage} alt="tour" className="noFavImage" />
@@ -105,7 +110,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getFavourites: () => dispatch(getFavourites()),
   saveLink: link => dispatch(saveLink(link)),
+  bookmarkLink: (id, status) => dispatch(bookmarkLink(id, status)),
 });
 
 export default connect(

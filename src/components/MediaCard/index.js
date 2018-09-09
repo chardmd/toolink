@@ -49,7 +49,7 @@ function MediaCard(props) {
                 By {author === null ? publisher : author}
               </Typography>
               <Typography component="p" gutterBottom>
-                {description.length > 60
+                {description && description.length > 60
                   ? description.substring(0, 60) + "..."
                   : description}
               </Typography>
