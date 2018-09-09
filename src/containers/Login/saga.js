@@ -35,8 +35,8 @@ function* handleSignIn({ data }) {
     const { email, password } = data;
     const response = yield call([Auth, Auth.signIn], email, password);
     yield put(signInSuccess(response));
-    yield put(getFavourites());
     yield put(getCategories());
+    yield put(getFavourites());
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));

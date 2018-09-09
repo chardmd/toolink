@@ -11,7 +11,7 @@ import {
   GET_FAVOURITES_FAILED,
 } from "./constants";
 
-const initialState = [];
+const initialState = null;
 
 function favouritesReducer(state = initialState, action) {
   switch (action.type) {

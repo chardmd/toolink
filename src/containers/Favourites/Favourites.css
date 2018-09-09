@@ -24,3 +24,30 @@
 .Favourites h1 {
     color: #495057;
 }
+
+.Favourites .card {
+    margin: 0.5em;
+    border: 1px solid transparent;
+}
+
+.Favourites .items {
+    height: 100%;
+    overflow: auto;
+    max-height: 100vh;
+    padding-bottom: 12em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Favourites .MediaCard .card:hover {
+    background: rgba(33, 150, 243, 0.08);
+    border: 1px solid #2196f3;
+}
+
+.Favourites .MediaCard .content {
+    display: flex;
+    width: 390px;
+    height: 200px;
+    cursor: pointer;
+}

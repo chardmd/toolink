@@ -65,6 +65,13 @@ class Home extends Component {
     const categoryId = this.getActiveCategoryId();
     return (
       <div className="Home">
+        <FormDialog
+          isActive={this.state.isActive}
+          toggleStatus={this.onToggleStatus}
+          categories={this.props.categories}
+          saveLink={this.props.saveLink}
+          activeCategoryId={categoryId}
+        />
         <Toolbar className="toolbox">
           <div>
             <Button
@@ -81,13 +88,6 @@ class Home extends Component {
             </Button>
           </div>
         </Toolbar>
-        <FormDialog
-          isActive={this.state.isActive}
-          toggleStatus={this.onToggleStatus}
-          categories={this.props.categories}
-          saveLink={this.props.saveLink}
-          activeCategoryId={categoryId}
-        />
         <div className="items">
           {links.map(data => (
             <div className="card" key={`preview-${data.linkId}`}>

@@ -60,11 +60,13 @@ function MediaCard(props) {
           </div>
         </div>
         <div className="actions">
-          <Tooltip title="Remove" classes={{ tooltip: classes.lightTooltip }}>
-            <Icon className="icon" onClick={props.removeLink}>
-              {props.icon}
-            </Icon>
-          </Tooltip>
+          {props.icon && (
+            <Tooltip title="Remove" classes={{ tooltip: classes.lightTooltip }}>
+              <Icon className="icon" onClick={props.removeLink}>
+                {props.icon}
+              </Icon>
+            </Tooltip>
+          )}
           {props.bookmark && (
             <Tooltip
               title="Favourite"
