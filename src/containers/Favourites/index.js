@@ -17,8 +17,8 @@ import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getFavourites } from "./actions";
-import { saveLink, bookmarkLink } from "../Links/actions";
+import { getFavourites, removeFavourites } from "./actions";
+import { saveLink } from "../Links/actions";
 
 function openInNewTab(url) {
   var win = window.open(url, "_blank");
@@ -92,7 +92,7 @@ export class Favourites extends React.Component {
                     bookmark
                     isFavourite={data.isFavourite}
                     bookmarkLink={() => {
-                      this.props.bookmarkLink(data.linkId, data.isFavourite);
+                      this.props.removeFavourites(data.linkId);
                     }}
                   />
                 </div>
@@ -112,7 +112,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getFavourites: () => dispatch(getFavourites()),
   saveLink: link => dispatch(saveLink(link)),
-  bookmarkLink: (id, status) => dispatch(bookmarkLink(id, status)),
+  removeFavourites: id => dispatch(removeFavourites(id)),
 });
 
 export default connect(
