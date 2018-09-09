@@ -1,6 +1,6 @@
 /**
  *
- * CategoryList
+ * SideBar
  *
  */
 
@@ -10,13 +10,13 @@ import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 import { withStyles } from "@material-ui/core/styles";
 
-import "./SideBar.css";
+import "./Sidebar.css";
 
 //components
-import CategoryList from "../CategoryList";
-import Trash from "../Trash";
-import AddCategory from "../AddCategory";
-import FavItem from "../FavItem";
+import CategoryList from "../../components/CategoryList";
+import Trash from "../../components/Trash";
+import AddCategory from "../../components/AddCategory";
+import FavItem from "../../components/FavItem";
 
 const styles = theme => ({
   drawerPaper: {
@@ -89,7 +89,7 @@ class SideBar extends React.Component {
   render() {
     const { classes, theme } = this.props;
     return (
-      <div className="SideBar">
+      <div className="Sidebar">
         {this.props.categories.length !== 0 && (
           <Fragment>
             <Hidden mdUp>

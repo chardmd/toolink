@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
 import NavBar from "../../components/NavBar";
-import SideBar from "../../components/SideBar";
+import Sidebar from "../../containers/Sidebar";
 import Routes from "../../Routes";
 import { getAuthenticatedUser } from "../Login/actions";
 import { logout, setAuthenticated, displayAlert } from "./actions";
@@ -92,7 +92,7 @@ class App extends Component {
               mobileOpen={this.state.mobileOpen}
             />
             {this.props.isAuthenticated && (
-              <SideBar
+              <Sidebar
                 categories={this.props.categories}
                 addCategory={this.props.addCategory}
                 removeCategory={this.props.removeCategory}

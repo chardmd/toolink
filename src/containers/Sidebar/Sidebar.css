@@ -1,12 +1,12 @@
-.SideBar .favourites {
+.Sidebar .favourites {
     margin-top: 1em;
 }
 
-.SideBar .catList {
+.Sidebar .catList {
     width: 100%;
 }
 
-.SideBar .active {
+.Sidebar .active {
     background: rgba(33, 150, 243, 0.08);
 }
 
@@ -23,11 +23,11 @@
     justify-content: center;
 }
 
-.SideBar .addCategoryField {
+.Sidebar .addCategoryField {
     justify-content: center;
 }
 
-.SideBar .subHeader {
+.Sidebar .subHeader {
     font-size: 16px !important;
     color: rgba(0, 0, 0, 0.54);
     font-size: 0.875rem;
