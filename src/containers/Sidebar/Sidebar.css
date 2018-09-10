@@ -6,7 +6,7 @@
     width: 100%;
 }
 
-.Sidebar .active {
+.drawerContent .active {
     background: rgba(33, 150, 243, 0.08);
 }
 

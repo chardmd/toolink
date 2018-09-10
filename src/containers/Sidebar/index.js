@@ -63,7 +63,7 @@ class Sidebar extends React.Component {
 
   renderDrawerContent() {
     return (
-      <Fragment>
+      <div className="drawerContent">
         <div className={this.props.classes.toolbar} />
         <div className="favourites">
           <FavItem
@@ -94,7 +94,7 @@ class Sidebar extends React.Component {
             />
           </div>
         </div>
-      </Fragment>
+      </div>
     );
   }
 
