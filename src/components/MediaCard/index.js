@@ -69,7 +69,11 @@ function MediaCard(props) {
           )}
           {props.bookmark && (
             <Tooltip
-              title="Favourite"
+              title={`${
+                props.isFavourite === true
+                  ? "Remove from favourites"
+                  : "Add to favourites"
+              }`}
               classes={{ tooltip: classes.lightTooltip }}
             >
               <Icon

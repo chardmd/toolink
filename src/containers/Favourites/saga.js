@@ -35,7 +35,6 @@ function* handleRemoveFavourites({ id }) {
       },
     });
     yield put(removeFavouritesSuccess(id));
-    yield put(displayAlert("Removed from Favourites", true));
   } catch (e) {
     yield put(removeFavouritesFailed(e));
   }
