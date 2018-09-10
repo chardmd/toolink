@@ -43,6 +43,11 @@ class Home extends Component {
     this.getActiveCategoryId = this.getActiveCategoryId.bind(this);
   }
 
+  componentDidMount() {
+    const activeCategoryId = this.props.match.params.categoryId;
+    this.props.getCategoryLinks(activeCategoryId);
+  }
+
   componentWillReceiveProps(nextProps) {
     const activeCategoryId = nextProps.match.params.categoryId;
     if (this.props.match.params.categoryId !== activeCategoryId) {
