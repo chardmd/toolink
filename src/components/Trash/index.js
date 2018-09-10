@@ -5,8 +5,8 @@
  */
 
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -19,6 +19,7 @@ import "./Trash.css";
 
 class Trash extends React.Component {
   render() {
+    const { location } = this.props;
     return (
       <List
         component="nav"
@@ -32,10 +33,8 @@ class Trash extends React.Component {
           button
           component={Link}
           to="/maintenance/trash"
-          className={`listItem ${this.props.isActive && "active"}`}
-          onClick={() => {
-            this.props.updateActiveItem(false, false, true);
-          }}
+          className={`listItem ${location.pathname === "/maintenance/trash" &&
+            "active"}`}
         >
           <ListItemAvatar>
             <Avatar>
@@ -49,9 +48,4 @@ class Trash extends React.Component {
   }
 }
 
-Trash.propTypes = {
-  updateActiveItem: PropTypes.func,
-  isActive: PropTypes.bool,
-};
-
-export default Trash;
+export default withRouter(Trash);

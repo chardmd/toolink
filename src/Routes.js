@@ -25,7 +25,7 @@ export default ({ childProps }) => (
       props={childProps}
     />
     <AuthenticatedRoute
-      path="/categories/:categoryId?"
+      path="/categories/:categoryId"
       exact
       component={AsyncHome}
       props={childProps}

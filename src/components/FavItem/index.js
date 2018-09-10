@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import ListItem from "@material-ui/core/ListItem";
@@ -19,6 +19,7 @@ import "./FavItem.css";
 
 class FavItem extends React.Component {
   render() {
+    const { location } = this.props;
     return (
       <List
         component="nav"
@@ -32,10 +33,7 @@ class FavItem extends React.Component {
           button
           component={Link}
           to="/"
-          className={`listItem ${this.props.isActive && "active"}`}
-          onClick={() => {
-            this.props.updateActiveItem(true, false, false);
-          }}
+          className={`listItem ${location.pathname === "/" && "active"}`}
         >
           <ListItemAvatar>
             <Avatar>
@@ -49,9 +47,4 @@ class FavItem extends React.Component {
   }
 }
 
-FavItem.propTypes = {
-  updateActiveItem: PropTypes.func,
-  isActive: PropTypes.bool,
-};
-
-export default FavItem;
+export default withRouter(FavItem);

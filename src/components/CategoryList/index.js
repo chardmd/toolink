@@ -6,6 +6,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -44,15 +45,11 @@ class CategoryList extends React.Component {
         return (
           <ListItem
             button
-            className={`listItem ${category.categoryId ===
-              this.props.activeCategoryId &&
-              this.props.isActive &&
-              "active"}`}
             key={`category-${category.categoryId}`}
-            onClick={() => {
-              this.props.updateActiveItem(false, true, false);
-              this.props.getCategoryLinks(category.categoryId);
-            }}
+            component={Link}
+            to={`/categories/${category.categoryId}`}
+            className={`listItem ${this.props.activeCategoryId ===
+              category.categoryId && "active"}`}
           >
             <ListItemAvatar>
               <Avatar>
@@ -95,8 +92,6 @@ CategoryList.propTypes = {
   removeCategory: PropTypes.func,
   renameCategory: PropTypes.func,
   activeCategoryId: PropTypes.string,
-  updateActiveItem: PropTypes.func,
-  isActive: PropTypes.bool,
 };
 
 export default withStyles(styles)(CategoryList);

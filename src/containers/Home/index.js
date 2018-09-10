@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import { matchPath } from "react-router";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -42,8 +43,11 @@ class Home extends Component {
     this.getActiveCategoryId = this.getActiveCategoryId.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getCategoryLinks(this.state.categoryId);
+  componentWillReceiveProps(nextProps) {
+    const activeCategoryId = nextProps.match.params.categoryId;
+    if (this.props.match.params.categoryId !== activeCategoryId) {
+      this.props.getCategoryLinks(activeCategoryId);
+    }
   }
 
   getActiveCategoryId() {
@@ -141,6 +145,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default compose(
+  withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps
