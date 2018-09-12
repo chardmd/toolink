@@ -16,12 +16,14 @@ import {
   removeFavouritesFailed,
 } from "./actions";
 
-import { displayAlert } from "../App/actions";
+import { setLoading } from "../App/actions";
 
 function* handleGetFavourites() {
   try {
+    yield put(setLoading(true));
     const response = yield call([API, API.get], "toolink", "/favourites");
     yield put(getFavouritesSuccess(response));
+    yield put(setLoading(false));
   } catch (e) {
     yield put(getFavouritesFailed(e));
   }

@@ -12,7 +12,7 @@ import {
   REMOVE_FAVOURITES_FAILED,
 } from "./constants";
 
-const initialState = null;
+const initialState = [];
 
 function favouritesReducer(state = initialState, action) {
   switch (action.type) {
