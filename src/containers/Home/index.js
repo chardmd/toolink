@@ -6,6 +6,7 @@ import { matchPath } from "react-router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
+import { SyncLoader } from "react-spinners";
 
 //components
 import MediaCard from "../../components/MediaCard";
@@ -99,7 +100,11 @@ class Home extends Component {
           </div>
         </Toolbar>
         <div className="items">
-          {links.length === 0 ? (
+          {this.props.isLoading ? (
+            <div className="loader">
+              <SyncLoader color={"#2196f3"} loading size={25} />
+            </div>
+          ) : links.length === 0 ? (
             <img src={blankImage} alt="blank" className="noCategories" />
           ) : (
             links.map(data => (
@@ -138,6 +143,7 @@ const mapStateToProps = state => ({
   categories: state.categories,
   links: state.links,
   trash: state.trash,
+  isLoading: state.app.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -27,17 +27,18 @@ import {
   bookmarkLinkFailed,
 } from "./actions";
 
-import { displayAlert } from "../App/actions";
+import { displayAlert, setLoading } from "../App/actions";
 
 function* handleGetCategoryLinks({ categoryId }) {
   try {
+    yield put(setLoading(true));
     const response = yield call(
       [API, API.get],
       "toolink",
       `/links/categories/${categoryId}`
     );
     yield put(getCategoryLinksSuccess(response));
-    yield put(push(`/categories/${categoryId}`));
+    yield put(setLoading(false));
   } catch (e) {
     yield put(getCategoryLinksFailed(e));
   }
