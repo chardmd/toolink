@@ -17,12 +17,14 @@ import {
   deleteAllSuccess,
   deleteAllFailed,
 } from "./actions";
-import { displayAlert } from "../App/actions";
+import { displayAlert, setLoading } from "../App/actions";
 
 function* handleGetTrash() {
   try {
+    yield put(setLoading(true));
     const response = yield call([API, API.get], "toolink", "/trash");
     yield put(getTrashSuccess(response));
+    yield put(setLoading(false));
   } catch (e) {
     yield put(getTrashFailed(e));
     yield put(displayAlert(e.message, true));

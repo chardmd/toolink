@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { SyncLoader } from "react-spinners";
 
 import { getTrash, deleteTrash, deleteAll } from "./actions";
 
@@ -99,23 +100,29 @@ export class Maintenance extends React.Component {
           }}
         />
         <div className="items">
-          {trash.map(data => (
-            <div className="card" key={`preview-${data.linkId}`}>
-              <MediaCard
-                title={data.title}
-                description={data.description}
-                image={data.image}
-                url={data.url}
-                author={data.author}
-                publisher={data.publisher}
-                id={data.linkId}
-                removeLink={() => {
-                  this.toggleRemoveDialog(true, data.linkId);
-                }}
-                icon="delete_outline"
-              />
+          {this.props.isLoading ? (
+            <div className="loader">
+              <SyncLoader color={"#2196f3"} loading size={25} />
             </div>
-          ))}
+          ) : (
+            trash.map(data => (
+              <div className="card" key={`preview-${data.linkId}`}>
+                <MediaCard
+                  title={data.title}
+                  description={data.description}
+                  image={data.image}
+                  url={data.url}
+                  author={data.author}
+                  publisher={data.publisher}
+                  id={data.linkId}
+                  removeLink={() => {
+                    this.toggleRemoveDialog(true, data.linkId);
+                  }}
+                  icon="delete_outline"
+                />
+              </div>
+            ))
+          )}
         </div>
       </div>
     );
@@ -124,6 +131,7 @@ export class Maintenance extends React.Component {
 
 const mapStateToProps = state => ({
   trash: state.trash,
+  isLoading: state.app.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
