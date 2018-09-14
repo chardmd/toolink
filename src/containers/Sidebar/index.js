@@ -32,9 +32,7 @@ import { getTrash } from "../Maintenance/actions";
 
 const styles = theme => ({
   drawerPaper: {
-    [theme.breakpoints.up("md")]: {
-      position: "relative",
-    },
+    paddingBottom: "20px",
   },
   toolbar: theme.mixins.toolbar,
 });
