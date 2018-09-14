@@ -17,6 +17,9 @@ const styles = theme => ({
       display: "none",
     },
   },
+  toolbar: {
+    justifyContent: "space-between",
+  },
 });
 
 class NavBar extends React.Component {
@@ -26,7 +29,7 @@ class NavBar extends React.Component {
     return (
       <div className="NavBar">
         <AppBar className={this.props.isAuthenticated ? "appBar" : ""}>
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -35,27 +38,27 @@ class NavBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="title" color="inherit" className="flex">
+            <Typography variant="title" color="inherit">
               <Link to="/">TooLink</Link>
             </Typography>
             {this.props.isAuthenticated ? (
-              <Fragment>
+              <div>
                 <Link to="/settings">
                   <Button color="inherit">Upgrade</Button>
                 </Link>
                 <Button color="inherit" onClick={this.props.handleLogout}>
                   Logout
                 </Button>
-              </Fragment>
+              </div>
             ) : (
-              <Fragment>
+              <div>
                 <Link to="/signup">
                   <Button color="inherit">Sign Up</Button>
                 </Link>
                 <Link to="/login">
                   <Button color="inherit">Login</Button>
                 </Link>
-              </Fragment>
+              </div>
             )}
           </Toolbar>
         </AppBar>

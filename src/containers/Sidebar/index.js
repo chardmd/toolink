@@ -30,11 +30,18 @@ import {
 import { getCategoryLinks } from "../Links/actions";
 import { getTrash } from "../Maintenance/actions";
 
+const drawerWidth = 300;
+
 const styles = theme => ({
-  drawerPaper: {
-    paddingBottom: "20px",
-  },
   toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+    height: "100%",
+    paddingBottom: "20px",
+    [theme.breakpoints.up("md")]: {
+      position: "relative",
+    },
+  },
 });
 
 class Sidebar extends React.Component {
@@ -123,7 +130,7 @@ class Sidebar extends React.Component {
                 variant="permanent"
                 open
                 classes={{
-                  paper: this.props.classes.drawerPaper,
+                  paper: classes.drawerPaper,
                 }}
               >
                 {this.renderDrawerContent()}

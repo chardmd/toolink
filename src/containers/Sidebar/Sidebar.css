@@ -6,6 +6,11 @@
     width: 100%;
 }
 
+.Sidebar .drawerContent {
+    height: 100vh;
+    overflow-x: hidden;
+}
+
 .drawerContent .active {
     background: rgba(33, 150, 243, 0.08);
 }

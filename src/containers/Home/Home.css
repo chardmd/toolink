@@ -1,14 +1,22 @@
 .Home {
     height: 100%;
+    width: 100%;
 }
 
 .Home .toolbox {
     display: flex;
     -ms-flex-pack: end;
     justify-content: flex-end;
-    min-height: 64px;
+    -ms-flex-align: center;
     align-items: center;
-    padding: 1em 2em;
+    margin-top: 3em;
+}
+
+.Home .loader {
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    align-items: center;
 }
 
 .Home .card {

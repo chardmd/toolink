@@ -4,6 +4,14 @@
     justify-content: center;
     align-content: center;
     height: 100%;
+    width: 100%;
+}
+
+.Favourites .loader {
+    display: flex;
+    justify-content: center;
+    vertical-align: center;
+    align-items: center;
 }
 
 .Favourites .onboarding {
@@ -13,11 +21,10 @@
     flex-direction: column;
     align-content: center;
     align-items: center;
-    margin-top: -17%;
 }
 
 .Favourites .noFavImage {
-    width: 30%;
+    width: 40%;
     margin-top: 10%;
 }
 

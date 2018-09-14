@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
-import { Link, withRouter } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
+import { withRouter } from "react-router-dom";
 import { matchPath } from "react-router";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -20,6 +21,28 @@ import { logout, setAuthenticated, displayAlert } from "./actions";
 
 import Routes from "../../Routes";
 import "./App.css";
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    height: "100vh",
+    zIndex: 1,
+    overflow: "hidden",
+    position: "relative",
+    display: "flex",
+    width: "100%",
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: "24px 0",
+    minWidth: 0,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  toolbar: theme.mixins.toolbar,
+});
 
 class App extends Component {
   constructor(props) {
@@ -71,6 +94,8 @@ class App extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     const childProps = {
       isAuthenticated: this.props.isAuthenticated,
       userHasAuthenticated: this.props.setAuthenticated,
@@ -79,41 +104,29 @@ class App extends Component {
     const activeCategoryId = this.getActiveCategoryId();
     return (
       !this.props.isAuthenticating && (
-        <div className="App">
-          <div className="root">
-            <NavBar
-              isAuthenticated={this.props.isAuthenticated}
-              handleLogout={this.props.logout}
-              handleDrawerToggle={this.handleDrawerToggle}
+        <div className={classes.root}>
+          <NavBar
+            isAuthenticated={this.props.isAuthenticated}
+            handleLogout={this.props.logout}
+            handleDrawerToggle={this.handleDrawerToggle}
+            mobileOpen={this.state.mobileOpen}
+          />
+          {this.props.isAuthenticated && (
+            <Sidebar
+              activeCategoryId={activeCategoryId}
               mobileOpen={this.state.mobileOpen}
+              handleDrawerToggle={this.handleDrawerToggle}
             />
-            {this.props.isAuthenticated && (
-              <Sidebar
-                activeCategoryId={activeCategoryId}
-                mobileOpen={this.state.mobileOpen}
-                handleDrawerToggle={this.handleDrawerToggle}
-              />
-            )}
-            <main className="content">
-              <div className="toolbar" />
-              <Routes childProps={childProps} />
-              <SimpleSnackbar
-                message={this.props.alertMessage}
-                open={this.props.alertOpen}
-                toggleOpen={this.props.displayAlert}
-              />
-            </main>
-          </div>
-          {!this.props.isAuthenticated && (
-            <footer>
-              <p>
-                <Link to="/" className="secondary">
-                  toolink.co
-                </Link>
-              </p>
-              <p>© 2018 All rights reserved</p>
-            </footer>
           )}
+          <main className={classes.content}>
+            <div className={classes.toolbar} />
+            <Routes childProps={childProps} />
+            <SimpleSnackbar
+              message={this.props.alertMessage}
+              open={this.props.alertOpen}
+              toggleOpen={this.props.displayAlert}
+            />
+          </main>
         </div>
       )
     );
@@ -136,6 +149,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default compose(
   withRouter,
+  withStyles(styles),
   connect(
     mapStateToProps,
     mapDispatchToProps
