@@ -92,6 +92,7 @@ class Home extends Component {
               onClick={() => {
                 this.onToggleStatus(true);
               }}
+              disabled={this.props.categories.length === 0 ? true : false}
             >
               <Icon>link</Icon>
               &nbsp;
