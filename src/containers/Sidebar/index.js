@@ -107,37 +107,33 @@ class Sidebar extends React.Component {
     const { classes, theme } = this.props;
     return (
       <div className="Sidebar">
-        {this.props.categories.length !== 0 && (
-          <Fragment>
-            <Hidden mdUp>
-              <Drawer
-                variant="temporary"
-                anchor={theme.direction === "rtl" ? "right" : "left"}
-                open={this.props.mobileOpen}
-                onClose={this.props.handleDrawerToggle}
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-                ModalProps={{
-                  keepMounted: true, // Better open performance on mobile.
-                }}
-              >
-                {this.renderDrawerContent()}
-              </Drawer>
-            </Hidden>
-            <Hidden smDown implementation="css">
-              <Drawer
-                variant="permanent"
-                open
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-              >
-                {this.renderDrawerContent()}
-              </Drawer>
-            </Hidden>
-          </Fragment>
-        )}
+        <Hidden mdUp>
+          <Drawer
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={this.props.mobileOpen}
+            onClose={this.props.handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {this.renderDrawerContent()}
+          </Drawer>
+        </Hidden>
+        <Hidden smDown implementation="css">
+          <Drawer
+            variant="permanent"
+            open
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            {this.renderDrawerContent()}
+          </Drawer>
+        </Hidden>
       </div>
     );
   }
