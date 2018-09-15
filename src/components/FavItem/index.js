@@ -40,7 +40,7 @@ class FavItem extends React.Component {
               <Icon>favorite_border</Icon>
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Favourites" />
+          <ListItemText primary="Favorites" />
         </ListItem>
       </List>
     );

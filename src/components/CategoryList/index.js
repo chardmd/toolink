@@ -31,51 +31,55 @@ const styles = theme => ({
 class CategoryList extends React.Component {
   render() {
     const { classes } = this.props;
-
-    const content =
-      this.props.categories.length !== 0 &&
-      this.props.categories.map(data => {
-        const category = data;
-        return (
-          <ListItem
-            button
-            key={`category-${category.categoryId}`}
-            component={Link}
-            to={`/categories/${category.categoryId}`}
-            className={`listItem ${this.props.activeCategoryId ===
-              category.categoryId && "active"}`}
-          >
-            <ListItemAvatar>
-              <Avatar>
-                <Avatar>
-                  {category.categoryName.substring(0, 2).toUpperCase()}
-                </Avatar>
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={category.categoryName} />
-            <ListItemSecondaryAction>
-              <CategoryMenu
-                categoryId={category.categoryId}
-                categoryName={category.categoryName}
-                removeCategory={this.props.removeCategory}
-                renameCategory={this.props.renameCategory}
-              />
-            </ListItemSecondaryAction>
-          </ListItem>
-        );
-      });
     return (
-      <List
-        component="nav"
-        className={classes.root}
-        subheader={
-          <ListSubheader className="subHeader" component="div" disableSticky>
-            Categories
-          </ListSubheader>
-        }
-      >
-        {content}
-      </List>
+      <div className="CategoryList">
+        <List
+          component="nav"
+          className={classes.root}
+          subheader={
+            <ListSubheader className="subHeader" component="div" disableSticky>
+              Categories
+            </ListSubheader>
+          }
+        >
+          {this.props.categories.length === 0 ? (
+            <div className="emptyList">
+              <p>Empty List</p>
+            </div>
+          ) : (
+            this.props.categories.map(data => {
+              const category = data;
+              return (
+                <ListItem
+                  button
+                  key={`category-${category.categoryId}`}
+                  component={Link}
+                  to={`/categories/${category.categoryId}`}
+                  className={`listItem ${this.props.activeCategoryId ===
+                    category.categoryId && "active"}`}
+                >
+                  <ListItemAvatar>
+                    <Avatar>
+                      <Avatar>
+                        {category.categoryName.substring(0, 2).toUpperCase()}
+                      </Avatar>
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={category.categoryName} />
+                  <ListItemSecondaryAction>
+                    <CategoryMenu
+                      categoryId={category.categoryId}
+                      categoryName={category.categoryName}
+                      removeCategory={this.props.removeCategory}
+                      renameCategory={this.props.renameCategory}
+                    />
+                  </ListItemSecondaryAction>
+                </ListItem>
+              );
+            })
+          )}
+        </List>
+      </div>
     );
   }
 }

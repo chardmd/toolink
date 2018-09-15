@@ -1,3 +1,6 @@
-.CategoryList {
-    
+.CategoryList .emptyList {
+    display: flex;
+    justify-content: center;
+    color: gray;
+    font-weight: 400;
 }
