@@ -2,6 +2,7 @@
 
 .SignUp {
     padding: 10vh 0;
+    width: 100%;
 }
 
 .SignUp form {
@@ -23,6 +24,10 @@
 
 .SignUp .loaderButton {
     margin-top: 10px;
+}
+
+.SignUp .secondary {
+    color: #ff1744;
 }
 
 .SignUp .back {

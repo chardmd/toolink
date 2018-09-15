@@ -131,11 +131,6 @@ class FormDialog extends React.Component {
           open={this.props.isActive}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
-          onKeyPress={e => {
-            if (e.key === "Enter") {
-              this.onAdd();
-            }
-          }}
         >
           <DialogTitle id="form-dialog-title">Paste Link</DialogTitle>
           <DialogContent>
