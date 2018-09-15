@@ -51,9 +51,6 @@ function MediaCard(props) {
                   ? description.substring(0, 60) + "..."
                   : description}
               </Typography>
-              <Typography component="p" variant="body2">
-                {url && url.length > 25 ? url.substring(0, 25) + "..." : url}
-              </Typography>
             </CardContent>
           </div>
         </div>
