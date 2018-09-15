@@ -39,7 +39,9 @@ function MediaCard(props) {
           <div className={classes.details}>
             <CardContent className={classes.content}>
               <Typography variant="title">
-                {title.length > 25 ? title.substring(0, 25) + "..." : title}
+                {title && title.length > 25
+                  ? title.substring(0, 25) + "..."
+                  : title}
               </Typography>
               <Typography
                 variant="subheading"

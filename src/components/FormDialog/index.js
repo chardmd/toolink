@@ -31,9 +31,13 @@ class FormDialog extends React.Component {
   constructor(props) {
     super(props);
 
+    const activeCategoryId = this.props.activeCategoryId
+      ? this.props.activeCategoryId
+      : props.categories.length && props.categories[0].categoryId;
+
     this.state = {
       link: "",
-      activeCategoryId: props.activeCategoryId,
+      activeCategoryId: activeCategoryId,
       linkError: "",
     };
 
@@ -180,6 +184,7 @@ FormDialog.propTypes = {
   toggleStatus: PropTypes.func,
   categories: PropTypes.array,
   saveLink: PropTypes.func,
+  activeCategoryId: PropTypes.string,
 };
 
 export default withStyles(styles)(FormDialog);

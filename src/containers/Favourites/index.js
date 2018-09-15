@@ -75,6 +75,7 @@ export class Favourites extends React.Component {
               toggleStatus={this.onToggleStatus}
               categories={this.props.categories}
               saveLink={this.props.saveLink}
+              activeCategoryId={""}
             />
           </div>
         ) : (
@@ -116,7 +117,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getFavourites: () => dispatch(getFavourites()),
-  saveLink: link => dispatch(saveLink(link)),
+  saveLink: (link, categoryId) => dispatch(saveLink(link, categoryId)),
   removeFavourites: id => dispatch(removeFavourites(id)),
 });
 
