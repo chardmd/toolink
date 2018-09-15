@@ -61,6 +61,10 @@
   align-items: center;
 }
 
+.Login .buttonContainer .loginButton {
+  width: 55%;
+}
+
 .Login .buttonContainer a {
   text-decoration: underline;
 }

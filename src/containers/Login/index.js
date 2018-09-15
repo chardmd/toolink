@@ -183,7 +183,7 @@ class Login extends Component {
                       Forgot Password?
                     </Link>
                   </div>
-                  <div>
+                  <div className="loginButton">
                     <LoaderButton
                       size="large"
                       fullWidth
