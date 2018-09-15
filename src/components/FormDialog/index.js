@@ -46,6 +46,7 @@ class FormDialog extends React.Component {
     this.onAdd = this.onAdd.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -78,7 +79,7 @@ class FormDialog extends React.Component {
   handleOnBlur(value) {
     if (!isUrl(value) && value.length !== 0) {
       this.setState({
-        linkError: "Invalid Link format",
+        linkError: "Invalid URL",
       });
     } else {
       this.setState({
@@ -90,6 +91,10 @@ class FormDialog extends React.Component {
   handleChange = event => {
     this.setState({ link: event.target.value });
   };
+
+  handleFocus(event) {
+    event.target.select();
+  }
 
   renderCategories = () => {
     const { categories } = this.props;
@@ -155,12 +160,14 @@ class FormDialog extends React.Component {
               type="text"
               fullWidth
               autoComplete="off"
+              value={this.state.link}
               onChange={this.handleChange}
               onBlur={() => {
                 this.handleOnBlur(this.state.link);
               }}
               error={this.state.linkError.length !== 0 && true}
               helperText={this.state.linkError}
+              onFocus={this.handleFocus}
             />
           </DialogContent>
           <DialogContent>
