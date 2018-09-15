@@ -36,6 +36,8 @@ export class Favourites extends React.Component {
     };
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
+    this.renderOnboarding = this.renderOnboarding.bind(this);
+    this.renderToolbar = this.renderToolbar.bind(this);
   }
 
   componentDidMount() {
@@ -48,9 +50,9 @@ export class Favourites extends React.Component {
     });
   }
 
-  render() {
+  renderToolbar() {
     return (
-      <div className="Favourites">
+      <Fragment>
         <FormDialog
           isActive={this.state.isActive}
           toggleStatus={this.onToggleStatus}
@@ -75,22 +77,35 @@ export class Favourites extends React.Component {
             </Button>
           </div>
         </Toolbar>
+      </Fragment>
+    );
+  }
+
+  renderOnboarding() {
+    return (
+      <div className="onboarding">
+        <img src={tourImage} alt="tour" className="noFavImage" />
+        {this.props.categories.length === 0 ? (
+          <h1>Add a new category to get started</h1>
+        ) : (
+          <h1>Save Link to Favorites</h1>
+        )}
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="Favourites">
+        {this.renderToolbar()}
         <div className="items">
           {this.props.isLoading ? (
             <div className="loader">
               <SyncLoader color={"#2196f3"} loading size={25} />
             </div>
           ) : this.props.favourites.length === 0 ? (
-            <div className="onboarding">
-              <img src={tourImage} alt="tour" className="noFavImage" />
-              {this.props.categories.length === 0 ? (
-                <h1>Add a new category to get started</h1>
-              ) : (
-                <h1>Save Link to Favorites</h1>
-              )}
-            </div>
+            this.renderOnboarding()
           ) : (
-            this.props.favourites !== null &&
             this.props.favourites.map(data => (
               <div className="card" key={`preview-${data.linkId}`}>
                 <MediaCard
