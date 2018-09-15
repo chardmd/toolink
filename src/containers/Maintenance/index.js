@@ -109,7 +109,7 @@ export class Maintenance extends React.Component {
           ) : this.props.trash.length === 0 ? (
             <div className="emptyMessage">
               <img src={emptyImage} alt="empty" className="emptyImage" />
-              <h1>Trash is Empty</h1>
+              <h1>Trash is empty</h1>
             </div>
           ) : (
             trash.map(data => (
