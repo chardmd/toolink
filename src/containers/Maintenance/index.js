@@ -4,7 +4,7 @@
  *
  */
 
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -35,6 +35,7 @@ export class Maintenance extends React.Component {
     this.toggleRemoveDialog = this.toggleRemoveDialog.bind(this);
     this.toggleEmptyTrashDialog = this.toggleEmptyTrashDialog.bind(this);
     this.handleEmptyTrashDialog = this.handleEmptyTrashDialog.bind(this);
+    this.renderToolbar = this.renderToolbar.bind(this);
   }
 
   componentDidMount() {
@@ -65,10 +66,18 @@ export class Maintenance extends React.Component {
     this.toggleEmptyTrashDialog(false);
   }
 
-  render() {
-    const { trash } = this.props;
+  renderToolbar() {
     return (
-      <div className="Maintenance">
+      <Fragment>
+        <RemoveDialog
+          title={`Permanently delete this link?`}
+          message={`You will permanently erase this link in the trash. You can't undo this action. Press 'delete' to continue.`}
+          isActive={this.state.removeDialogOpen}
+          onSave={this.handleRemoveDialog}
+          onClose={() => {
+            this.toggleRemoveDialog(false);
+          }}
+        />
         <Toolbar className="toolbox">
           <div>
             <RemoveDialog
@@ -92,15 +101,15 @@ export class Maintenance extends React.Component {
             </Button>
           </div>
         </Toolbar>
-        <RemoveDialog
-          title={`Permanently delete this link?`}
-          message={`You will permanently erase this link in the trash. You can't undo this action. Press 'delete' to continue.`}
-          isActive={this.state.removeDialogOpen}
-          onSave={this.handleRemoveDialog}
-          onClose={() => {
-            this.toggleRemoveDialog(false);
-          }}
-        />
+      </Fragment>
+    );
+  }
+
+  render() {
+    const { trash } = this.props;
+    return (
+      <div className="Maintenance">
+        {this.renderToolbar()}
         <div className="items">
           {this.props.isLoading ? (
             <div className="loader">
