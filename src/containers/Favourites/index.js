@@ -4,7 +4,7 @@
  *
  */
 
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
@@ -57,20 +57,27 @@ export class Favourites extends React.Component {
         ) : this.props.favourites.length === 0 ? (
           <div className="onboarding">
             <img src={tourImage} alt="tour" className="noFavImage" />
-            <h1>Let's get started</h1>
-            <Button
-              variant="extendedFab"
-              color="secondary"
-              size="large"
-              onClick={() => {
-                this.onToggleStatus(true);
-              }}
-              disabled={this.props.categories.length === 0 ? true : false}
-            >
-              <Icon>link</Icon>
-              &nbsp;
-              <span>Add Link</span>
-            </Button>
+            {this.props.categories.length === 0 ? (
+              <h1>Add a new category to get started</h1>
+            ) : (
+              <Fragment>
+                <h1>Save Link to Favorites</h1>
+                <Button
+                  variant="extendedFab"
+                  color="secondary"
+                  size="large"
+                  onClick={() => {
+                    this.onToggleStatus(true);
+                  }}
+                  disabled={this.props.categories.length === 0 ? true : false}
+                >
+                  <Icon>link</Icon>
+                  &nbsp;
+                  <span>Add Link</span>
+                </Button>
+              </Fragment>
+            )}
+
             <FormDialog
               isActive={this.state.isActive}
               toggleStatus={this.onToggleStatus}
