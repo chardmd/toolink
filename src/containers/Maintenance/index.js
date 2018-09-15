@@ -17,6 +17,8 @@ import { getTrash, deleteTrash, deleteAll } from "./actions";
 import MediaCard from "../../components/MediaCard";
 import RemoveDialog from "../../components/RemoveDialog";
 
+//css
+import emptyImage from "../../assets/empty.svg";
 import "./Maintenance.css";
 
 export class Maintenance extends React.Component {
@@ -103,6 +105,11 @@ export class Maintenance extends React.Component {
           {this.props.isLoading ? (
             <div className="loader">
               <SyncLoader color={"#2196f3"} loading size={25} />
+            </div>
+          ) : this.props.trash.length === 0 ? (
+            <div className="emptyMessage">
+              <img src={emptyImage} alt="empty" className="emptyImage" />
+              <h1>Trash is Empty</h1>
             </div>
           ) : (
             trash.map(data => (

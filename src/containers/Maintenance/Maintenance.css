@@ -1,4 +1,5 @@
 .Maintenance {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     height: 100%;
     width: 100%;
 }
@@ -7,6 +8,22 @@
     display: flex;
     justify-content: center;
     vertical-align: center;
+    align-items: center;
+}
+
+.Maintenance .emptyImage {
+    width: 40%;
+    margin-top: 10%;
+}
+
+.Maintenance h1 {
+    color: #495057;
+}
+
+.Maintenance .emptyMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
