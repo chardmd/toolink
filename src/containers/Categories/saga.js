@@ -46,6 +46,7 @@ function* handleAddCategory({ category }) {
     });
     yield put(addCategorySuccess(response));
     yield put(displayAlert("Category successfully added", true));
+    yield put(push(`/categories/${response.categoryId}`));
   } catch (e) {
     yield put(addCategoryFailed(e));
     yield put(displayAlert(e.message, true));
