@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { compose } from "recompose";
@@ -42,6 +42,7 @@ class Home extends Component {
 
     this.onToggleStatus = this.onToggleStatus.bind(this);
     this.getActiveCategoryId = this.getActiveCategoryId.bind(this);
+    this.renderToolbar = this.renderToolbar.bind(this);
   }
 
   componentDidMount() {
@@ -71,11 +72,10 @@ class Home extends Component {
     });
   }
 
-  render() {
-    const { links } = this.props;
+  renderToolbar() {
     const categoryId = this.getActiveCategoryId();
     return (
-      <div className="Home">
+      <Fragment>
         <FormDialog
           isActive={this.state.isActive}
           toggleStatus={this.onToggleStatus}
@@ -100,6 +100,15 @@ class Home extends Component {
             </Button>
           </div>
         </Toolbar>
+      </Fragment>
+    );
+  }
+
+  render() {
+    const { links } = this.props;
+    return (
+      <div className="Home">
+        {this.renderToolbar()}
         <div className="items">
           {this.props.isLoading ? (
             <div className="loader">
