@@ -7,6 +7,7 @@
 
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import { API } from "aws-amplify";
+import { push } from "connected-react-router";
 
 import {
   ADD_CATEGORY,
@@ -56,6 +57,7 @@ function* handleRemoveCategory({ id }) {
     yield call([API, API.del], "toolink", `/categories/${id}`);
     yield put(removeCategorySuccess(id));
     yield put(displayAlert("Category successfully removed", true));
+    yield put(push("/"));
   } catch (e) {
     yield put(removeCategoryFailed(e));
     yield put(displayAlert(e.message, true));
