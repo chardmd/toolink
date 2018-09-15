@@ -57,7 +57,7 @@ export class Favourites extends React.Component {
         ) : this.props.favourites.length === 0 ? (
           <div className="onboarding">
             <img src={tourImage} alt="tour" className="noFavImage" />
-            <h1>Get started with adding new links</h1>
+            <h1>Let's get started</h1>
             <Button
               variant="extendedFab"
               color="secondary"
