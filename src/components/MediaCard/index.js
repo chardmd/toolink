@@ -38,11 +38,7 @@ function MediaCard(props) {
           <CardMedia className={classes.cover} image={props.image || "todo"} />
           <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography variant="title">
-                {title && title.length > 25
-                  ? title.substring(0, 25) + "..."
-                  : title}
-              </Typography>
+              <Typography variant="title">{title}</Typography>
               <Typography
                 variant="subheading"
                 color="textSecondary"
@@ -56,7 +52,7 @@ function MediaCard(props) {
                   : description}
               </Typography>
               <Typography component="p" variant="body2">
-                {url}
+                {url && url.length > 25 ? url.substring(0, 25) + "..." : url}
               </Typography>
             </CardContent>
           </div>
