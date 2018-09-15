@@ -46,6 +46,7 @@ function* handleGetCategoryLinks({ categoryId }) {
 
 function* handleSaveLink({ link, categoryId }) {
   try {
+    yield put(setLoading(true));
     const response = yield call([API, API.post], "toolink", "/links", {
       body: {
         url: link,
@@ -53,6 +54,7 @@ function* handleSaveLink({ link, categoryId }) {
       },
     });
     yield put(saveLinkSuccess(response));
+    yield put(setLoading(false));
     yield put(displayAlert("Link successfully saved", true));
   } catch (e) {
     yield put(saveLinkFailed(e));
