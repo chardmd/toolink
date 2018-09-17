@@ -8,14 +8,14 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Avatar from "@material-ui/core/Avatar";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Chip from "@material-ui/core/Chip";
 import { withStyles } from "@material-ui/core/styles";
 import isUrl from "is-url";
 
-import collectionImage from "../../assets/collection.svg";
-
 import "./FormDialog.css";
+import collectionImage from "../../assets/collection.svg";
 
 const styles = theme => ({
   root: {
@@ -40,6 +40,7 @@ class FormDialog extends React.Component {
       link: "",
       activeCategoryId: activeCategoryId,
       linkError: "",
+      isFavorite: false,
     };
 
     this.renderCategories = this.renderCategories.bind(this);
@@ -58,9 +59,9 @@ class FormDialog extends React.Component {
   }
 
   onAdd = () => {
-    const link = this.state.link;
+    const { link, isFavorite, activeCategoryId } = this.state;
     if (link.length !== 0 && this.state.linkError.length === 0) {
-      this.props.saveLink(link, this.state.activeCategoryId);
+      this.props.saveLink(link, activeCategoryId, isFavorite);
     }
     this.props.toggleStatus(false);
   };
@@ -87,6 +88,10 @@ class FormDialog extends React.Component {
       });
     }
   }
+
+  handleSwitchChange = name => event => {
+    this.setState({ [name]: event.target.checked });
+  };
 
   handleChange = event => {
     this.setState({ link: event.target.value });
@@ -170,10 +175,31 @@ class FormDialog extends React.Component {
             <div>{this.renderCategories()}</div>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} size="medium" color="primary">
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={this.state.isFavorite}
+                  onChange={this.handleSwitchChange("isFavorite")}
+                  value="isFavorite"
+                  color="secondary"
+                />
+              }
+              label="Save as Favorite"
+            />
+            <Button
+              variant="outlined"
+              onClick={this.handleClose}
+              size="large"
+              color="primary"
+            >
               Cancel
             </Button>
-            <Button onClick={this.onAdd} size="medium" color="primary">
+            <Button
+              variant="outlined"
+              onClick={this.onAdd}
+              size="large"
+              color="primary"
+            >
               Add
             </Button>
           </DialogActions>

@@ -142,7 +142,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getFavourites: () => dispatch(getFavourites()),
-  saveLink: (link, categoryId) => dispatch(saveLink(link, categoryId)),
+  saveLink: (link, categoryId, isFavorite) =>
+    dispatch(saveLink(link, categoryId, isFavorite)),
   removeFavourites: id => dispatch(removeFavourites(id)),
 });
 

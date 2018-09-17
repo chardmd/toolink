@@ -40,18 +40,20 @@ export function getCategoryLinksFailed(err) {
   };
 }
 
-export function saveLink(link, categoryId) {
+export function saveLink(link, categoryId, isFavorite) {
   return {
     type: SAVE_LINK,
     link,
     categoryId,
+    isFavorite,
   };
 }
 
-export function saveLinkSuccess(data) {
+export function saveLinkSuccess(data, isFavorite) {
   return {
     type: SAVE_LINK_SUCCESS,
     data,
+    isFavorite,
   };
 }
 

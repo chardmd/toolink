@@ -44,16 +44,17 @@ function* handleGetCategoryLinks({ categoryId }) {
   }
 }
 
-function* handleSaveLink({ link, categoryId }) {
+function* handleSaveLink({ link, categoryId, isFavorite }) {
   try {
     yield put(setLoading(true));
     const response = yield call([API, API.post], "toolink", "/links", {
       body: {
         url: link,
-        categoryId: categoryId,
+        categoryId,
+        isFavorite,
       },
     });
-    yield put(saveLinkSuccess(response));
+    yield put(saveLinkSuccess(response, isFavorite));
     yield put(setLoading(false));
     yield put(displayAlert("Link successfully saved", true));
   } catch (e) {

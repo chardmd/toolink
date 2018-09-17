@@ -157,7 +157,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  saveLink: (link, categoryId) => dispatch(saveLink(link, categoryId)),
+  saveLink: (link, categoryId, isFavorite) =>
+    dispatch(saveLink(link, categoryId, isFavorite)),
   removeLink: id => dispatch(removeLink(id)),
   loadHome: () => dispatch(loadHome()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
