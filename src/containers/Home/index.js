@@ -135,9 +135,9 @@ class Home extends Component {
                   }}
                   icon="close"
                   bookmark
-                  isFavourite={data.isFavourite}
+                  isFavorite={data.isFavorite}
                   bookmarkLink={() => {
-                    this.props.bookmarkLink(data.linkId, data.isFavourite);
+                    this.props.bookmarkLink(data.linkId, data.isFavorite);
                   }}
                 />
               </div>

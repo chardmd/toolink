@@ -4,7 +4,7 @@
  *
  */
 
-import React, { Fragment } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
@@ -70,7 +70,7 @@ class Sidebar extends React.Component {
     return (
       <div className="drawerContent">
         <div className={this.props.classes.toolbar} />
-        <div className="favourites">
+        <div className="favorites">
           <FavItem
             updateActiveItem={this.updateActiveItem}
             isActive={this.state.isQuickAccessActive}

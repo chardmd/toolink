@@ -6,7 +6,6 @@
  */
 
 import { takeLatest, call, put, all } from "redux-saga/effects";
-import { push } from "connected-react-router";
 import { API } from "aws-amplify";
 
 import {
@@ -81,7 +80,7 @@ function* handleBookmarkLink({ id, status }) {
   try {
     yield call([API, API.put], "toolink", `/links/${id}`, {
       body: {
-        isFavourite: !status,
+        isFavorite: !status,
       },
     });
     yield put(bookmarkLinkSuccess(id, status));

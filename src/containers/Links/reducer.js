@@ -47,8 +47,7 @@ function linksReducer(state = initialState, action) {
       return state;
     case BOOKMARK_LINK_SUCCESS:
       return state.map(
-        p =>
-          p.linkId === action.id ? { ...p, isFavourite: !action.status } : p
+        p => (p.linkId === action.id ? { ...p, isFavorite: !action.status } : p)
       );
     case BOOKMARK_LINK_FAILED:
       return state;

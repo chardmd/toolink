@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Favourites
+ * Asynchronously loads the component for Favorites
  *
  */
 

@@ -19,7 +19,7 @@ import {
   getAuthenticatedUserFailed,
 } from "./actions";
 
-import { handleGetFavourites } from "../Favourites/saga";
+import { handleGetFavorites } from "../Favorites/saga";
 import { handleGetCategories } from "../Categories/saga";
 
 import {
@@ -36,7 +36,7 @@ function* handleSignIn({ data }) {
     const response = yield call([Auth, Auth.signIn], email, password);
     yield put(signInSuccess(response));
     yield handleGetCategories(); //execute categories handler
-    yield handleGetFavourites(); //execute favourites handler
+    yield handleGetFavorites(); //execute favorites handler
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));
@@ -71,7 +71,7 @@ function* handleGoogleSignIn({ data }) {
     };
     yield put(googleSignInSuccess(result));
     yield handleGetCategories(); //execute categories handler
-    yield handleGetFavourites(); //execute favourites handler
+    yield handleGetFavorites(); //execute favorites handler
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));
@@ -107,7 +107,7 @@ function* handleFacebookSignIn({ data }) {
     };
     yield put(facebookSignInSuccess(result));
     yield handleGetCategories(); //execute categories handler
-    yield handleGetFavourites(); //execute favourites handler
+    yield handleGetFavorites(); //execute favorites handler
     yield put(setAuthenticated(true));
   } catch (e) {
     yield put(displayAlert(e.message, true));

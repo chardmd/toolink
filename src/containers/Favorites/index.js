@@ -1,6 +1,6 @@
 /**
  *
- * Favourites
+ * Favorites
  *
  */
 
@@ -12,14 +12,14 @@ import Icon from "@material-ui/core/Icon";
 import { SyncLoader } from "react-spinners";
 
 import tourImage from "../../assets/tour.svg";
-import "./Favourites.css";
+import "./Favorites.css";
 
 //components
 import MediaCard from "../../components/MediaCard";
 import FormDialog from "../../components/FormDialog";
 
 //actions
-import { getFavourites, removeFavourites } from "./actions";
+import { getFavorites, removeFavorites } from "./actions";
 import { saveLink } from "../Links/actions";
 
 function openInNewTab(url) {
@@ -27,7 +27,7 @@ function openInNewTab(url) {
   win.focus();
 }
 
-export class Favourites extends React.Component {
+export class Favorites extends React.Component {
   constructor(props) {
     super(props);
 
@@ -41,7 +41,7 @@ export class Favourites extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getFavourites();
+    this.props.getFavorites();
   }
 
   onToggleStatus(status) {
@@ -96,17 +96,17 @@ export class Favourites extends React.Component {
 
   render() {
     return (
-      <div className="Favourites">
+      <div className="Favorites">
         {this.renderToolbar()}
         <div className="items">
           {this.props.isLoading ? (
             <div className="loader">
               <SyncLoader color={"#2196f3"} loading size={25} />
             </div>
-          ) : this.props.favourites.length === 0 ? (
+          ) : this.props.favorites.length === 0 ? (
             this.renderOnboarding()
           ) : (
-            this.props.favourites.map(data => (
+            this.props.favorites.map(data => (
               <div className="card" key={`preview-${data.linkId}`}>
                 <MediaCard
                   title={data.title}
@@ -120,9 +120,9 @@ export class Favourites extends React.Component {
                     openInNewTab(data.urlText);
                   }}
                   bookmark
-                  isFavourite={data.isFavourite}
+                  isFavorite={data.isFavorite}
                   bookmarkLink={() => {
-                    this.props.removeFavourites(data.linkId);
+                    this.props.removeFavorites(data.linkId);
                   }}
                 />
               </div>
@@ -136,18 +136,18 @@ export class Favourites extends React.Component {
 
 const mapStateToProps = state => ({
   categories: state.categories,
-  favourites: state.favourites,
+  favorites: state.favorites,
   isLoading: state.app.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getFavourites: () => dispatch(getFavourites()),
+  getFavorites: () => dispatch(getFavorites()),
   saveLink: (link, categoryId, isFavorite) =>
     dispatch(saveLink(link, categoryId, isFavorite)),
-  removeFavourites: id => dispatch(removeFavourites(id)),
+  removeFavorites: id => dispatch(removeFavorites(id)),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Favourites);
+)(Favorites);

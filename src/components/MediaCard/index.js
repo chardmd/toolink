@@ -30,7 +30,7 @@ const styles = theme => ({
 });
 
 function MediaCard(props) {
-  const { classes, title, description, url, author, publisher } = props;
+  const { classes, title, description, author, publisher } = props;
   return (
     <div className="MediaCard">
       <Card className="card">
@@ -65,13 +65,13 @@ function MediaCard(props) {
           {props.bookmark && (
             <Tooltip
               title={`${
-                props.isFavourite === true ? "Undo Favorite" : "Favorite"
+                props.isFavorite === true ? "Undo Favorite" : "Favorite"
               }`}
               classes={{ tooltip: classes.lightTooltip }}
             >
               <Icon
                 className="icon"
-                color={props.isFavourite === true ? "secondary" : "inherit"}
+                color={props.isFavorite === true ? "secondary" : "inherit"}
                 onClick={props.bookmarkLink}
               >
                 favorite_outline
@@ -95,7 +95,7 @@ MediaCard.propTypes = {
   removeLink: PropTypes.func,
   icon: PropTypes.string,
   bookmark: PropTypes.bool,
-  isFavourite: PropTypes.bool,
+  isFavorite: PropTypes.bool,
   bookmarkLink: PropTypes.func,
 };
 

@@ -1,10 +1,10 @@
-.Favourites {
+.Favorites {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     height: 100%;
     width: 100%;
 }
 
-.Favourites .toolbox {
+.Favorites .toolbox {
     display: flex;
     -ms-flex-pack: end;
     justify-content: flex-end;
@@ -13,14 +13,14 @@
     margin-top: 3em;
 }
 
-.Favourites .loader {
+.Favorites .loader {
     display: flex;
     justify-content: center;
     vertical-align: center;
     align-items: center;
 }
 
-.Favourites .onboarding {
+.Favorites .onboarding {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -30,21 +30,21 @@
     text-align: center;
 }
 
-.Favourites .noFavImage {
+.Favorites .noFavImage {
     width: 40%;
     margin-top: 10%;
 }
 
-.Favourites h1 {
+.Favorites h1 {
     color: #495057;
 }
 
-.Favourites .card {
+.Favorites .card {
     margin: 0.5em;
     border: 1px solid transparent;
 }
 
-.Favourites .items {
+.Favorites .items {
     height: 100%;
     overflow: auto;
     max-height: 100vh;
@@ -54,12 +54,12 @@
     justify-content: center;
 }
 
-.Favourites .MediaCard .card:hover {
+.Favorites .MediaCard .card:hover {
     background: rgba(33, 150, 243, 0.08);
     border: 1px solid #2196f3;
 }
 
-.Favourites .MediaCard .content {
+.Favorites .MediaCard .content {
     display: flex;
     width: 390px;
     height: 200px;
