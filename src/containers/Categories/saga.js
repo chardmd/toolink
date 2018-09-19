@@ -90,4 +90,4 @@ function* CategoriesSaga() {
 }
 
 export default CategoriesSaga;
-export { handleGetCategories };
+export { handleGetCategories, handleAddCategory };

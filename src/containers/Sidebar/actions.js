@@ -4,10 +4,18 @@
  *
  */
 
-import { DEFAULT_ACTION } from "./constants";
+import { TRIGGER_SAVE_CATEGORY, SET_LOADING } from "./constants";
 
-export function defaultAction() {
+export function triggerSaveCategory(category) {
   return {
-    type: DEFAULT_ACTION,
+    type: TRIGGER_SAVE_CATEGORY,
+    category,
+  };
+}
+
+export function setLoading(status) {
+  return {
+    type: SET_LOADING,
+    status,
   };
 }

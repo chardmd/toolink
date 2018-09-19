@@ -185,6 +185,8 @@ class Login extends Component {
                   </div>
                   <div className="loginButton">
                     <LoaderButton
+                      variant="extendedFab"
+                      color="secondary"
                       size="large"
                       fullWidth
                       type="submit"

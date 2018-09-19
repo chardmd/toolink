@@ -113,7 +113,7 @@ class FormDialog extends React.Component {
           key={`cat-chip-${category.categoryId}`}
           avatar={
             <Avatar>
-              {category.categoryName.substring(0, 2).toUpperCase()}
+              {(category.categoryName || "  ").substring(0, 2).toUpperCase()}
             </Avatar>
           }
           color={category.categoryId === activeId ? "primary" : "default"}

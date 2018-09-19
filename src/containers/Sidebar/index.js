@@ -22,11 +22,8 @@ import AddCategory from "../../components/AddCategory";
 import FavItem from "../../components/FavItem";
 
 //actions
-import {
-  addCategory,
-  removeCategory,
-  renameCategory,
-} from "../Categories/actions";
+import { triggerSaveCategory } from "./actions";
+import { removeCategory, renameCategory } from "../Categories/actions";
 import { getCategoryLinks } from "../Links/actions";
 import { getTrash } from "../Maintenance/actions";
 
@@ -90,7 +87,10 @@ class Sidebar extends React.Component {
             />
           </div>
           <div className="addContainer">
-            <AddCategory addCategory={this.props.addCategory} />
+            <AddCategory
+              addCategory={this.props.triggerSaveCategory}
+              isLoading={this.props.isLoading}
+            />
           </div>
           <div>
             <Trash
@@ -147,10 +147,11 @@ Sidebar.propTypes = {
 
 const mapStateToProps = state => ({
   categories: state.categories,
+  isLoading: state.sidebar.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
-  addCategory: category => dispatch(addCategory(category)),
+  triggerSaveCategory: category => dispatch(triggerSaveCategory(category)),
   removeCategory: id => dispatch(removeCategory(id)),
   renameCategory: (id, categoryName) =>
     dispatch(renameCategory(id, categoryName)),

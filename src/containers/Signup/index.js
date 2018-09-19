@@ -164,6 +164,8 @@ export class Signup extends React.Component {
             </div>
             <div className="loaderButton">
               <LoaderButton
+                variant="extendedFab"
+                color="secondary"
                 size="large"
                 fullWidth
                 type="submit"
@@ -237,6 +239,8 @@ export class Signup extends React.Component {
             </div>
             <div className="loaderButton">
               <LoaderButton
+                variant="extendedFab"
+                color="secondary"
                 size="large"
                 fullWidth
                 type="submit"

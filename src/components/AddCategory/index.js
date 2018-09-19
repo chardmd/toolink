@@ -7,9 +7,8 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 
+import LoaderButton from "../LoaderButton";
 import "./AddCategory.css";
 
 class AddCategory extends React.Component {
@@ -69,17 +68,16 @@ class AddCategory extends React.Component {
             }}
           />
         )}
-        <Button
+        <LoaderButton
           variant="outlined"
           color="secondary"
-          onClick={this.onAddCategory}
           size="large"
-          disabled={this.state.activeCategory === -1}
-        >
-          <Icon>add</Icon>
-          &nbsp;
-          <span>{this.state.isInputActive ? "Save" : "Add Category"}</span>
-        </Button>
+          type="submit"
+          onClick={this.onAddCategory}
+          isLoading={this.props.isLoading}
+          text="Add New Category"
+          loadingText="Saving Category..."
+        />
       </Fragment>
     );
   }
@@ -87,6 +85,7 @@ class AddCategory extends React.Component {
 
 AddCategory.propTypes = {
   addCategory: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 export default AddCategory;

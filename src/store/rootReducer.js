@@ -9,6 +9,7 @@ import categoriesReducer from "../containers/Categories/reducer";
 import linksReducer from "../containers/Links/reducer";
 import trashReducer from "../containers/Maintenance/reducer";
 import favoritesReducer from "../containers/Favorites/reducer";
+import sidebarReducer from "../containers/Sidebar/reducer";
 
 const mainReducer = combineReducers({
   categories: categoriesReducer,
@@ -19,6 +20,7 @@ const mainReducer = combineReducers({
   forgotPassword: forgotPasswordReducer,
   signUp: signUpReducer,
   favorites: favoritesReducer,
+  sidebar: sidebarReducer,
 });
 
 const rootReducer = (state, action) => {

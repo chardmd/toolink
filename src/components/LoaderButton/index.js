@@ -13,9 +13,6 @@ export default ({
   ...props
 }) => (
   <Button
-    variant="extendedFab"
-    color="secondary"
-    size="large"
     className={`LoaderButton ${className}`}
     disabled={disabled || isLoading}
     {...props}

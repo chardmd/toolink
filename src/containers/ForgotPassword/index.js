@@ -190,6 +190,8 @@ class ForgotPassword extends Component {
             </div>
             <div className="loaderButton">
               <LoaderButton
+                variant="extendedFab"
+                color="secondary"
                 size="large"
                 fullWidth
                 type="submit"
@@ -227,6 +229,8 @@ class ForgotPassword extends Component {
             </div>
             <div className="loaderButton">
               <LoaderButton
+                variant="extendedFab"
+                color="secondary"
                 size="large"
                 fullWidth
                 type="submit"

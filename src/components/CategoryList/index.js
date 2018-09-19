@@ -48,28 +48,28 @@ class CategoryList extends React.Component {
             </div>
           ) : (
             this.props.categories.map(data => {
-              const category = data;
+              const { categoryId, categoryName } = data;
               return (
                 <ListItem
                   button
-                  key={`category-${category.categoryId}`}
+                  key={`category-${categoryId}`}
                   component={Link}
-                  to={`/categories/${category.categoryId}`}
+                  to={`/categories/${categoryId}`}
                   className={`listItem ${this.props.activeCategoryId ===
-                    category.categoryId && "active"}`}
+                    categoryId && "active"}`}
                 >
                   <ListItemAvatar>
                     <Avatar>
                       <Avatar>
-                        {category.categoryName.substring(0, 2).toUpperCase()}
+                        {(categoryName || "  ").substring(0, 2).toUpperCase()}
                       </Avatar>
                     </Avatar>
                   </ListItemAvatar>
-                  <ListItemText primary={category.categoryName} />
+                  <ListItemText primary={categoryName} />
                   <ListItemSecondaryAction>
                     <CategoryMenu
-                      categoryId={category.categoryId}
-                      categoryName={category.categoryName}
+                      categoryId={categoryId}
+                      categoryName={categoryName}
                       removeCategory={this.props.removeCategory}
                       renameCategory={this.props.renameCategory}
                     />
