@@ -24,7 +24,7 @@ import FavItem from "../../components/FavItem";
 //actions
 import { triggerSaveCategory } from "./actions";
 import { removeCategory, renameCategory } from "../Categories/actions";
-import { getCategoryLinks } from "../Links/actions";
+import { getCategoryLinks, removeLinkCategory } from "../Links/actions";
 import { getTrash } from "../Maintenance/actions";
 
 const drawerWidth = 300;
@@ -84,6 +84,7 @@ class Sidebar extends React.Component {
               activeCategoryId={this.props.activeCategoryId}
               updateActiveItem={this.updateActiveItem}
               isActive={this.state.isCategoriesActive}
+              removeLinkCategory={this.props.removeLinkCategory}
             />
           </div>
           <div className="addContainer">
@@ -157,6 +158,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(renameCategory(id, categoryName)),
   getTrash: () => dispatch(getTrash()),
   getCategoryLinks: categoryId => dispatch(getCategoryLinks(categoryId)),
+  removeLinkCategory: categoryId => dispatch(removeLinkCategory(categoryId)),
 });
 
 export default compose(

@@ -13,6 +13,7 @@ import {
   SAVE_LINK,
   REMOVE_LINK,
   BOOKMARK_LINK,
+  REMOVE_LINK_CATEGORY,
 } from "./constants";
 
 import {
@@ -24,6 +25,8 @@ import {
   removeLinkFailed,
   bookmarkLinkSuccess,
   bookmarkLinkFailed,
+  removeLinkCategorySuccess,
+  removeLinkCategoryFailed,
 } from "./actions";
 
 import { displayAlert, setLoading } from "../App/actions";
@@ -89,12 +92,22 @@ function* handleBookmarkLink({ id, status }) {
   }
 }
 
+function* handleRemoveLinkCategory({ categoryId }) {
+  try {
+    yield call([API, API.put], "toolink", `/links/categories/${categoryId}`);
+    yield put(removeLinkCategorySuccess(categoryId));
+  } catch (e) {
+    yield put(removeLinkCategoryFailed(e));
+  }
+}
+
 function* LinksSaga() {
   yield all([
     takeLatest(GET_CATEGORY_LINKS, handleGetCategoryLinks),
     takeLatest(SAVE_LINK, handleSaveLink),
     takeLatest(REMOVE_LINK, handleRemoveLink),
     takeLatest(BOOKMARK_LINK, handleBookmarkLink),
+    takeLatest(REMOVE_LINK_CATEGORY, handleRemoveLinkCategory),
   ]);
 }
 

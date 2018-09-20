@@ -17,6 +17,9 @@ import {
   BOOKMARK_LINK,
   BOOKMARK_LINK_SUCCESS,
   BOOKMARK_LINK_FAILED,
+  REMOVE_LINK_CATEGORY,
+  REMOVE_LINK_CATEGORY_SUCCESS,
+  REMOVE_LINK_CATEGORY_FAILED,
 } from "./constants";
 
 const initialState = [];
@@ -50,6 +53,12 @@ function linksReducer(state = initialState, action) {
         p => (p.linkId === action.id ? { ...p, isFavorite: !action.status } : p)
       );
     case BOOKMARK_LINK_FAILED:
+      return state;
+    case REMOVE_LINK_CATEGORY:
+      return state;
+    case REMOVE_LINK_CATEGORY_SUCCESS:
+      return state;
+    case REMOVE_LINK_CATEGORY_FAILED:
       return state;
     default:
       return state;

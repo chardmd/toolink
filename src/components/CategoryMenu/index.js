@@ -56,6 +56,7 @@ class CategoryMenu extends React.Component {
   handleRemoveCategory() {
     const { categoryId } = this.props;
     this.props.removeCategory(categoryId);
+    this.props.removeLinkCategory(categoryId);
     this.toggleRemoveDialog(false);
   }
 
@@ -125,6 +126,7 @@ CategoryMenu.propTypes = {
   renameCategory: PropTypes.func,
   categoryId: PropTypes.string,
   categoryName: PropTypes.string,
+  removeLinkCategory: PropTypes.func,
 };
 
 export default CategoryMenu;
