@@ -93,6 +93,15 @@ class App extends Component {
     return match === null ? "0" : match.params.categoryId;
   }
 
+  displaySidebar() {
+    const pathname = this.props.location.pathname;
+    const displayRoute =
+      pathname === "/" ||
+      pathname.includes("categories") ||
+      pathname.includes("maintenance");
+    return this.props.isAuthenticated && displayRoute;
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -111,7 +120,7 @@ class App extends Component {
             handleDrawerToggle={this.handleDrawerToggle}
             mobileOpen={this.state.mobileOpen}
           />
-          {this.props.isAuthenticated && (
+          {this.displaySidebar() && (
             <Sidebar
               activeCategoryId={activeCategoryId}
               mobileOpen={this.state.mobileOpen}
