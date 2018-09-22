@@ -6,14 +6,58 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { Elements, StripeProvider } from "react-stripe-elements";
 
 import { defaultAction } from "./actions";
 
+import BillingForm from "../../components/BillingForm";
+import config from "../../config";
 import "./Subscription.css";
 
 export class Subscription extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false,
+    };
+  }
+
+  handleFormSubmit = async (storage, { token, error }) => {
+    if (error) {
+      alert(error);
+      return;
+    }
+
+    this.setState({ isLoading: true });
+
+    try {
+      await this.billUser({
+        storage,
+        source: token.id,
+      });
+
+      alert("Your card has been charged successfully!");
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e);
+      this.setState({ isLoading: false });
+    }
+  };
+
   render() {
-    return <div>Subscription Page</div>;
+    return (
+      <div className="Subscription">
+        <StripeProvider apiKey={config.STRIPE_KEY}>
+          <Elements>
+            <BillingForm
+              loading={this.state.isLoading}
+              onSubmit={this.handleFormSubmit}
+            />
+          </Elements>
+        </StripeProvider>
+      </div>
+    );
   }
 }
 
