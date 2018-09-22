@@ -63,8 +63,8 @@ class BillingForm extends React.Component {
     const loading = this.state.isProcessing || this.props.loading;
     return (
       <form className="BillingForm" onSubmit={this.handleSubmitClick}>
-        <div>
-          <FormControl>
+        <div className="row">
+          <FormControl className="input">
             <InputLabel htmlFor="storage">Storage</InputLabel>
             <Input
               fullWidth
@@ -75,8 +75,8 @@ class BillingForm extends React.Component {
             />
           </FormControl>
         </div>
-        <div>
-          <FormControl>
+        <div className="row">
+          <FormControl className="input">
             <InputLabel htmlFor="cardholder">Cardholder&apos;s name</InputLabel>
             <Input
               fullWidth
@@ -87,9 +87,8 @@ class BillingForm extends React.Component {
             />
           </FormControl>
         </div>
-        <div>
-          <FormControl>
-            <InputLabel htmlFor="cardholder">Credit Card Info</InputLabel>
+        <div className="row">
+          <FormControl className="input">
             <CardElement
               id="cardholder"
               className="card-field"
@@ -97,13 +96,15 @@ class BillingForm extends React.Component {
             />
           </FormControl>
         </div>
-        <div>
+        <div className="row">
           <LoaderButton
+            variant="extendedFab"
+            color="primary"
+            size="large"
             type="submit"
             text="Purchase"
             isLoading={loading}
             loadingText="Purchasing…"
-            disabled={!this.validateForm()}
           />
         </div>
       </form>
