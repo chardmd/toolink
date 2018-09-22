@@ -102,7 +102,7 @@ class BillingForm extends React.Component {
             color="primary"
             size="large"
             type="submit"
-            text="Purchase"
+            text="Upgrade Now"
             isLoading={loading}
             loadingText="Purchasing…"
           />
