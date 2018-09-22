@@ -34,7 +34,7 @@ export default ({ childProps }) => (
       props={childProps}
     />
     <AuthenticatedRoute
-      path="/subscription"
+      path="/premium"
       exact
       component={AsyncSubscription}
       props={childProps}
