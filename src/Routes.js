@@ -15,6 +15,9 @@ const AsyncSignup = asyncComponent(() => import("./containers/Signup"));
 const AsyncForgotPassword = asyncComponent(() =>
   import("./containers/ForgotPassword")
 );
+const AsyncSubscription = asyncComponent(() =>
+  import("./containers/Subscription")
+);
 
 export default ({ childProps }) => (
   <Switch>
@@ -28,6 +31,12 @@ export default ({ childProps }) => (
       path="/categories/:categoryId"
       exact
       component={AsyncHome}
+      props={childProps}
+    />
+    <AuthenticatedRoute
+      path="/subscription"
+      exact
+      component={AsyncSubscription}
       props={childProps}
     />
     <AuthenticatedRoute

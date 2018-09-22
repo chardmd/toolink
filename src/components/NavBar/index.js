@@ -43,7 +43,7 @@ class NavBar extends React.Component {
             </Typography>
             {this.props.isAuthenticated ? (
               <div>
-                <Link to="/settings">
+                <Link to="/subscription">
                   <Button color="inherit">Upgrade</Button>
                 </Link>
                 <Button color="inherit" onClick={this.props.handleLogout}>
