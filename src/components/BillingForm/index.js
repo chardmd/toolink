@@ -87,7 +87,7 @@ class BillingForm extends React.Component {
             />
           </FormControl>
         </div>
-        <div className="row">
+        <div className="cardRow">
           <FormControl className="input">
             <CardElement
               id="cardholder"
