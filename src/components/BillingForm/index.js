@@ -65,18 +65,6 @@ class BillingForm extends React.Component {
       <form className="BillingForm" onSubmit={this.handleSubmitClick}>
         <div className="row">
           <FormControl className="input">
-            <InputLabel htmlFor="storage">Storage</InputLabel>
-            <Input
-              fullWidth
-              id="storage"
-              value={this.state.storage}
-              onChange={this.handleFieldChange}
-              placeholder="Number of notes to store"
-            />
-          </FormControl>
-        </div>
-        <div className="row">
-          <FormControl className="input">
             <InputLabel htmlFor="cardholder">Cardholder&apos;s name</InputLabel>
             <Input
               fullWidth
@@ -84,6 +72,10 @@ class BillingForm extends React.Component {
               value={this.state.name}
               onChange={this.handleFieldChange}
               placeholder="Name on the card"
+              autoFocus
+              InputLabelProps={{
+                shrink: true,
+              }}
             />
           </FormControl>
         </div>
