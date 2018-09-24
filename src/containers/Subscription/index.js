@@ -6,6 +6,9 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { compose } from "recompose";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 import { Elements, StripeProvider } from "react-stripe-elements";
 
 import { defaultAction } from "./actions";
@@ -48,14 +51,25 @@ export class Subscription extends React.Component {
   render() {
     return (
       <div className="Subscription">
-        <StripeProvider apiKey={config.STRIPE_KEY}>
-          <Elements>
-            <BillingForm
-              loading={this.state.isLoading}
-              onSubmit={this.handleFormSubmit}
-            />
-          </Elements>
-        </StripeProvider>
+        <Paper className="paper" elevation={1}>
+          <Typography
+            variant="display1"
+            component="h3"
+            align="center"
+            color="secondary"
+            className="headline"
+          >
+            Get more features, Upgrade to Premium
+          </Typography>
+          <StripeProvider apiKey={config.STRIPE_KEY}>
+            <Elements>
+              <BillingForm
+                loading={this.state.isLoading}
+                onSubmit={this.handleFormSubmit}
+              />
+            </Elements>
+          </StripeProvider>
+        </Paper>
       </div>
     );
   }
@@ -69,7 +83,9 @@ const mapDispatchToProps = dispatch => ({
   defaultAction: () => dispatch(defaultAction()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(Subscription);
