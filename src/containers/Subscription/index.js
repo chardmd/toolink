@@ -8,6 +8,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import Typography from "@material-ui/core/Typography";
+import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import { Elements, StripeProvider } from "react-stripe-elements";
 
@@ -15,6 +16,7 @@ import { defaultAction } from "./actions";
 
 import BillingForm from "../../components/BillingForm";
 import config from "../../config";
+import cupcakeImage from "../../assets/cupcake.svg";
 import "./Subscription.css";
 
 export class Subscription extends React.Component {
@@ -54,21 +56,30 @@ export class Subscription extends React.Component {
         <Paper className="paper" elevation={1}>
           <Typography
             variant="display1"
-            component="h3"
+            component="h1"
             align="center"
             color="secondary"
             className="headline"
           >
-            Get more features, Upgrade to Premium
+            Get More Features, Upgrade to Premium
           </Typography>
-          <StripeProvider apiKey={config.STRIPE_KEY}>
-            <Elements>
-              <BillingForm
-                loading={this.state.isLoading}
-                onSubmit={this.handleFormSubmit}
-              />
-            </Elements>
-          </StripeProvider>
+          <div className="container">
+            <div className="left">
+              <h1 className="pricing">$3.50/mo</h1>
+              <img src={cupcakeImage} alt="cupcake" />
+              <Chip label="Just like buying a cupcake but butter" />
+            </div>
+            <div className="right">
+              <StripeProvider apiKey={config.STRIPE_KEY}>
+                <Elements>
+                  <BillingForm
+                    loading={this.state.isLoading}
+                    onSubmit={this.handleFormSubmit}
+                  />
+                </Elements>
+              </StripeProvider>
+            </div>
+          </div>
         </Paper>
       </div>
     );
