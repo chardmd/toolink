@@ -4,10 +4,22 @@
  *
  */
 
-import { DEFAULT_ACTION } from "./constants";
+import { BILL_USER, BILL_USER_SUCCESS, BILL_USER_FAILED } from "./constants";
 
-export function defaultAction() {
+export function billUser() {
   return {
-    type: DEFAULT_ACTION,
+    type: BILL_USER,
+  };
+}
+
+export function billUserSuccess() {
+  return {
+    type: BILL_USER_SUCCESS,
+  };
+}
+
+export function billUserFailed() {
+  return {
+    type: BILL_USER_FAILED,
   };
 }

@@ -9,6 +9,7 @@ import linksSaga from "../containers/Links/saga";
 import maintenanceSaga from "../containers/Maintenance/saga";
 import favoritesSaga from "../containers/Favorites/saga";
 import sidebarSaga from "../containers/Sidebar/saga";
+import subscriptionSaga from "../containers/Subscription/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     fork(maintenanceSaga),
     fork(favoritesSaga),
     fork(sidebarSaga),
+    fork(subscriptionSaga),
   ]);
 }

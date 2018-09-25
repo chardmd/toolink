@@ -12,7 +12,7 @@ import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import { Elements, StripeProvider } from "react-stripe-elements";
 
-import { defaultAction } from "./actions";
+import { billUser } from "./actions";
 
 import BillingForm from "../../components/BillingForm";
 import config from "../../config";
@@ -37,7 +37,7 @@ export class Subscription extends React.Component {
     this.setState({ isLoading: true });
 
     try {
-      await this.billUser({
+      this.props.billUser({
         storage,
         source: token.id,
       });
@@ -93,7 +93,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  defaultAction: () => dispatch(defaultAction()),
+  billUser: details => dispatch(billUser(details)),
 });
 
 export default compose(

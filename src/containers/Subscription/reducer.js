@@ -5,7 +5,7 @@
  * configure in store/rootReducer
  */
 
-import { DEFAULT_ACTION } from "./constants";
+import { BILL_USER, BILL_USER_SUCCESS, BILL_USER_FAILED } from "./constants";
 
 const initialState = {
   myProperty: "",
@@ -13,7 +13,11 @@ const initialState = {
 
 function subscriptionReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
+    case BILL_USER:
+      return state;
+    case BILL_USER_SUCCESS:
+      return state;
+    case BILL_USER_FAILED:
       return state;
     default:
       return state;

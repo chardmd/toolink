@@ -10,6 +10,7 @@ import linksReducer from "../containers/Links/reducer";
 import trashReducer from "../containers/Maintenance/reducer";
 import favoritesReducer from "../containers/Favorites/reducer";
 import sidebarReducer from "../containers/Sidebar/reducer";
+import subscriptionReducer from "../containers/Subscription/reducer";
 
 const mainReducer = combineReducers({
   categories: categoriesReducer,
@@ -21,6 +22,7 @@ const mainReducer = combineReducers({
   signUp: signUpReducer,
   favorites: favoritesReducer,
   sidebar: sidebarReducer,
+  subscription: subscriptionReducer,
 });
 
 const rootReducer = (state, action) => {

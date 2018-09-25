@@ -5,16 +5,25 @@
  * configure in store/rootSaga
  */
 
-import { takeLatest, put, all } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
+import { API } from "aws-amplify";
 
-import { DEFAULT_ACTION } from "./constants";
+import { BILL_USER } from "./constants";
+import { billUserSuccess, billUserFailed } from "./actions";
 
-function* handleMySaga() {
-  // implementation
+function* handleBillUser({ details }) {
+  try {
+    yield call([API, API.post], "toolink", "/billing", {
+      body: details,
+    });
+    yield put(billUserSuccess());
+  } catch (e) {
+    yield put(billUserFailed(e));
+  }
 }
 
 function* SubscriptionSaga() {
-  yield all([takeLatest(DEFAULT_ACTION, handleMySaga)]);
+  yield all([takeLatest(BILL_USER, handleBillUser)]);
 }
 
 export default SubscriptionSaga;

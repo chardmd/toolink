@@ -6,7 +6,6 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import FormGroup from "@material-ui/core/FormGroup";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -21,18 +20,13 @@ class BillingForm extends React.Component {
 
     this.state = {
       name: "",
-      storage: "",
       isProcessing: false,
       isCardComplete: false,
     };
   }
 
   validateForm() {
-    return (
-      this.state.name !== "" &&
-      this.state.storage !== "" &&
-      this.state.isCardComplete
-    );
+    return this.state.name !== "" && this.state.isCardComplete;
   }
 
   handleFieldChange = event => {
@@ -57,6 +51,8 @@ class BillingForm extends React.Component {
     const { token, error } = await this.props.stripe.createToken({ name });
 
     this.setState({ isProcessing: false });
+
+    this.props.onSubmit(0, { token, error });
   };
 
   render() {
@@ -73,9 +69,6 @@ class BillingForm extends React.Component {
               onChange={this.handleFieldChange}
               placeholder="Name on the card"
               autoFocus
-              InputLabelProps={{
-                shrink: true,
-              }}
             />
           </FormControl>
         </div>
@@ -106,6 +99,7 @@ class BillingForm extends React.Component {
 
 BillingForm.propTypes = {
   active: PropTypes.bool,
+  onSubmit: PropTypes.func,
 };
 
 export default injectStripe(BillingForm);
