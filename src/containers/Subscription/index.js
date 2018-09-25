@@ -66,9 +66,11 @@ export class Subscription extends React.Component {
           <br />
           <div className="container">
             <div className="left">
-              <h1 className="pricing">$3.50/mo</h1>
-              <img src={cupcakeImage} alt="cupcake" />
-              <Chip label="Just like buying a cupcake, but better 😁" />
+              <div>
+                <h1 className="pricing">$3.50/mo</h1>
+                <img src={cupcakeImage} alt="cupcake" />
+                <Chip label="Just like buying a cupcake, but better 😁" />
+              </div>
             </div>
             <div className="right">
               <StripeProvider apiKey={config.STRIPE_KEY}>

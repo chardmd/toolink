@@ -38,6 +38,9 @@
 
 .Subscription .left {
     width: 40%;
+}
+
+.Subscription .left > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
