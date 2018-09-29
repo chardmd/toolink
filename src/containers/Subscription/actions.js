@@ -6,9 +6,11 @@
 
 import { BILL_USER, BILL_USER_SUCCESS, BILL_USER_FAILED } from "./constants";
 
-export function billUser() {
+export function billUser(source, error) {
   return {
     type: BILL_USER,
+    source,
+    error,
   };
 }
 

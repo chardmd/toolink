@@ -52,7 +52,7 @@ class BillingForm extends React.Component {
 
     this.setState({ isProcessing: false });
 
-    this.props.onSubmit(0, { token, error });
+    this.props.onSubmit(token, error);
   };
 
   render() {
@@ -64,7 +64,7 @@ class BillingForm extends React.Component {
             <InputLabel htmlFor="cardholder">Cardholder&apos;s name</InputLabel>
             <Input
               fullWidth
-              id="cardholder"
+              id="name"
               value={this.state.name}
               onChange={this.handleFieldChange}
               placeholder="Name on the card"

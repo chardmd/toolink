@@ -28,26 +28,8 @@ export class Subscription extends React.Component {
     };
   }
 
-  handleFormSubmit = async (storage, { token, error }) => {
-    if (error) {
-      alert(error);
-      return;
-    }
-
-    this.setState({ isLoading: true });
-
-    try {
-      this.props.billUser({
-        storage,
-        source: token.id,
-      });
-
-      alert("Your card has been charged successfully!");
-      this.props.history.push("/");
-    } catch (e) {
-      alert(e);
-      this.setState({ isLoading: false });
-    }
+  handleFormSubmit = (token, error) => {
+    this.props.billUser(token.id, error);
   };
 
   render() {
@@ -93,7 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  billUser: details => dispatch(billUser(details)),
+  billUser: (source, error) => dispatch(billUser(source, error)),
 });
 
 export default compose(
