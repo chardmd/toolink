@@ -17,7 +17,7 @@ function* handleBillUser({ source, error }) {
       throw error;
     }
 
-    yield call([API, API.post], "toolink", "/user/billing", {
+    yield call([API, API.post], "toolink", "/billing/charge", {
       body: {
         source,
       },
