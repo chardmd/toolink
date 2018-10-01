@@ -11,15 +11,17 @@ import { API } from "aws-amplify";
 import { BILL_USER } from "./constants";
 import { billUserSuccess, billUserFailed } from "./actions";
 
-function* handleBillUser({ source, error }) {
+function* handleBillUser({ source, email, error }) {
   try {
     if (error) {
       throw error;
     }
 
-    yield call([API, API.post], "toolink", "/billing/charge", {
+    yield call([API, API.post], "toolink", "/billing/subscription", {
       body: {
         source,
+        email,
+        planId: "plan_DhFH0U4tfPW55q", //temp
       },
     });
     yield put(billUserSuccess());

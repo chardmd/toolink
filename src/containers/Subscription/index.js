@@ -6,7 +6,6 @@
 
 import React from "react";
 import { connect } from "react-redux";
-import { compose } from "recompose";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
@@ -29,7 +28,8 @@ export class Subscription extends React.Component {
   }
 
   handleFormSubmit = (token, error) => {
-    this.props.billUser(token.id, error);
+    const email = this.props.email;
+    this.props.billUser(token.id, email, error);
   };
 
   render() {
@@ -71,16 +71,14 @@ export class Subscription extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  myProperty: state.app.myProperty,
+  email: state.login.data.attributes.email,
 });
 
 const mapDispatchToProps = dispatch => ({
-  billUser: (source, error) => dispatch(billUser(source, error)),
+  billUser: (source, email, error) => dispatch(billUser(source, email, error)),
 });
 
-export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(Subscription);
