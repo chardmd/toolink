@@ -33,8 +33,9 @@ function* handleSignIn({ data }) {
   try {
     yield put(setLoading(true));
     const { email, password } = data;
-    const response = yield call([Auth, Auth.signIn], email, password);
-    yield put(signInSuccess(response));
+    yield call([Auth, Auth.signIn], email, password);
+    const userInfo = yield call([Auth, Auth.currentUserInfo]);
+    yield put(signInSuccess(userInfo));
     yield handleGetCategories(); //execute categories handler
     yield handleGetFavorites(); //execute favorites handler
     yield put(setAuthenticated(true));
@@ -120,8 +121,9 @@ function* handleFacebookSignIn({ data }) {
 
 function* handleGetAuthenticatedUser() {
   try {
-    const response = yield call([Auth, Auth.currentAuthenticatedUser]);
-    yield put(getAuthenticatedUserSuccess(response));
+    yield call([Auth, Auth.currentAuthenticatedUser]);
+    const userInfo = yield call([Auth, Auth.currentUserInfo]);
+    yield put(getAuthenticatedUserSuccess(userInfo));
     yield handleGetCategories(); //execute categories handler
     yield put(setAuthenticated(true));
   } catch (e) {
