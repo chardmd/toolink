@@ -11,7 +11,7 @@ import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import { Elements, StripeProvider } from "react-stripe-elements";
 
-import { billUser } from "./actions";
+import { billUser, setLoading, getPlan } from "./actions";
 
 import BillingForm from "../../components/BillingForm";
 import config from "../../config";
@@ -25,6 +25,10 @@ export class Subscription extends React.Component {
     this.state = {
       isLoading: false,
     };
+  }
+
+  componentDidMount() {
+    this.props.getPlan();
   }
 
   handleFormSubmit = (token, error) => {
@@ -72,10 +76,13 @@ export class Subscription extends React.Component {
 }
 const mapStateToProps = state => ({
   email: state.login.data.attributes.email,
+  isLoading: state.subscription.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
   billUser: (source, email, error) => dispatch(billUser(source, email, error)),
+  setLoading: status => dispatch(setLoading(status)),
+  getPlan: () => dispatch(getPlan()),
 });
 
 export default connect(

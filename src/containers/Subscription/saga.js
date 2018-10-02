@@ -8,8 +8,14 @@
 import { takeLatest, call, put, all } from "redux-saga/effects";
 import { API } from "aws-amplify";
 
-import { BILL_USER } from "./constants";
-import { billUserSuccess, billUserFailed } from "./actions";
+import { BILL_USER, GET_PLAN } from "./constants";
+import {
+  billUserSuccess,
+  billUserFailed,
+  getPlanSuccess,
+  getPlanFailed,
+  setLoading,
+} from "./actions";
 
 function* handleBillUser({ source, email, error }) {
   try {
@@ -30,8 +36,22 @@ function* handleBillUser({ source, email, error }) {
   }
 }
 
+function* handleGetPlan() {
+  try {
+    yield put(setLoading(true));
+    const response = yield call([API, API.get], "toolink", "/billing/plan");
+    yield put(getPlanSuccess(response));
+  } catch (e) {
+    yield put(getPlanFailed(e));
+  }
+  yield put(setLoading(false));
+}
+
 function* SubscriptionSaga() {
-  yield all([takeLatest(BILL_USER, handleBillUser)]);
+  yield all([
+    takeLatest(BILL_USER, handleBillUser),
+    takeLatest(GET_PLAN, handleGetPlan),
+  ]);
 }
 
 export default SubscriptionSaga;
