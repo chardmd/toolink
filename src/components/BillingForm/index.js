@@ -83,7 +83,11 @@ class BillingForm extends React.Component {
           </FormControl>
         </div>
         <div className="poweredBy">
-          <a href="https://stripe.com" target="_blank">
+          <a
+            href="https://stripe.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={stripeImage} alt="powered by stripe" />
           </a>
         </div>
