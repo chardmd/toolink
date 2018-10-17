@@ -11,6 +11,7 @@ import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import { CardElement, injectStripe } from "react-stripe-elements";
 import LoaderButton from "../LoaderButton";
+import stripeImage from "../../assets/stripe.png";
 
 import "./BillingForm.css";
 
@@ -80,6 +81,11 @@ class BillingForm extends React.Component {
               onChange={this.handleCardFieldChange}
             />
           </FormControl>
+        </div>
+        <div className="poweredBy">
+          <a href="https://stripe.com" target="_blank">
+            <img src={stripeImage} alt="powered by stripe" />
+          </a>
         </div>
         <div className="row">
           <LoaderButton

@@ -22,6 +22,9 @@
     width: 100%;
 }
 
+.BillingForm .right {
+    text-align: right;
+}
 
 .BillingForm .card-field {
     margin-bottom: 15px;
@@ -36,4 +39,9 @@
 .BillingForm .card-field.StripeElement--focus {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
     border-color: #66AFE9;
+}
+
+.BillingForm .poweredBy {
+    text-align: right;
+    width: 100%;
 }
